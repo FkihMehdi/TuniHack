@@ -53,7 +53,7 @@ const FindUsers = () => {
               variant="h5"
               sx={{ color: "#FFD700", fontWeight: "bold", fontSize: 20 }} // Gold Text
             >
-              Connect with Others
+              Connect with associations
             </Typography>
           </HorizontalStack>
           <IconButton

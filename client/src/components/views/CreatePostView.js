@@ -8,11 +8,11 @@ import Sidebar from "../Sidebar";
 
 const CreatePostView = () => {
   return (
-    <Container>
+    <>
       <Navbar />
       <GoBack />
       <GridLayout left={<PostEditor />} right={<Sidebar />} />
-    </Container>
+    </>
   );
 };
 

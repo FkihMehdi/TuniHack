@@ -6,15 +6,9 @@ import "react-icons/bs";
 import "react-router-dom";
 import { CssBaseline } from "@mui/material";
 import { ThemeProvider } from "@mui/material/styles";
-
-import {
-  BrowserRouter,
-  Route,
-  Routes,
-  useParams,
-  useSearchParams,
-} from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import theme from "./theme";
+import { useEffect } from "react";
 
 import PostView from "./components/views/PostView";
 import CreatePostView from "./components/views/CreatePostView";
@@ -25,12 +19,19 @@ import ExploreView from "./components/views/ExploreView";
 import PrivateRoute from "./components/PrivateRoute";
 import SearchView from "./components/views/SearchView";
 import MessengerView from "./components/views/MessengerView";
-import { initiateSocketConnection, socket } from "./helpers/socketHelper";
-import { useEffect } from "react";
-import { BASE_URL } from "./config";
-import { io } from "socket.io-client";
+import { initiateSocketConnection } from "./helpers/socketHelper";
 
 function App() {
+  useEffect(() => {
+    document.body.style.background = "#3b4957";
+    document.body.style.margin = "0";
+    document.body.style.fontFamily = "'Roboto', sans-serif";
+
+    return () => {
+      document.body.style.background = "";
+    };
+  }, []);
+
   initiateSocketConnection();
 
   return (

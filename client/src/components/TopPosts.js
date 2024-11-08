@@ -1,11 +1,10 @@
-import { Card, Stack, Typography } from "@mui/material";
+import { Card, Stack, Typography, Box } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { getPosts } from "../api/posts";
 import { isLoggedIn } from "../helpers/authHelper";
 import Loading from "./Loading";
 import PostCard from "./PostCard";
 import HorizontalStack from "./util/HorizontalStack";
-import "react-icons/md";
 import { MdLeaderboard } from "react-icons/md";
 
 const TopPosts = () => {
@@ -15,19 +14,15 @@ const TopPosts = () => {
 
   const fetchPosts = async () => {
     const query = { sortBy: "-likeCount" };
-
     const data = await getPosts(user && user.token, query);
 
     const topPosts = [];
-
     if (data && data.data) {
       for (let i = 0; i < 3 && i < data.data.length; i++) {
         topPosts.push(data.data[i]);
       }
     }
-
     setPosts(topPosts);
-
     setLoading(false);
   };
 
@@ -37,17 +32,37 @@ const TopPosts = () => {
 
   return (
     <Stack spacing={2}>
-      <Card>
-        <HorizontalStack>
-          <MdLeaderboard />
-          <Typography>Top Posts</Typography>
+      <Card
+        sx={{
+          backgroundColor: "#FFD700",
+          color: "#0D1B2A",
+          padding: 2,
+          borderRadius: 2,
+          boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.2)", // Soft shadow effect
+        }}
+      >
+        <HorizontalStack alignItems="center" spacing={1}>
+          <MdLeaderboard size={24} color="#0D1B2A" /> {/* blue icon color */}
+          <Typography variant="h6" sx={{ fontWeight: "bold" }}>
+            Top Posts
+          </Typography>
         </HorizontalStack>
       </Card>
+
       {!loading ? (
-        posts &&
-        posts.map((post) => (
-          <PostCard preview="secondary" post={post} key={post._id} />
-        ))
+        posts && posts.length > 0 ? (
+          posts.map((post) => (
+            <PostCard preview="secondary" post={post} key={post._id} />
+          ))
+        ) : (
+          <Typography
+            variant="body2"
+            color="textSecondary"
+            sx={{ textAlign: "center", color: "#0D1B2A" }} // blue for empty message
+          >
+            No top posts to display.
+          </Typography>
+        )
       ) : (
         <Loading />
       )}
