@@ -244,6 +244,16 @@ const getRandomIndices = (size, sourceSize) => {
   return randomIndices;
 };
 
+const getEventsattending = async (req, res) => {
+  try {
+    const userId = req.body.userId;
+    const user = await User.findById(userId).populate("events_attending");
+    return res.status(200).json(user.events_attending);
+  } catch (err) {
+    return res.status(400).json({ error: err.message });
+  }
+};
+
 module.exports = {
   register,
   login,
@@ -254,4 +264,5 @@ module.exports = {
   getUser,
   getRandomUsers,
   updateUser,
+  getEventsattending,
 };

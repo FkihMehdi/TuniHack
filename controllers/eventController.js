@@ -1,5 +1,5 @@
-
 const Event = require("../models/Event");
+const User = require("../models/User");
 const getEvents = async (req, res) => {
   try {
     const events = await Event.find();
@@ -97,6 +97,9 @@ const addParticipant = async (req, res) => {
     const { userId } = req.body;
     const event = await Event.findById(id);
     event.participants.push(userId);
+    const user = await User.findById(userId);
+    user.events_attending.push(event._id);
+    await user.save();
     await event.save();
     return res.json(event);
   } catch (err) {
@@ -129,5 +132,4 @@ module.exports = {
   getParticipants,
   addParticipant,
   removeParticipant,
-
 };
