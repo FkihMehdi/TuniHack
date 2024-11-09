@@ -12,15 +12,23 @@ import PostCard from "../PostCard";
 import Sidebar from "../Sidebar";
 import HorizontalStack from "../util/HorizontalStack";
 import PostBrowser from "../PostBrowser";
+import { LeftSideBar } from "../LeftSideBar";
 
 const ExploreView = () => {
   return (
     <>
       <Navbar />
-      <GridLayout
-        left={<PostBrowser createPost contentType="posts" />}
-        right={<Sidebar />}
-      />
+      <Box
+        sx={{
+          paddingX: 2,
+        }}
+      >
+        <GridLayout
+          left={<LeftSideBar />}
+          middle={<PostBrowser createPost contentType="posts" />}
+          right={<Sidebar />}
+        />
+      </Box>
     </>
   );
 };

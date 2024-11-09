@@ -115,7 +115,10 @@ const PostBrowser = (props) => {
 
   return (
     <>
-      <Stack spacing={2} sx={{ backgroundColor: "#ffffff", padding: 2 }}>
+      <Stack
+        spacing={2}
+        sx={{ backgroundColor: "#ffffff", padding: 2, paddingTop: 0 }}
+      >
         <Card sx={{ backgroundColor: "#705eaa" }}>
           <HorizontalStack justifyContent="space-between">
             {props.createPost && <CreatePost />}

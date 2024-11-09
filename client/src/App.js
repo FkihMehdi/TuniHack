@@ -21,6 +21,11 @@ import PrivateRoute from "./components/PrivateRoute";
 import SearchView from "./components/views/SearchView";
 import MessengerView from "./components/views/MessengerView";
 import { initiateSocketConnection } from "./helpers/socketHelper";
+import { Event } from "./components/views/Event";
+import { GenerateWebsite } from "./components/views/GenerateWebsite";
+import { Connections } from "./components/views/Connections";
+import { Mentors } from "./components/views/Mentors";
+import { PromoteEvent } from "./components/views/PromoteEvent";
 
 function App() {
   useEffect(() => {
@@ -61,6 +66,11 @@ function App() {
           <Route path="/users/:id" element={<ProfileView />} />
           <Route path="/login" element={<LoginView />} />
           <Route path="/signup" element={<SignupView />} />
+          <Route path="/event" element={<Event />} />{" "}
+          <Route path="/generate-website" element={<GenerateWebsite />} />
+          <Route path="/connections" element={<Connections />} />
+          <Route path="/mentors" element={<Mentors />} />
+          <Route path="/promote-event" element={<PromoteEvent />} />
           <Route path="/account" element={<AccountView />} />
         </Routes>
       </BrowserRouter>
