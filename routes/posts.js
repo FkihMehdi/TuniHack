@@ -19,4 +19,10 @@ router.get(
 );
 router.get("/like/:postId/users", postControllers.getUserLikes);
 
+router.get(
+  "/event/:eventId",
+  optionallyVerifyToken,
+  postControllers.getEventPosts
+);
+
 module.exports = router;

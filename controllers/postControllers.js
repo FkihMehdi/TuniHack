@@ -10,7 +10,7 @@ USER_LIKES_PAGE_SIZE = 9;
 
 const createPost = async (req, res) => {
   try {
-    const { title, content, userId } = req.body;
+    const { title, content, userId, for_event_id } = req.body;
 
     if (!(title && content)) {
       throw new Error("All input required");
@@ -27,10 +27,20 @@ const createPost = async (req, res) => {
       cooldown.delete(userId);
     }, 60000);
 
+    let eventFound = null;
+
+    if (for_event_id) {
+      eventFound = await Event.findById(for_event_id);
+      if (!eventFound) {
+        throw new Error("Event does not exist");
+      }
+    }
+
     const post = await Post.create({
       title,
       content,
       poster: userId,
+      for_event: for_event_id ? for_event_id : null,
     });
 
     res.json(post);
@@ -234,6 +244,37 @@ const getPosts = async (req, res) => {
   }
 };
 
+const getEventPosts = async (req, res) => {
+  try {
+    const eventId = req.params.eventId;
+    const { userId } = req.body;
+    let { page, sortBy } = req.query;
+
+    if (!sortBy) sortBy = "-createdAt";
+    if (!page) page = 1;
+
+    let posts = await Post.find({ for_event: eventId })
+      .sort(sortBy)
+      .populate("poster")
+      .lean();
+
+    const count = posts.length;
+
+    posts = paginate(posts, 10, page);
+
+    if (userId) {
+      await setLiked(posts, userId);
+    }
+
+    await enrichWithUserLikePreview(posts);
+
+    return res.json({ data: posts, count });
+  } catch (err) {
+    console.log(err);
+    return res.status(400).json({ error: err.message });
+  }
+};
+
 const likePost = async (req, res) => {
   try {
     const postId = req.params.id;
@@ -340,4 +381,5 @@ module.exports = {
   unlikePost,
   getUserLikedPosts,
   getUserLikes,
+  getEventPosts,
 };
