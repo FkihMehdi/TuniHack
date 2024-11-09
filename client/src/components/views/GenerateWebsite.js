@@ -1,5 +1,11 @@
+import { AuthLayout } from "../AuthLayout";
+
 const GenerateWebsite = () => {
-  return <div>generate website</div>;
+  return (
+    <AuthLayout>
+      <div>events</div>
+    </AuthLayout>
+  );
 };
 
 export { GenerateWebsite };

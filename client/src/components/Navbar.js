@@ -7,6 +7,7 @@ import {
   Button,
   Menu,
   MenuItem,
+  Typography,
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import {
@@ -15,6 +16,7 @@ import {
   AiOutlineSearch,
   AiOutlineSetting,
 } from "react-icons/ai";
+import { FaGlobe } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import { isLoggedIn, logoutUser } from "../helpers/authHelper";
 import UserAvatar from "./UserAvatar";
@@ -28,8 +30,10 @@ const Navbar = () => {
   const [search, setSearch] = useState("");
   const [showSearch, setShowSearch] = useState(false);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  const [anchorEl, setAnchorEl] = useState(null); // State for dropdown menu anchor
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [langAnchorEl, setLangAnchorEl] = useState(null);
   const openMenu = Boolean(anchorEl);
+  const openLangMenu = Boolean(langAnchorEl);
 
   useEffect(() => {
     const handleResize = () => setWindowWidth(window.innerWidth);
@@ -54,8 +58,11 @@ const Navbar = () => {
 
   const toggleSearch = () => setShowSearch((prev) => !prev);
 
-  const handleMenuOpen = (event) => setAnchorEl(event.currentTarget); // Open dropdown menu
-  const handleMenuClose = () => setAnchorEl(null); // Close dropdown menu
+  const handleMenuOpen = (event) => setAnchorEl(event.currentTarget);
+  const handleMenuClose = () => setAnchorEl(null);
+
+  const handleLangMenuOpen = (event) => setLangAnchorEl(event.currentTarget);
+  const handleLangMenuClose = () => setLangAnchorEl(null);
 
   return (
     <Stack mb={2} spacing={1}>
@@ -65,7 +72,7 @@ const Navbar = () => {
         justifyContent="space-between"
         sx={{
           padding: 2,
-          backgroundColor: "#705eaa", // Main background color
+          backgroundColor: "#705eaa",
           boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
           borderRadius: 2,
           position: "sticky",
@@ -73,7 +80,7 @@ const Navbar = () => {
           zIndex: 1000,
         }}
       >
-        {/* Logo Section */}
+        {/* Logo and Title Section */}
         <Stack direction="row" alignItems="center" spacing={1}>
           <Box
             component="img"
@@ -88,6 +95,16 @@ const Navbar = () => {
             }}
             onClick={() => navigate("/")}
           />
+          <Typography
+            variant="h6"
+            sx={{
+              color: "#ffff",
+              fontFamily: "Nexa Heavy, sans-serif", // Apply Nexa Heavy font
+              fontWeight: "bold", // Apply bold weight
+            }}
+          >
+            Affilify
+          </Typography>
         </Stack>
 
         {/* Centered Search Field */}
@@ -97,7 +114,7 @@ const Navbar = () => {
           sx={{
             display: !isNarrow || showSearch ? "flex" : "none",
             flexGrow: 1,
-            maxWidth: isMobile ? "80%" : "60%",
+            maxWidth: isMobile ? "70%" : "30%", // Reduced width
             justifyContent: "center",
           }}
         >
@@ -109,14 +126,14 @@ const Navbar = () => {
             fullWidth
             sx={{
               "& .MuiOutlinedInput-root": {
-                backgroundColor: "#ffffff", // White background
-                color: "#705eaa", // Text color
+                backgroundColor: "#ffffff",
+                color: "#705eaa",
                 boxShadow: "0 2px 8px rgba(0, 0, 0, 0.15)",
                 borderRadius: "5px",
-                "& fieldset": { borderColor: "#705eaa" }, // Border color
+                "& fieldset": { borderColor: "#705eaa" },
               },
               "& .MuiInputLabel-root": {
-                color: "#705eaa", // Label color
+                color: "#705eaa",
               },
             }}
           />
@@ -135,7 +152,7 @@ const Navbar = () => {
             sx={{
               color: "#ffffff",
               transition: "color 0.3s",
-              "&:hover": { color: "#71a769" }, // Hover effect color
+              "&:hover": { color: "#71a769" },
             }}
           >
             <AiFillHome />
@@ -185,13 +202,13 @@ const Navbar = () => {
                 variant="contained"
                 sx={{
                   minWidth: 80,
-                  backgroundColor: "#71a769", // Green background
+                  backgroundColor: "#71a769",
                   color: "#ffffff",
                   fontWeight: "bold",
                   boxShadow: "0 4px 8px rgba(113, 167, 105, 0.3)",
                   borderRadius: "20px",
                   "&:hover": {
-                    backgroundColor: "#705eaa", // Purple hover color
+                    backgroundColor: "#705eaa",
                   },
                 }}
                 href="/signup"
@@ -205,7 +222,7 @@ const Navbar = () => {
                   color: "#705eaa",
                   borderColor: "#705eaa",
                   "&:hover": {
-                    backgroundColor: "#71a769", // Green hover
+                    backgroundColor: "#71a769",
                   },
                   borderRadius: "20px",
                 }}
@@ -215,33 +232,21 @@ const Navbar = () => {
               </Button>
             </>
           )}
-        </Stack>
 
-        {/* Mobile Search Field */}
-        {isNarrow && showSearch && (
-          <Box
-            component="form"
-            onSubmit={handleSearchSubmit}
-            sx={{ mt: 1, px: 2 }}
+          {/* Language Selection Dropdown */}
+          <IconButton onClick={handleLangMenuOpen} sx={{ color: "#ffffff" }}>
+            <FaGlobe />
+          </IconButton>
+          <Menu
+            anchorEl={langAnchorEl}
+            open={openLangMenu}
+            onClose={handleLangMenuClose}
           >
-            <TextField
-              size="small"
-              label="Search..."
-              value={search}
-              onChange={handleSearchChange}
-              fullWidth
-              sx={{
-                "& .MuiOutlinedInput-root": {
-                  borderRadius: 5,
-                  boxShadow: "0 2px 8px rgba(0, 0, 0, 0.15)",
-                  backgroundColor: "#ffffff", // White background
-                  color: "#705eaa", // Text color
-                  "& fieldset": { borderColor: "#705eaa" },
-                },
-              }}
-            />
-          </Box>
-        )}
+            <MenuItem onClick={handleLangMenuClose}>🇫🇷 Français</MenuItem>
+            <MenuItem onClick={handleLangMenuClose}>🇬🇧 English</MenuItem>
+            <MenuItem onClick={handleLangMenuClose}>🇸🇦 العربية</MenuItem>
+          </Menu>
+        </Stack>
       </Stack>
     </Stack>
   );

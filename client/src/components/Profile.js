@@ -6,259 +6,161 @@ import {
   Divider,
   Stack,
   Typography,
-  Badge,
+  IconButton,
 } from "@mui/material";
 import { Box } from "@mui/system";
-import React from "react";
-import { AiFillEdit } from "react-icons/ai";
+import React, { useEffect, useState } from "react";
+import {
+  AiFillEdit,
+  AiFillFacebook,
+  AiFillTwitterSquare,
+  AiFillInstagram,
+} from "react-icons/ai";
+import { isLoggedIn } from "../helpers/authHelper";
 import ContentUpdateEditor from "./ContentUpdateEditor";
 import Loading from "./Loading";
 import UserAvatar from "./UserAvatar";
 import HorizontalStack from "./util/HorizontalStack";
 
 const Profile = (props) => {
-  const {
-    profile,
-    editing,
-    handleSubmit,
-    handleEditing,
-    validate,
-    handleMessage,
-  } = props;
+  const [user, setUser] = useState(null);
+  const currentUser = isLoggedIn();
   const theme = useTheme();
-  const iconColor = theme.palette.primary.main;
 
-  // Set colors for the new theme (dark blue and gold)
-  const backgroundColor = "#0D1B2A"; // Dark blue background
-  const textColor = "#FFD700"; // Gold text
+  // Defining custom colors from the palette
+  const purple = "#705eaa";
+  const green = "#71a769";
+  const white = "#ffffff";
+
+  useEffect(() => {
+    if (props.profile) {
+      setUser(props.profile.user);
+    }
+  }, [props.profile]);
 
   return (
-    <Card
-      sx={{
-        backgroundColor: backgroundColor,
-        color: textColor,
-        padding: 3,
-        borderRadius: 2,
-        boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.15)", // Soft shadow effect
-      }}
-    >
-      {profile ? (
+    <Card sx={{ backgroundColor: white, padding: 3 }}>
+      {user ? (
         <Stack alignItems="center" spacing={2}>
           <Box my={1}>
-            <UserAvatar width={150} height={150} username={profile.username} />
+            <UserAvatar width={150} height={150} username={user.username} />
           </Box>
 
-          <Typography variant="h5" sx={{ fontWeight: "bold" }}>
-            {profile.username}
+          <Typography variant="h5" color={purple}>
+            {user.username}
           </Typography>
 
-          {editing ? (
+          {props.editing ? (
             <Box>
               <ContentUpdateEditor
-                handleSubmit={handleSubmit}
-                originalContent={profile.biography}
-                validate={validate}
+                handleSubmit={props.handleSubmit}
+                originalContent={user.biography}
+                validate={props.validate}
               />
             </Box>
-          ) : profile.biography ? (
-            <Typography textAlign="center" variant="p">
+          ) : user.biography ? (
+            <Typography textAlign="center" variant="body1" color={purple}>
               <b>Bio: </b>
-              {profile.biography}
+              {user.biography}
             </Typography>
           ) : (
-            <Typography variant="p">
+            <Typography variant="body1" color="text.secondary">
               <i>No bio yet</i>
             </Typography>
           )}
 
-          {props.currentUser && profile._id === props.currentUser.userId && (
+          {currentUser && user._id === currentUser.userId && (
             <Box>
               <Button
-                startIcon={<AiFillEdit color={iconColor} />}
-                onClick={handleEditing}
+                startIcon={<AiFillEdit color={white} />}
+                onClick={props.handleEditing}
                 sx={{
-                  backgroundColor: "#FFD700", // Gold button
-                  color: "#0D1B2A", // Dark blue text
+                  backgroundColor: purple,
+                  color: white,
                   "&:hover": {
-                    backgroundColor: "#FFB700", // Slightly darker gold on hover
+                    backgroundColor: "#5b489d", // Slightly darker purple for hover
                   },
                 }}
               >
-                {editing ? <>Cancel</> : <>Edit bio</>}
+                {props.editing ? <>Cancel</> : <>Edit bio</>}
               </Button>
             </Box>
           )}
 
-          {props.currentUser && profile._id !== props.currentUser.userId && (
+          {currentUser && user._id !== currentUser.userId && (
             <Button
               variant="outlined"
+              onClick={props.handleMessage}
               sx={{
-                borderColor: "#FFD700", // Gold border
-                color: "#FFD700", // Gold text color
+                borderColor: green,
+                color: green,
                 "&:hover": {
-                  borderColor: "#FFB700", // Hover effect
-                  color: "#FFB700",
+                  backgroundColor: "#b3d9b1", // Light green hover effect
                 },
               }}
-              onClick={handleMessage}
             >
               Message
             </Button>
           )}
 
-          {/* Horizontal Stack for Likes and Posts */}
           <HorizontalStack>
             <Typography color="text.secondary">
-              Likes <b>{profile.posts.likeCount}</b>
+              Likes <b>{props.profile.posts.likeCount}</b>
             </Typography>
             <Typography color="text.secondary">
-              Posts <b>{profile.posts.count}</b>
+              Posts <b>{props.profile.posts.count}</b>
             </Typography>
           </HorizontalStack>
 
-          {/* Clubs and Associations Section */}
-          <Box mt={3}>
-            <Typography variant="h6" sx={{ fontWeight: "bold" }}>
-              Clubs & Associations
-            </Typography>
-            <Typography variant="body2">
-              {profile.clubs?.length > 0 ? (
-                profile.clubs.map((club, index) => (
-                  <Box key={index} sx={{ marginBottom: 1 }}>
-                    <Typography variant="body2">{club.name}</Typography>
-                    <Typography variant="body2" color="text.secondary">
-                      {club.role}
-                    </Typography>
-                  </Box>
-                ))
-              ) : (
-                <i>No clubs or associations listed</i>
-              )}
-            </Typography>
-          </Box>
+          {/* Achievements Section */}
+          <Divider sx={{ width: "100%", my: 2 }} />
+          <Typography variant="h6" color={purple}>
+            Achievements
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            {/* Example achievements; replace with dynamic content */}
+            - winner of swafython hackthon <br />- 5 Years of experience in
+            software development
+          </Typography>
 
-          <Divider sx={{ my: 2 }} />
+          {/* Workshops & Activity & Events Section */}
+          <Divider sx={{ width: "100%", my: 2 }} />
+          <Typography variant="h6" color={purple}>
+            Workshops & Activities
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            {/* Example activities; replace with dynamic content */}
+            - Guest speaker at XYZ Conference <br />- Organized Coding Bootcamp
+            2023
+          </Typography>
 
-          {/* Achievements Section with Badge */}
-          <Box mt={3}>
-            <Typography variant="h6" sx={{ fontWeight: "bold" }}>
-              Achievements
-            </Typography>
-            <Box>
-              {profile.achievements?.length > 0 ? (
-                profile.achievements.map((achievement, index) => (
-                  <Box
-                    key={index}
-                    sx={{
-                      marginBottom: 1,
-                      display: "flex",
-                      alignItems: "center",
-                    }}
-                  >
-                    {/* Badge for Achievement */}
-                    <Badge
-                      badgeContent="🏅"
-                      color="primary"
-                      sx={{
-                        fontSize: 20,
-                        marginRight: 1,
-                      }}
-                    />
-                    <Typography variant="body2" sx={{ fontWeight: "bold" }}>
-                      {achievement.title}
-                    </Typography>
-                    <Typography
-                      variant="body2"
-                      color="text.secondary"
-                      sx={{ ml: 1 }}
-                    >
-                      {achievement.description}
-                    </Typography>
-                  </Box>
-                ))
-              ) : (
-                <i>No achievements listed</i>
-              )}
-            </Box>
-          </Box>
+          {/* Membership Cards Section */}
+          <Divider sx={{ width: "100%", my: 2 }} />
+          <Typography variant="h6" color={purple}>
+            Membership Cards
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            {/* Example memberships; replace with dynamic content */}
+            - Member of ABC Professional Association <br />- Member in ieee ras
+            chapter{" "}
+          </Typography>
 
-          <Divider sx={{ my: 2 }} />
-
-          {/* Events and Workshops Section */}
-          <Box mt={3}>
-            <Typography variant="h6" sx={{ fontWeight: "bold" }}>
-              Events & Workshops
-            </Typography>
-            <Typography variant="body2">
-              {profile.events?.length > 0 ? (
-                profile.events.map((event, index) => (
-                  <Box key={index} sx={{ marginBottom: 1 }}>
-                    <Typography variant="body2">{event.name}</Typography>
-                    <Typography variant="body2" color="text.secondary">
-                      {event.date}
-                    </Typography>
-                  </Box>
-                ))
-              ) : (
-                <i>No events or workshops listed</i>
-              )}
-            </Typography>
-          </Box>
-
-          <Divider sx={{ my: 2 }} />
-
-          {/* Social Media Contact Section */}
-          <Box mt={3}>
-            <Typography variant="h6" sx={{ fontWeight: "bold" }}>
-              Contact & Social Media
-            </Typography>
-            <Box>
-              {profile.socials?.instagram && (
-                <Typography variant="body2">
-                  <a
-                    href={profile.socials.instagram}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Instagram: {profile.socials.instagram}
-                  </a>
-                </Typography>
-              )}
-              {profile.socials?.facebook && (
-                <Typography variant="body2">
-                  <a
-                    href={profile.socials.facebook}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Facebook: {profile.socials.facebook}
-                  </a>
-                </Typography>
-              )}
-              {profile.socials?.linkedin && (
-                <Typography variant="body2">
-                  <a
-                    href={profile.socials.linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    LinkedIn: {profile.socials.linkedin}
-                  </a>
-                </Typography>
-              )}
-              {profile.socials?.github && (
-                <Typography variant="body2">
-                  <a
-                    href={profile.socials.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    GitHub: {profile.socials.github}
-                  </a>
-                </Typography>
-              )}
-            </Box>
-          </Box>
+          {/* Social Media Icons for Contact */}
+          <Divider sx={{ width: "100%", my: 2 }} />
+          <Typography variant="h6" color={purple}>
+            Connect with Me
+          </Typography>
+          <Stack direction="row" spacing={2}>
+            <IconButton href="https://facebook.com" target="_blank">
+              <AiFillFacebook color={purple} size={30} />
+            </IconButton>
+            <IconButton href="https://twitter.com" target="_blank">
+              <AiFillTwitterSquare color={purple} size={30} />
+            </IconButton>
+            <IconButton href="https://instagram.com" target="_blank">
+              <AiFillInstagram color={purple} size={30} />
+            </IconButton>
+          </Stack>
         </Stack>
       ) : (
         <Loading label="Loading profile" />

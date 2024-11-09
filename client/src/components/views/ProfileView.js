@@ -130,8 +130,6 @@ const ProfileView = () => {
               handleMessage={handleMessage}
               validate={validate}
             />
-
-            <FindUsers />
           </Stack>
         }
       />

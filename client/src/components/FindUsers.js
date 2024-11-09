@@ -53,7 +53,7 @@ const FindUsers = () => {
               variant="h5"
               sx={{ color: "#705eaa", fontWeight: "bold", fontSize: 20 }} // Texte violet élégant
             >
-              Connect with memebers
+              Connect with Members
             </Typography>
           </HorizontalStack>
           <IconButton

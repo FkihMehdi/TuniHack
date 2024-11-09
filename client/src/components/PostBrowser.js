@@ -1,8 +1,7 @@
-import { Button, Card, Link, Stack, Typography } from "@mui/material";
+import { Button, Card, Stack, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import React, { useEffect, useState } from "react";
-import { MdSettingsInputAntenna } from "react-icons/md";
-import { useLocation, useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import { getPosts, getUserLikedPosts } from "../api/posts";
 import { isLoggedIn } from "../helpers/authHelper";
 import CreatePost from "./CreatePost";

@@ -26,6 +26,7 @@ import { GenerateWebsite } from "./components/views/GenerateWebsite";
 import { Connections } from "./components/views/Connections";
 import { Mentors } from "./components/views/Mentors";
 import { PromoteEvent } from "./components/views/PromoteEvent";
+import { Schedule } from "./components/views/Schedule";
 
 function App() {
   useEffect(() => {
@@ -66,9 +67,10 @@ function App() {
           <Route path="/users/:id" element={<ProfileView />} />
           <Route path="/login" element={<LoginView />} />
           <Route path="/signup" element={<SignupView />} />
-          <Route path="/event" element={<Event />} />{" "}
+          <Route path="/event" element={<Event />} />
           <Route path="/generate-website" element={<GenerateWebsite />} />
           <Route path="/connections" element={<Connections />} />
+          <Route path="/calendar" element={<Schedule />} />
           <Route path="/mentors" element={<Mentors />} />
           <Route path="/promote-event" element={<PromoteEvent />} />
           <Route path="/account" element={<AccountView />} />

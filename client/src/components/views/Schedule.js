@@ -1,6 +1,6 @@
 import { AuthLayout } from "../AuthLayout";
 
-const PromoteEvent = () => {
+const Schedule = () => {
   return (
     <AuthLayout>
       <div>events</div>
@@ -8,4 +8,4 @@ const PromoteEvent = () => {
   );
 };
 
-export { PromoteEvent };
+export { Schedule };

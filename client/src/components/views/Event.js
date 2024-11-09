@@ -1,5 +1,11 @@
+import { AuthLayout } from "../AuthLayout";
+
 const Event = () => {
-  return <div>events</div>;
+  return (
+    <AuthLayout>
+      <div>events</div>
+    </AuthLayout>
+  );
 };
 
 export { Event };

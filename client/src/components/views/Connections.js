@@ -1,5 +1,11 @@
+import { AuthLayout } from "../AuthLayout";
+
 const Connections = () => {
-  return <div>Connections</div>;
+  return (
+    <AuthLayout>
+      <div>events</div>
+    </AuthLayout>
+  );
 };
 
 export { Connections };
