@@ -1,3 +1,6 @@
+
+const Event = require("../models/Event");
+
 const getEvents = async (req, res) => {
   try {
     const events = await Event.find();
@@ -50,4 +53,23 @@ const updateEvent = async (req, res) => {
     console.log(err);
     return res.status(400).json({ error: err.message });
   }
+};
+
+const deleteEvent = async (req, res) => {
+  try {
+    const { id } = req.params;
+    await Event.findByIdAndDelete(id);
+    return res.json({ message: "Event deleted" });
+  } catch (err) {
+    console.log(err);
+    return res.status(400).json({ error: err.message });
+  }
+};
+
+module.exports = {
+  getEvents,
+  getEvent,
+  createEvent,
+  updateEvent,
+  deleteEvent,
 };

@@ -11,6 +11,7 @@ const comments = require("./routes/comments");
 const messages = require("./routes/messages");
 const PostLike = require("./models/PostLike");
 const Post = require("./models/Post");
+const event = require("./routes/event");
 
 dotenv.config();
 
@@ -42,6 +43,7 @@ app.use("/api/posts", posts);
 app.use("/api/users", users);
 app.use("/api/comments", comments);
 app.use("/api/messages", messages);
+app.use("/api/events", event);
 
 if (process.env.NODE_ENV == "production") {
   app.use(express.static(path.join(__dirname, "/client/build")));
