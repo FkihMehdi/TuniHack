@@ -11,51 +11,75 @@ const UserMessengerEntries = (props) => {
   return !props.loading ? (
     <>
       {props.conversations.length > 0 ? (
-        <Stack>
+        <Stack
+          sx={{
+            borderRadius: 2,
+            boxShadow: 2,
+            backgroundColor: "#f9f9f9",
+            padding: 2,
+            height: "100%",
+            overflow: "hidden",
+          }}
+        >
           <HorizontalStack
             alignItems="center"
             spacing={2}
-            sx={{ px: 2, height: "60px" }}
+            sx={{
+              px: 2,
+              height: "60px",
+              borderBottom: "1px solid #ddd",
+              mb: 2,
+              color: "#2D4D78",
+            }}
           >
             <AiFillMessage size={30} />
-            <Typography>
-              <b>Your Conversations</b>
+            <Typography variant="h6" sx={{ fontWeight: "bold" }}>
+              Your Conversations
             </Typography>
           </HorizontalStack>
-          <Divider />
-          <Box sx={{ height: "calc(100vh - 171px)" }}>
-            <Box sx={{ height: "100%" }}>
-              <List sx={{ padding: 0, maxHeight: "100%", overflowY: "auto" }}>
-                {props.conversations.map((conversation) => (
-                  <UserMessengerEntry
-                    conservant={props.conservant}
-                    conversation={conversation}
-                    key={conversation.recipient.username}
-                    setConservant={props.setConservant}
-                  />
-                ))}
-              </List>
-            </Box>
+          <Divider sx={{ mb: 2 }} />
+          <Box sx={{ height: "calc(100vh - 171px)", overflowY: "auto" }}>
+            <List sx={{ padding: 0 }}>
+              {props.conversations.map((conversation) => (
+                <UserMessengerEntry
+                  conservant={props.conservant}
+                  conversation={conversation}
+                  key={conversation.recipient.username}
+                  setConservant={props.setConservant}
+                />
+              ))}
+            </List>
           </Box>
         </Stack>
       ) : (
         <Stack
-          sx={{ height: "100%" }}
-          justifyContent="center"
-          alignItems="center"
-          spacing={2}
-          textAlign="center"
+          sx={{
+            height: "100%",
+            justifyContent: "center",
+            alignItems: "center",
+            spacing: 3,
+            textAlign: "center",
+            backgroundColor: "#fff",
+            borderRadius: 2,
+            boxShadow: 2,
+            p: 4,
+          }}
         >
-          <BiSad size={60} />
-          <Typography variant="h5">No Conversations</Typography>
-          <Typography color="text.secondary" sx={{ maxWidth: "70%" }}>
+          <BiSad size={80} color="#9B8C99" />
+          <Typography
+            variant="h4"
+            sx={{ color: "#2D4D78", fontWeight: "bold" }}
+          >
+            No Conversations
+          </Typography>
+          <Typography color="text.secondary" sx={{ maxWidth: "80%" }}>
             Click 'Message' on another user's profile to start a conversation
           </Typography>
         </Stack>
       )}
     </>
   ) : (
-    <Stack sx={{ height: "100%" }} justifyContent="center">
+    <Stack sx={{ height: "100%" }} justifyContent="center" alignItems="center">
       <Loading />
     </Stack>
   );

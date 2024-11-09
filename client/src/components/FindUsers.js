@@ -40,25 +40,25 @@ const FindUsers = () => {
     <Card
       sx={{
         padding: 3,
-        backgroundColor: "#0D1B2A", // Dark Blue
-        boxShadow: "0 6px 20px rgba(0, 0, 0, 0.15)",
+        backgroundColor: "#FFFFFF", // Fond blanc pour un look moderne
+        boxShadow: "0 6px 15px rgba(0, 0, 0, 0.1)", // Ombre douce pour élégance
         borderRadius: 4,
       }}
     >
       <Stack spacing={2}>
         <HorizontalStack justifyContent="space-between">
           <HorizontalStack spacing={1} alignItems="center">
-            <AiOutlineUser color="#FFD700" size={28} /> {/* Gold Icon */}
+            <AiOutlineUser color="#705eaa" size={28} /> {/* Icône violet */}
             <Typography
               variant="h5"
-              sx={{ color: "#FFD700", fontWeight: "bold", fontSize: 20 }} // Gold Text
+              sx={{ color: "#705eaa", fontWeight: "bold", fontSize: 20 }} // Texte violet élégant
             >
-              Connect with Others
+              Connect with memebers
             </Typography>
           </HorizontalStack>
           <IconButton
             sx={{
-              color: "#FFD700", // Gold Color
+              color: "#71a769", // Vert pour le bouton de rafraîchissement
               padding: 0,
               transition: "transform 0.3s",
               "&:hover": {
@@ -71,10 +71,10 @@ const FindUsers = () => {
             <MdRefresh />
           </IconButton>
         </HorizontalStack>
-        <Divider sx={{ backgroundColor: "#FFD700", opacity: 0.8 }} />{" "}
-        {/* Gold Divider */}
+        <Divider sx={{ backgroundColor: "#705eaa", opacity: 0.5 }} />{" "}
+        {/* Diviseur en violet */}
         {loading ? (
-          <Loading sx={{ color: "#FFD700" }} /> // Gold for Loading
+          <Loading sx={{ color: "#705eaa" }} /> // Accent violet pour le chargement
         ) : (
           users &&
           users.map((user) => (

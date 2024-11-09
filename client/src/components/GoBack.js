@@ -9,7 +9,7 @@ const GoBack = () => {
         component={Link}
         to="/"
         sx={{
-          color: "#FFB700", // Main color from palette
+          color: "#71a769", // Secondary color from palette
           fontWeight: "bold",
           textDecoration: "none",
           fontSize: "1rem",
@@ -17,7 +17,7 @@ const GoBack = () => {
           borderRadius: "8px",
           transition: "all 0.3s ease",
           "&:hover": {
-            backgroundColor: "#0D1B2A", // Subtle background on hover
+            backgroundColor: "#705eaa", // Primary color on hover
             color: "#FFFFFF", // Light text on hover
             boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.2)",
           },

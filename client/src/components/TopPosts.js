@@ -1,4 +1,4 @@
-import { Card, Stack, Typography, Box } from "@mui/material";
+import { Card, Stack, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { getPosts } from "../api/posts";
 import { isLoggedIn } from "../helpers/authHelper";
@@ -34,17 +34,18 @@ const TopPosts = () => {
     <Stack spacing={2}>
       <Card
         sx={{
-          backgroundColor: "#FFD700",
-          color: "#0D1B2A",
+          backgroundColor: "#705eaa", // Primary color for card background
+          color: "#ffff", // Secondary color for text
           padding: 2,
           borderRadius: 2,
-          boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.2)", // Soft shadow effect
+          boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.1)", // Subtle shadow effect
         }}
       >
         <HorizontalStack alignItems="center" spacing={1}>
-          <MdLeaderboard size={24} color="#0D1B2A" /> {/* blue icon color */}
+          <MdLeaderboard size={24} color="#71a769" />{" "}
+          {/* Icon color matching the secondary color */}
           <Typography variant="h6" sx={{ fontWeight: "bold" }}>
-            Top Posts
+            Top Promoted Posts
           </Typography>
         </HorizontalStack>
       </Card>
@@ -58,7 +59,10 @@ const TopPosts = () => {
           <Typography
             variant="body2"
             color="textSecondary"
-            sx={{ textAlign: "center", color: "#0D1B2A" }} // blue for empty message
+            sx={{
+              textAlign: "center",
+              color: "#705eaa", // Using the primary color for the empty message
+            }}
           >
             No top posts to display.
           </Typography>

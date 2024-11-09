@@ -30,6 +30,8 @@ const PostEditor = () => {
     content: "",
     postType: "",
     images: [],
+    postType: "",
+    images: [],
   });
 
   const [serverError, setServerError] = useState("");
@@ -41,10 +43,12 @@ const PostEditor = () => {
     const errors = validate();
     setErrors(errors);
   };
+
   const handleImageChange = (e) => {
     const files = Array.from(e.target.files);
     setFormData({ ...formData, images: [...formData.images, ...files] });
   };
+
   const removeImage = (index) => {
     const newImages = formData.images.filter((_, i) => i !== index);
     setFormData({ ...formData, images: newImages });
@@ -52,7 +56,6 @@ const PostEditor = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     setLoading(true);
     const data = await createPost(formData, isLoggedIn());
     setLoading(false);
@@ -65,15 +68,9 @@ const PostEditor = () => {
 
   const validate = () => {
     const errors = {};
-    if (!formData.title) {
-      errors.title = "Title is required";
-    }
-    if (!formData.content) {
-      errors.content = "Content is required";
-    }
-    if (!formData.postType) {
-      errors.postType = "Post type is required";
-    }
+    if (!formData.title) errors.title = "Title is required";
+    if (!formData.content) errors.content = "Content is required";
+    if (!formData.postType) errors.postType = "Post type is required";
     return errors;
   };
 
@@ -84,14 +81,16 @@ const PostEditor = () => {
         maxWidth: 600,
         mx: "auto",
         boxShadow: 3,
-        backgroundColor: "#0D1B2A",
+        backgroundColor: "#F4F3EE", // Beige clair
       }}
     >
       <Stack spacing={3}>
         {user && (
           <HorizontalStack spacing={2}>
             <UserAvatar width={50} height={50} username={user.username} />
-            <Typography variant="h5" sx={{ color: "#FFD700" }}>
+            <Typography variant="h5" sx={{ color: "#3A4466" }}>
+              {" "}
+              {/* Bleu profond */}
               What would you like to post today, {user.username}?
             </Typography>
           </HorizontalStack>
@@ -107,12 +106,12 @@ const PostEditor = () => {
             error={errors.title !== undefined}
             helperText={errors.title}
             sx={{
-              bgcolor: "#1D2A3A",
+              bgcolor: "#F4F3EE", // Beige clair
               borderRadius: 1,
-              color: "#FFF",
-              "& .MuiInputLabel-root": { color: "#FFD700" },
+              color: "#2F2F2F", // Gris foncé
+              "& .MuiInputLabel-root": { color: "#705EAA" }, // Couleur principale
               "& .MuiOutlinedInput-root": {
-                "& fieldset": { borderColor: "#FFD700" },
+                "& fieldset": { borderColor: "#705EAA" },
               },
             }}
           />
@@ -128,12 +127,12 @@ const PostEditor = () => {
             helperText={errors.content}
             required
             sx={{
-              bgcolor: "#1D2A3A",
+              bgcolor: "#F4F3EE",
               borderRadius: 1,
-              color: "#FFF",
-              "& .MuiInputLabel-root": { color: "#FFD700" },
+              color: "#2F2F2F",
+              "& .MuiInputLabel-root": { color: "#705EAA" },
               "& .MuiOutlinedInput-root": {
-                "& fieldset": { borderColor: "#FFD700" },
+                "& fieldset": { borderColor: "#705EAA" },
               },
             }}
           />
@@ -142,19 +141,19 @@ const PostEditor = () => {
             margin="normal"
             error={errors.postType !== undefined}
           >
-            <InputLabel sx={{ color: "#FFD700" }}>Post Type</InputLabel>
+            <InputLabel sx={{ color: "#705EAA" }}>Post Type</InputLabel>
             <Select
               value={formData.postType}
               label="Post Type"
               onChange={handleChange}
               name="postType"
               sx={{
-                bgcolor: "#1D2A3A",
+                bgcolor: "#F4F3EE",
                 borderRadius: 1,
-                color: "#FFF",
-                "& .MuiSelect-icon": { color: "#FFD700" },
+                color: "#2F2F2F",
+                "& .MuiSelect-icon": { color: "#705EAA" },
                 "& .MuiOutlinedInput-root": {
-                  "& fieldset": { borderColor: "#FFD700" },
+                  "& fieldset": { borderColor: "#705EAA" },
                 },
               }}
             >
@@ -169,7 +168,7 @@ const PostEditor = () => {
               </MenuItem>
             </Select>
             {errors.postType && (
-              <FormHelperText sx={{ color: "#FFD700" }}>
+              <FormHelperText sx={{ color: "#705EAA" }}>
                 {errors.postType}
               </FormHelperText>
             )}
@@ -178,15 +177,15 @@ const PostEditor = () => {
             sx={{
               p: 2,
               borderRadius: 2,
-              border: "2px dashed #FFD700",
-              backgroundColor: "#1D2A3A",
-              color: "#FFD700",
+              border: "2px dashed #705EAA", // Couleur principale
+              backgroundColor: "#F4F3EE",
+              color: "#3A4466", // Bleu profond
               textAlign: "center",
               cursor: "pointer",
               transition: "all 0.3s ease",
               "&:hover": {
-                backgroundColor: "#253545",
-                borderColor: "#FFCC00",
+                backgroundColor: "#A3CFA9", // Vert doux
+                borderColor: "#705EAA",
               },
             }}
           >
@@ -204,9 +203,9 @@ const PostEditor = () => {
                 variant="outlined"
                 component="span"
                 sx={{
-                  bgcolor: "#FFD700",
-                  color: "#0D1B2A",
-                  "&:hover": { bgcolor: "#FFCC00" },
+                  bgcolor: "#705EAA",
+                  color: "#F4F3EE",
+                  "&:hover": { bgcolor: "#A3CFA9" },
                 }}
               >
                 Or Browse Files
@@ -215,7 +214,7 @@ const PostEditor = () => {
           </Box>
           <Box mt={2}>
             {formData.images.length > 0 && (
-              <Typography variant="h6" sx={{ color: "#FFD700" }}>
+              <Typography variant="h6" sx={{ color: "#705EAA" }}>
                 Preview of Uploaded Images:
               </Typography>
             )}
@@ -231,9 +230,7 @@ const PostEditor = () => {
                     borderRadius: "8px",
                     overflow: "hidden",
                     boxShadow: 3,
-                    "&:hover": {
-                      boxShadow: 6,
-                    },
+                    "&:hover": { boxShadow: 6 },
                   }}
                 >
                   <img
@@ -251,9 +248,9 @@ const PostEditor = () => {
                       position: "absolute",
                       top: 0,
                       right: 0,
-                      color: "#FFD700",
-                      backgroundColor: "#0D1B2A",
-                      "&:hover": { backgroundColor: "#FFCC00" },
+                      color: "#F4F3EE",
+                      backgroundColor: "#705EAA",
+                      "&:hover": { backgroundColor: "#3A4466" },
                     }}
                   >
                     <DeleteIcon />
@@ -265,18 +262,18 @@ const PostEditor = () => {
           <ErrorAlert error={serverError} />
           <Button
             variant="contained"
+            variant="contained"
             type="submit"
             fullWidth
             disabled={loading}
             sx={{
               mt: 2,
-              bgcolor: "#FFD700",
-              color: "#0D1B2A",
-              "&:hover": {
-                bgcolor: "#FFCC00",
-              },
+              bgcolor: "#705EAA",
+              color: "#F4F3EE",
+              "&:hover": { bgcolor: "#A3CFA9" },
             }}
           >
+            {loading ? <>Submitting...</> : <>Submit</>}
             {loading ? <>Submitting...</> : <>Submit</>}
           </Button>
         </Box>

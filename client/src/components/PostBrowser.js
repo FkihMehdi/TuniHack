@@ -1,5 +1,4 @@
 import { Button, Card, Link, Stack, Typography } from "@mui/material";
-import { alignProperty } from "@mui/material/styles/cssUtils";
 import { Box } from "@mui/system";
 import React, { useEffect, useState } from "react";
 import { MdSettingsInputAntenna } from "react-icons/md";
@@ -116,20 +115,21 @@ const PostBrowser = (props) => {
 
   return (
     <>
-      <Stack spacing={2}>
-        <Card>
+      <Stack spacing={2} sx={{ backgroundColor: "#ffffff", padding: 2 }}>
+        <Card sx={{ backgroundColor: "#705eaa" }}>
           <HorizontalStack justifyContent="space-between">
             {props.createPost && <CreatePost />}
             <SortBySelect
               onSortBy={handleSortBy}
               sortBy={sortBy}
               sorts={sorts}
+              sx={{ color: "#ffffff" }}
             />
           </HorizontalStack>
         </Card>
 
         {searchExists && (
-          <Box>
+          <Box sx={{ color: "#705eaa" }}>
             <Typography variant="h5" gutterBottom>
               Showing results for "{search.get("search")}"
             </Typography>
@@ -158,7 +158,12 @@ const PostBrowser = (props) => {
                 <>No posts available</>
               )}
             </Typography>
-            <Button variant="text" size="small" onClick={handleBackToTop}>
+            <Button
+              variant="text"
+              size="small"
+              onClick={handleBackToTop}
+              sx={{ color: "#71a769" }}
+            >
               Back to top
             </Button>
           </Stack>
@@ -167,10 +172,19 @@ const PostBrowser = (props) => {
           posts &&
           posts.length > 0 && (
             <Stack pt={2} pb={6} alignItems="center" spacing={2}>
-              <Button onClick={fetchPosts} variant="contained">
+              <Button
+                onClick={fetchPosts}
+                variant="contained"
+                sx={{ backgroundColor: "#71a769" }}
+              >
                 Load more
               </Button>
-              <Button variant="text" size="small" onClick={handleBackToTop}>
+              <Button
+                variant="text"
+                size="small"
+                onClick={handleBackToTop}
+                sx={{ color: "#71a769" }}
+              >
                 Back to top
               </Button>
             </Stack>

@@ -23,7 +23,6 @@ import { initiateSocketConnection } from "./helpers/socketHelper";
 
 function App() {
   useEffect(() => {
-    document.body.style.background = "#3b4957";
     document.body.style.margin = "0";
     document.body.style.fontFamily = "'Roboto', sans-serif";
 

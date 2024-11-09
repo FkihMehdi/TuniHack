@@ -62,10 +62,10 @@ const MessengerView = () => {
   };
 
   return (
-    <Container>
+    <>
       <Navbar />
-      <Box>
-        <Card sx={{ padding: 0 }}>
+      <Box sx={{ backgroundColor: "#F9F9F9", paddingBottom: "2rem" }}>
+        <Card sx={{ borderRadius: "12px", boxShadow: 3 }}>
           <Grid
             container
             sx={{ height: "calc(100vh - 110px)" }}
@@ -80,6 +80,8 @@ const MessengerView = () => {
                     borderRight: 1,
                     borderColor: "divider",
                     height: "100%",
+                    backgroundColor: "#ffffff",
+                    borderRadius: "12px 0 0 12px",
                   }}
                 >
                   <UserMessengerEntries
@@ -108,6 +110,7 @@ const MessengerView = () => {
                   borderRight: 1,
                   borderColor: "divider",
                   height: "100%",
+                  backgroundColor: "#ffffff",
                 }}
               >
                 <UserMessengerEntries
@@ -141,7 +144,7 @@ const MessengerView = () => {
           </Grid>
         </Card>
       </Box>
-    </Container>
+    </>
   );
 };
 
