@@ -21,6 +21,40 @@ const UserSchema = new mongoose.Schema(
       unique: true,
       validate: [isEmail, "Must be valid email address"],
     },
+    tags: [
+      {
+        type: String,
+        enum: [
+          //science and technology
+          "competitve programming",
+          "web development",
+          "app development",
+          "machine learning",
+          "artificial intelligence",
+          "cyber security",
+          "data science",
+          "cloud computing",
+          "blockchain",
+          "iot",
+          "quantum computing",
+          "physics",
+          "chemistry",
+          "biology",
+          "mathematics",
+          "astronomy",
+          "geology",
+          "engineering",
+        ],
+      },
+    ],
+    age: {
+      type: Number,
+      required: true,
+    },
+    phone: {
+      type: String,
+      required: true,
+    },
     password: {
       type: String,
       required: true,
@@ -35,6 +69,35 @@ const UserSchema = new mongoose.Schema(
       type: Boolean,
       default: false,
     },
+    role: {
+      type: String,
+      enum: ["Admin", "Member", "Association"],
+      default: "Member",
+    },
+    events_created: [
+      {
+        type: mongoose.Types.ObjectId,
+        ref: "event",
+      },
+    ],
+    events_attending: [
+      {
+        type: mongoose.Types.ObjectId,
+        ref: "event",
+      },
+    ],
+    associations_enrolled: [
+      {
+        type: mongoose.Types.ObjectId,
+        ref: "user",
+      },
+    ],
+    members: [
+      {
+        type: mongoose.Types.ObjectId,
+        ref: "user",
+      },
+    ],
   },
   { timestamps: true }
 );

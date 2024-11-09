@@ -31,6 +31,10 @@ const PostSchema = new mongoose.Schema(
       type: Boolean,
       default: false,
     },
+    for_event: {
+      type: mongoose.Types.ObjectId,
+      ref: "event",
+    },
   },
   { timestamps: true }
 );

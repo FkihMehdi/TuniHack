@@ -24,7 +24,7 @@ const buildToken = (user) => {
 
 const register = async (req, res) => {
   try {
-    const { username, email, password } = req.body;
+    const { username, email, password, ...data } = req.body;
 
     if (!(username && email && password)) {
       throw new Error("All input required");
@@ -46,6 +46,7 @@ const register = async (req, res) => {
       username,
       email: normalizedEmail,
       password: hashedPassword,
+      ...data,
     });
 
     const token = jwt.sign(buildToken(user), process.env.TOKEN_KEY);
