@@ -171,7 +171,7 @@ const Navbar = () => {
               >
                 <MenuItem
                   component={Link}
-                  to={`/users/${username}`}
+                  to={`/account`}
                   onClick={handleMenuClose}
                 >
                   Account Settings

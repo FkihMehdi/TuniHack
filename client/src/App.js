@@ -10,6 +10,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import theme from "./theme";
 import { useEffect } from "react";
 
+import AccountView from "./components/views/AccountView";
 import PostView from "./components/views/PostView";
 import CreatePostView from "./components/views/CreatePostView";
 import ProfileView from "./components/views/ProfileView";
@@ -60,6 +61,7 @@ function App() {
           <Route path="/users/:id" element={<ProfileView />} />
           <Route path="/login" element={<LoginView />} />
           <Route path="/signup" element={<SignupView />} />
+          <Route path="/account" element={<AccountView />} />
         </Routes>
       </BrowserRouter>
     </ThemeProvider>
