@@ -26,6 +26,7 @@ import { Connections } from "./components/views/Connections";
 import { Mentors } from "./components/views/Mentors";
 import { PromoteEvent } from "./components/views/PromoteEvent";
 import { Schedule } from "./components/views/Schedule";
+import CreateEvent from "./components/CreateEvent";
 
 function App() {
   useEffect(() => {
@@ -73,6 +74,7 @@ function App() {
           <Route path="/mentors" element={<Mentors />} />
           <Route path="/promote-event" element={<PromoteEvent />} />
           <Route path="/account" element={<AccountView />} />
+          <Route path="/event/create" element={<CreateEvent />} />
         </Routes>
       </BrowserRouter>
     </ThemeProvider>
