@@ -11,6 +11,9 @@ import {
   FormHelperText,
   IconButton,
   Box,
+  OutlinedInput,
+  Chip,
+  useTheme,
 } from "@mui/material";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -20,23 +23,86 @@ import { isLoggedIn } from "../helpers/authHelper";
 import HorizontalStack from "./util/HorizontalStack";
 import UserAvatar from "./UserAvatar";
 import DeleteIcon from "@mui/icons-material/Delete";
+import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 
-const PostEditor = () => {
+const tags = [
+  "web development",
+  "mobile development",
+  "data science",
+  "cybersecurity",
+  "cloud computing",
+  "machine learning",
+  "artificial intelligence",
+  "blockchain",
+  "internet of things",
+  "physics",
+  "chemistry",
+  "biology",
+  "mathematics",
+  "engineering",
+  "medicine",
+];
+
+const typpes = [
+  "workshop",
+  "competition",
+  "seminar",
+  "conference",
+  "other",
+  "hackathon",
+];
+
+const ITEM_HEIGHT = 48;
+const ITEM_PADDING_TOP = 8;
+const MenuProps = {
+  PaperProps: {
+    style: {
+      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+      width: 250,
+    },
+  },
+};
+
+function getStyles(name, personName, theme) {
+  return {
+    fontWeight: personName.includes(name)
+      ? theme.typography.fontWeightMedium
+      : theme.typography.fontWeightRegular,
+  };
+}
+
+const EventEditor = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
 
   const [formData, setFormData] = useState({
     title: "",
-    content: "",
+    description: "",
     postType: "",
+    location: "",
     images: [],
-    postType: "",
-    images: [],
+    tags: [],
   });
 
   const [serverError, setServerError] = useState("");
   const [errors, setErrors] = useState({});
   const user = isLoggedIn();
+
+  const theme = useTheme();
+  const [personName, setPersonName] = useState([]);
+
+  const handleChange2 = (event) => {
+    const {
+      target: { value },
+    } = event;
+    setPersonName(
+      // On autofill we get a stringified value.
+      typeof value === "string" ? value.split(",") : value
+    );
+  };
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -57,13 +123,15 @@ const PostEditor = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    const data = await createPost(formData, isLoggedIn());
-    setLoading(false);
-    if (data && data.error) {
-      setServerError(data.error);
-    } else {
-      navigate("/posts/" + data._id);
-    }
+    console.log(formData);
+
+    // const data = await createPost(formData, isLoggedIn());
+    // setLoading(false);
+    // if (data && data.error) {
+    //   setServerError(data.error);
+    // } else {
+    //   navigate("/posts/" + data._id);
+    // }
   };
 
   const validate = () => {
@@ -91,7 +159,7 @@ const PostEditor = () => {
             <Typography variant="h5" sx={{ color: "#3A4466" }}>
               {" "}
               {/* Bleu profond */}
-              What would you like to post today, {user.username}?
+              What event you want to create today, {user.username}?
             </Typography>
           </HorizontalStack>
         )}
@@ -117,10 +185,10 @@ const PostEditor = () => {
           />
           <TextField
             fullWidth
-            label="Content"
+            label="Description"
             multiline
             rows={10}
-            name="content"
+            name="Description"
             margin="normal"
             onChange={handleChange}
             error={errors.content !== undefined}
@@ -141,7 +209,7 @@ const PostEditor = () => {
             margin="normal"
             error={errors.postType !== undefined}
           >
-            <InputLabel sx={{ color: "#705EAA" }}>Post Type</InputLabel>
+            <InputLabel sx={{ color: "#705EAA" }}>Event Type</InputLabel>
             <Select
               value={formData.postType}
               label="Post Type"
@@ -157,15 +225,11 @@ const PostEditor = () => {
                 },
               }}
             >
-              <MenuItem value="hackathon">Hackathon</MenuItem>
-              <MenuItem value="call-for-ambassadors">
-                Call for Ambassadors
-              </MenuItem>
-              <MenuItem value="event">Event</MenuItem>
-              <MenuItem value="workshop">Workshop</MenuItem>
-              <MenuItem value="call-for-sponsorship">
-                Call for Sponsorship
-              </MenuItem>
+              {typpes.map((type) => (
+                <MenuItem key={type} value={type}>
+                  {type}
+                </MenuItem>
+              ))}
             </Select>
             {errors.postType && (
               <FormHelperText sx={{ color: "#705EAA" }}>
@@ -173,6 +237,53 @@ const PostEditor = () => {
               </FormHelperText>
             )}
           </FormControl>
+          <Box
+            sx={{
+              bgcolor: "#F4F3EE",
+              borderRadius: 1,
+              width: "100%",
+              color: "#2F2F2F",
+              "& .MuiInputLabel-root": { color: "#705EAA" },
+              "& .MuiOutlinedInput-root": {
+                "& fieldset": { borderColor: "#705EAA" },
+              },
+            }}
+          >
+            <LocalizationProvider dateAdapter={AdapterDayjs}>
+              <DemoContainer
+                components={["DatePicker"]}
+                sx={{
+                  width: "100%",
+                }}
+              >
+                <DatePicker
+                  label="pick a date"
+                  sx={{
+                    width: "100%",
+                  }}
+                />
+              </DemoContainer>
+            </LocalizationProvider>
+          </Box>
+          <TextField
+            fullWidth
+            label="Location"
+            required
+            name="location"
+            margin="normal"
+            onChange={handleChange}
+            error={errors.location !== undefined}
+            helperText={errors.location}
+            sx={{
+              bgcolor: "#F4F3EE",
+              borderRadius: 1,
+              color: "#2F2F2F",
+              "& .MuiInputLabel-root": { color: "#705EAA" },
+              "& .MuiOutlinedInput-root": {
+                "& fieldset": { borderColor: "#705EAA" },
+              },
+            }}
+          />
           <Box
             sx={{
               p: 2,
@@ -212,6 +323,46 @@ const PostEditor = () => {
               </Button>
             </label>
           </Box>
+          <FormControl
+            fullWidth
+            sx={{
+              mt: 2,
+              // border: "1px solid #705EAA",
+              // borderRadius: 1,
+            }}
+          >
+            <InputLabel id="demo-multiple-chip-label">Tags</InputLabel>
+            <Select
+              labelId="demo-multiple-chip-label"
+              id="demo-multiple-chip"
+              multiple
+              value={personName}
+              onChange={handleChange2}
+              input={<OutlinedInput id="select-multiple-chip" label="Chip" />}
+              renderValue={(selected) => (
+                <Box sx={{ display: "flex", flexWrap: "wrap", gap: 0.5 }}>
+                  {selected.map((value) => (
+                    <Chip
+                      key={value}
+                      label={value}
+                      sx={{ bgcolor: "#705EAA", color: "#F4F3EE" }}
+                    />
+                  ))}
+                </Box>
+              )}
+              MenuProps={MenuProps}
+            >
+              {tags.map((name) => (
+                <MenuItem
+                  key={name}
+                  value={name}
+                  style={getStyles(name, personName, theme)}
+                >
+                  {name}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
           <Box mt={2}>
             {formData.images.length > 0 && (
               <Typography variant="h6" sx={{ color: "#705EAA" }}>
@@ -281,4 +432,4 @@ const PostEditor = () => {
   );
 };
 
-export default PostEditor;
+export default EventEditor;
