@@ -2,6 +2,7 @@ import { AuthLayoutWithoutRightSidebar } from "../AuthLayoutWithoutRightSidebar"
 import Calendar from "react-calendar";
 import { useState } from "react";
 import "react-calendar/dist/Calendar.css";
+import "./Calendar.css";
 
 const purple = "#705eaa";
 const green = "#71a769";
@@ -45,6 +46,30 @@ const events = [
     theme: "robotique",
     description: "compétition robotique",
   },
+  {
+    date: new Date(2024, 11, 10),
+    title: "IA conference",
+    theme: "IA",
+    description: "conférence sur l'intelligence artificielle",
+  },
+  {
+    date: new Date(2024, 11, 10),
+    title: "Design workshop",
+    theme: "Design",
+    description: "atelier de design",
+  },
+  {
+    date: new Date(2024, 11, 10),
+    title: "Web competition",
+    theme: "Web",
+    description: "compétition de développement web",
+  },
+  {
+    date: new Date(2024, 11, 10),
+    title: "Embedded Systems Conference",
+    theme: "Embarqué",
+    description: "conférence sur les systèmes embarqués",
+  },
 ];
 
 const Schedule = () => {
@@ -86,6 +111,7 @@ const Schedule = () => {
         </select>
 
         <Calendar
+          className="calendar"
           value={selectedDate}
           onChange={setSelectedDate}
           tileContent={({ date }) => {
@@ -140,7 +166,7 @@ const styles = {
     backgroundColor: white,
     borderRadius: "8px",
     boxShadow: "0 4px 16px rgba(0, 0, 0, 0.15)", // Ombre plus forte pour un effet plus prononcé
-    maxWidth: "800px", // Augmenter la largeur maximale pour une vue plus large
+    maxWidth: "90%", // Augmenter la largeur maximale pour une vue plus large
     margin: "0 auto",
   },
   title: {
@@ -164,6 +190,7 @@ const styles = {
     fontSize: "1rem", // Taille de texte un peu plus grande
     marginTop: "6px", // Augmenter l'espacement entre l'événement et le calendrier
     textAlign: "center",
+    // width: "100%", //
   },
   eventsSection: {
     marginTop: "2rem", // Espacement plus grand entre le calendrier et la liste des événements

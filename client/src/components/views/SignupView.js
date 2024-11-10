@@ -27,6 +27,8 @@ const SignupView = () => {
     password: "",
     phone: "",
     age: "",
+    phone: "",
+    age: "",
   });
 
   const handleChange = (e) => {
