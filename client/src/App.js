@@ -9,7 +9,6 @@ import { ThemeProvider } from "@mui/material/styles";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import theme from "./theme";
 import { useEffect } from "react";
-
 import AccountView from "./components/views/AccountView";
 import PostView from "./components/views/PostView";
 import CreatePostView from "./components/views/CreatePostView";
