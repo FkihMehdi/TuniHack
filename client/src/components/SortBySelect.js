@@ -17,6 +17,8 @@ const SortBySelect = ({ onSortBy, sortBy, sorts }) => {
             sm: "block",
           },
           fontWeight: 600,
+          color: "#f5f5f5",
+          fontSize: "1.1rem",
         }}
       >
         Sort by:

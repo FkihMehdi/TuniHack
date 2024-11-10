@@ -17,6 +17,8 @@ const SearchView = () => {
           </Stack>
         }
         right={<Sidebar />}
+        leftWidth={8}
+        rightWidth={4}
       />
     </>
   );
