@@ -7,6 +7,7 @@ import {
   TextField,
   Typography,
   Box,
+  styled,
 } from "@mui/material";
 import { Link } from "react-router-dom";
 import { useState } from "react";
@@ -16,6 +17,19 @@ import { useNavigate } from "react-router-dom";
 import Copyright from "../Copyright";
 import ErrorAlert from "../ErrorAlert";
 import { isLength, isEmail, contains } from "validator";
+import CloudUploadIcon from "@mui/icons-material/CloudUpload";
+
+const VisuallyHiddenInput = styled("input")({
+  clip: "rect(0 0 0 0)",
+  clipPath: "inset(50%)",
+  height: 1,
+  overflow: "hidden",
+  position: "absolute",
+  bottom: 0,
+  left: 0,
+  whiteSpace: "nowrap",
+  width: 1,
+});
 
 const SignupView = () => {
   const navigate = useNavigate();
@@ -30,6 +44,7 @@ const SignupView = () => {
     phone: "",
     age: "",
   });
+  const [toggle, setToggle] = useState(false);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -113,6 +128,7 @@ const SignupView = () => {
               color: "white",
               "&:hover": { backgroundColor: "#71A769" },
             }}
+            onClick={() => setToggle(false)}
           >
             User
           </Button>
@@ -123,6 +139,7 @@ const SignupView = () => {
               color: "white",
               "&:hover": { backgroundColor: "#71A769" },
             }}
+            onClick={() => setToggle(true)}
           >
             Association
           </Button>
@@ -130,14 +147,17 @@ const SignupView = () => {
 
         <Box component="form" onSubmit={handleSubmit} sx={{ width: "100%" }}>
           <TextField
-            label="Username"
+            label={toggle ? "Association Name" : "Username"}
             fullWidth
             margin="normal"
             required
-            name="username"
+            name={toggle ? "associationName" : "username"}
             onChange={handleChange}
-            error={errors.username !== undefined}
-            helperText={errors.username}
+            error={
+              errors.username !== undefined ||
+              errors.associationName !== undefined
+            }
+            helperText={errors.username || errors.associationName}
             sx={{
               backgroundColor: "white",
               borderRadius: 1,
@@ -191,6 +211,53 @@ const SignupView = () => {
               borderRadius: 1,
             }}
           />
+
+          {toggle && (
+            <>
+              {/* <TextField
+                fullWidth
+                margin="normal"
+                type="file"
+                sx={{
+                  backgroundColor: "white",
+                  borderRadius: 1,
+                }}
+              /> */}
+              <Button
+                component="label"
+                role={undefined}
+                variant="contained"
+                tabIndex={-1}
+                fullWidth
+                sx={{
+                  my: 2,
+                  // backgroundColor: "#71A769",
+                  color: "white",
+                  backgroundColor: "#705EAA",
+                  "&:hover": { backgroundColor: "#705EAA" },
+                  textTransform: "none",
+                }}
+                startIcon={<CloudUploadIcon />}
+              >
+                Upload file
+                <VisuallyHiddenInput
+                  type="file"
+                  accept="image/*"
+                  onChange={handleChange}
+                  multiple
+                />
+              </Button>
+              <Typography
+                fullWidth
+                sx={{
+                  color: "#705EAA",
+                }}
+              >
+                Please upload a document proving your association's
+                authenticity(e.g,registration certificate,official letterhead)
+              </Typography>
+            </>
+          )}
 
           <ErrorAlert error={serverError} />
 

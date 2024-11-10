@@ -95,9 +95,10 @@ const PostCard = (props) => {
                 createdAt={post.createdAt}
                 edited={post.edited}
                 preview={preview === "secondary"}
-                sx={{
-                  color: "#705EAA", // Purple text
-                }}
+
+                // sx={{
+                //   color: "#705EAA", // Purple text
+                // }}
               />
               {user &&
                 (isAuthor || user.isAdmin) &&

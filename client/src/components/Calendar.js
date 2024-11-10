@@ -4,6 +4,7 @@ import isToday from "dayjs/plugin/isToday";
 import advancedFormat from "dayjs/plugin/advancedFormat";
 import { Card, Typography, Button, Divider, Stack, Box } from "@mui/material";
 import { MdEvent } from "react-icons/md";
+import { Navigate, useNavigate } from "react-router-dom";
 
 // Extend dayjs with plugins
 dayjs.extend(isToday);
@@ -17,6 +18,7 @@ const events = [
 
 const Calendar = () => {
   const [currentDate, setCurrentDate] = useState(dayjs());
+  const navigate = useNavigate();
 
   useEffect(() => {
     const timer = setInterval(() => setCurrentDate(dayjs()), 1000);
@@ -92,6 +94,7 @@ const Calendar = () => {
           },
         }}
         fullWidth
+        onClick={() => navigate("/calendar")}
       >
         View All Events
       </Button>
