@@ -6,12 +6,10 @@ import {
   Stack,
   TextField,
   Typography,
-  // Alert,
+  Box,
 } from "@mui/material";
-
 import { Link } from "react-router-dom";
-import { Box } from "@mui/system";
-import React, { useState } from "react";
+import { useState } from "react";
 import { signup } from "../../api/users";
 import { loginUser } from "../../helpers/authHelper";
 import { useNavigate } from "react-router-dom";
@@ -23,11 +21,12 @@ const SignupView = () => {
   const navigate = useNavigate();
   const [serverError, setServerError] = useState("");
   const [errors, setErrors] = useState({});
-
   const [formData, setFormData] = useState({
     username: "",
     email: "",
     password: "",
+    phone: "",
+    age: "",
     phone: "",
     age: "",
   });
@@ -77,41 +76,42 @@ const SignupView = () => {
   };
 
   return (
-    <Container maxWidth={"sm"} sx={{ mt: { xs: 2, md: 6 } }}>
+    <Container maxWidth="sm" sx={{ mt: { xs: 2, md: 6 } }}>
       <Stack
         alignItems="center"
-        border={1}
-        borderRadius={2}
-        borderColor="divider"
-        boxShadow={2}
+        borderRadius={3}
         p={4}
-        spacing={3}
+        spacing={4}
+        sx={{
+          backdropFilter: "blur(10px)",
+          boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.2)",
+          backgroundColor: "rgba(255, 255, 255, 0.7)",
+          maxWidth: 450,
+          mx: "auto",
+          padding: 5,
+          border: "1px solid #71A769",
+        }}
       >
-        <Typography variant="h2" color="text.secondary" sx={{ mb: 6 }}>
-          {/* <Link to="/" color="inherit" underline="none">
-            PostIt
-          </Link> */}
-        </Typography>
         <Typography
-          gutterBottom
+          variant="h2"
           sx={{
-            fontSize: 40,
             fontWeight: "bold",
-            color: "text.primary",
+            fontFamily: "'Roboto', sans-serif",
+            letterSpacing: "1px",
+            mb: 3,
+            color: "#705EAA",
           }}
         >
           Sign Up
         </Typography>
-        <ButtonGroup
-          aria-label="button group flex"
-          fullWidth
-          sx={{
-            borderColor: "white",
-          }}
-        >
+
+        <ButtonGroup fullWidth sx={{ mb: 3 }}>
           <Button
             sx={{
               flex: 1,
+              backgroundColor: "#705EAA",
+              color: "white",
+              "&:hover": { backgroundColor: "#71A769" },
             }}
           >
             User
@@ -119,105 +119,99 @@ const SignupView = () => {
           <Button
             sx={{
               flex: 1,
+              backgroundColor: "#705EAA",
+              color: "white",
+              "&:hover": { backgroundColor: "#71A769" },
             }}
           >
             Association
           </Button>
         </ButtonGroup>
 
-        <Box component="form" onSubmit={handleSubmit}>
+        <Box component="form" onSubmit={handleSubmit} sx={{ width: "100%" }}>
           <TextField
             label="Username"
             fullWidth
             margin="normal"
-            autoFocus
             required
-            id="username"
             name="username"
             onChange={handleChange}
             error={errors.username !== undefined}
             helperText={errors.username}
+            sx={{
+              backgroundColor: "white",
+              borderRadius: 1,
+            }}
           />
+
           <TextField
             label="Email Address"
             fullWidth
             margin="normal"
             autoComplete="email"
             required
-            id="email"
             name="email"
             onChange={handleChange}
             error={errors.email !== undefined}
             helperText={errors.email}
+            sx={{
+              backgroundColor: "white",
+              borderRadius: 1,
+            }}
           />
+
           <TextField
             label="Password"
             fullWidth
             required
             margin="normal"
             autoComplete="password"
-            id="password"
             name="password"
             type="password"
             onChange={handleChange}
             error={errors.password !== undefined}
             helperText={errors.password}
+            sx={{
+              backgroundColor: "white",
+              borderRadius: 1,
+            }}
           />
+
           <TextField
             label="Confirm Password"
             fullWidth
             required
             margin="normal"
-            autoComplete="password"
-            id="confirmPassword"
             name="confirmPassword"
             type="password"
-            // onChange={handleChange}
             error={errors.confirmPassword !== undefined}
             helperText={errors.confirmPassword}
-          />
-          <TextField
-            label="Phone"
-            fullWidth
-            margin="normal"
-            id="phone"
-            name="phone"
-            onChange={handleChange}
-          />
-          <TextField
-            label="Age"
-            fullWidth
-            margin="normal"
-            id="age"
-            name="age"
-            onChange={handleChange}
+            sx={{
+              backgroundColor: "white",
+              borderRadius: 1,
+            }}
           />
 
           <ErrorAlert error={serverError} />
+
           <Button
             type="submit"
             fullWidth
             variant="contained"
             sx={{
               my: 2,
-              bgcolor: "#705EAA",
-              "&:hover": {
-                bgcolor: "#705EAA",
-              },
-              // textTransform: "none",
+              backgroundColor: "#71A769",
+              color: "white",
+              "&:hover": { backgroundColor: "#705EAA" },
+              textTransform: "none",
+              borderRadius: "20px",
             }}
           >
             Sign Up
           </Button>
-          <Divider
-            sx={{
-              display: "flex",
-              alignItems: "center",
-              color: "text.secondary",
-            }}
-          >
-            or continue with
-          </Divider>
+
+          <Divider sx={{ my: 2, color: "#705EAA" }}>or continue with</Divider>
+
           <Button
             variant="outlined"
             fullWidth
@@ -231,26 +225,25 @@ const SignupView = () => {
             }
             sx={{
               my: 2,
-              color: "black",
-              borderColor: "black",
+              color: "#705EAA",
+              borderColor: "#705EAA",
               textTransform: "none",
+              borderRadius: "20px",
             }}
           >
             Sign up with Google
           </Button>
-          <Box
-            sx={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
+
+          <Box sx={{ display: "flex", justifyContent: "center", mt: 2 }}>
             <Typography color="text.secondary">
               Already have an account?
               <Link
                 to="/login"
-                color="inherit"
-                style={{ textDecoration: "none" }}
+                style={{
+                  textDecoration: "none",
+                  fontWeight: "bold",
+                  color: "#705EAA",
+                }}
               >
                 {" "}
                 Log in
