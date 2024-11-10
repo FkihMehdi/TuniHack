@@ -132,6 +132,8 @@ const ProfileView = () => {
             />
           </Stack>
         }
+        rightWidth={4}
+        leftWidth={8}
       />
     </>
   );

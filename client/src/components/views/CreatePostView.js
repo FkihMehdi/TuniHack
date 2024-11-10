@@ -11,7 +11,12 @@ const CreatePostView = () => {
     <>
       <Navbar />
       <GoBack />
-      <GridLayout left={<PostEditor />} right={<Sidebar />} />
+      <GridLayout
+        left={<PostEditor />}
+        right={<Sidebar />}
+        rightWidth={4}
+        leftWidth={8}
+      />
     </>
   );
 };
