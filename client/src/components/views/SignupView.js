@@ -77,39 +77,39 @@ const SignupView = () => {
     <Container maxWidth="sm" sx={{ mt: { xs: 2, md: 6 } }}>
       <Stack
         alignItems="center"
-        border={1}
-        borderRadius={2}
-        borderColor="divider"
-        boxShadow={3}
+        borderRadius={3}
         p={4}
         spacing={4}
         sx={{
-          backgroundColor: "#C9ADA7",
-          border: "1px solid #9B8C99",
-          maxWidth: 400,
+          backdropFilter: "blur(10px)",
+          boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.2)",
+          backgroundColor: "rgba(255, 255, 255, 0.7)",
+          maxWidth: 450,
           mx: "auto",
+          padding: 5,
+          border: "1px solid #71A769",
         }}
       >
         <Typography
           variant="h2"
-          color="text.primary"
           sx={{
             fontWeight: "bold",
             fontFamily: "'Roboto', sans-serif",
             letterSpacing: "1px",
             mb: 3,
-            color: "#284C78",
+            color: "#705EAA",
           }}
         >
           Sign Up
         </Typography>
 
-        <ButtonGroup fullWidth sx={{ mb: 3, borderColor: "white" }}>
+        <ButtonGroup fullWidth sx={{ mb: 3 }}>
           <Button
             sx={{
               flex: 1,
-              backgroundColor: "#9B8C99",
-              "&:hover": { backgroundColor: "#705EAA" },
+              backgroundColor: "#705EAA",
+              color: "white",
+              "&:hover": { backgroundColor: "#71A769" },
             }}
           >
             User
@@ -117,8 +117,9 @@ const SignupView = () => {
           <Button
             sx={{
               flex: 1,
-              backgroundColor: "#9B8C99",
-              "&:hover": { backgroundColor: "#705EAA" },
+              backgroundColor: "#705EAA",
+              color: "white",
+              "&:hover": { backgroundColor: "#71A769" },
             }}
           >
             Association
@@ -138,10 +139,6 @@ const SignupView = () => {
             sx={{
               backgroundColor: "white",
               borderRadius: 1,
-              "& .MuiInputBase-root": {
-                padding: "10px",
-                backgroundColor: "#F5F5F5",
-              },
             }}
           />
 
@@ -158,10 +155,6 @@ const SignupView = () => {
             sx={{
               backgroundColor: "white",
               borderRadius: 1,
-              "& .MuiInputBase-root": {
-                padding: "10px",
-                backgroundColor: "#F5F5F5",
-              },
             }}
           />
 
@@ -179,10 +172,6 @@ const SignupView = () => {
             sx={{
               backgroundColor: "white",
               borderRadius: 1,
-              "& .MuiInputBase-root": {
-                padding: "10px",
-                backgroundColor: "#F5F5F5",
-              },
             }}
           />
 
@@ -191,7 +180,6 @@ const SignupView = () => {
             fullWidth
             required
             margin="normal"
-            autoComplete="password"
             name="confirmPassword"
             type="password"
             error={errors.confirmPassword !== undefined}
@@ -199,27 +187,7 @@ const SignupView = () => {
             sx={{
               backgroundColor: "white",
               borderRadius: 1,
-              "& .MuiInputBase-root": {
-                padding: "10px",
-                backgroundColor: "#F5F5F5",
-              },
             }}
-          />
-          <TextField
-            label="Phone"
-            fullWidth
-            margin="normal"
-            id="phone"
-            name="phone"
-            onChange={handleChange}
-          />
-          <TextField
-            label="Age"
-            fullWidth
-            margin="normal"
-            id="age"
-            name="age"
-            onChange={handleChange}
           />
 
           <ErrorAlert error={serverError} />
@@ -230,11 +198,9 @@ const SignupView = () => {
             variant="contained"
             sx={{
               my: 2,
-              backgroundColor: "#705EAA",
+              backgroundColor: "#71A769",
               color: "white",
-              "&:hover": {
-                backgroundColor: "#9B8C99",
-              },
+              "&:hover": { backgroundColor: "#705EAA" },
               textTransform: "none",
               borderRadius: "20px",
             }}
@@ -242,15 +208,7 @@ const SignupView = () => {
             Sign Up
           </Button>
 
-          <Divider
-            sx={{
-              display: "flex",
-              alignItems: "center",
-              color: "text.secondary",
-            }}
-          >
-            or continue with
-          </Divider>
+          <Divider sx={{ my: 2, color: "#705EAA" }}>or continue with</Divider>
 
           <Button
             variant="outlined"
@@ -265,8 +223,8 @@ const SignupView = () => {
             }
             sx={{
               my: 2,
-              color: "#284C78",
-              borderColor: "#284C78",
+              color: "#705EAA",
+              borderColor: "#705EAA",
               textTransform: "none",
               borderRadius: "20px",
             }}
@@ -279,11 +237,10 @@ const SignupView = () => {
               Already have an account?
               <Link
                 to="/login"
-                color="inherit"
                 style={{
                   textDecoration: "none",
                   fontWeight: "bold",
-                  color: "#284C78",
+                  color: "#705EAA",
                 }}
               >
                 {" "}

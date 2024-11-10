@@ -14,8 +14,8 @@ const CreatePost = () => {
       sx={{
         gap: "0.2rem",
         whiteSpace: "nowrap",
-        color: "#28a745",
-        borderColor: "#28a745",
+        color: "#ffff",
+        borderColor: "#ffff",
         "&:hover": {
           backgroundColor: "#28a74510",
           borderColor: "#28a745",
