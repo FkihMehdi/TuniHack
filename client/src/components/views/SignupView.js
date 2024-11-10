@@ -41,6 +41,8 @@ const SignupView = () => {
     password: "",
     phone: "",
     age: "",
+    phone: "",
+    age: "",
   });
   const [toggle, setToggle] = useState(false);
 
