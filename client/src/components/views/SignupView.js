@@ -28,6 +28,8 @@ const SignupView = () => {
     username: "",
     email: "",
     password: "",
+    phone: "",
+    age: "",
   });
 
   const handleChange = (e) => {
@@ -174,6 +176,23 @@ const SignupView = () => {
             error={errors.confirmPassword !== undefined}
             helperText={errors.confirmPassword}
           />
+          <TextField
+            label="Phone"
+            fullWidth
+            margin="normal"
+            id="phone"
+            name="phone"
+            onChange={handleChange}
+          />
+          <TextField
+            label="Age"
+            fullWidth
+            margin="normal"
+            id="age"
+            name="age"
+            onChange={handleChange}
+          />
+
           <ErrorAlert error={serverError} />
           <Button
             type="submit"
