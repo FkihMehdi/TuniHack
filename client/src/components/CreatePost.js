@@ -5,6 +5,7 @@ import { AiOutlinePlus } from "react-icons/ai";
 
 const CreatePost = () => {
   const navigate = useNavigate();
+
   return (
     <Button
       variant="outlined"
@@ -13,9 +14,15 @@ const CreatePost = () => {
       sx={{
         gap: "0.2rem",
         whiteSpace: "nowrap",
+        color: "#28a745",
+        borderColor: "#28a745",
+        "&:hover": {
+          backgroundColor: "#28a74510",
+          borderColor: "#28a745",
+        },
       }}
     >
-      <AiOutlinePlus style={{ flexShrink: 0 }} />
+      <AiOutlinePlus style={{ flexShrink: 0, color: "#28a745" }} />
       <span>New Post</span>
     </Button>
   );
