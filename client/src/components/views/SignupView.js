@@ -95,6 +95,7 @@ const SignupView = () => {
       <Stack
         alignItems="center"
         borderRadius={3}
+        borderRadius={3}
         p={4}
         spacing={4}
         sx={{
@@ -102,7 +103,13 @@ const SignupView = () => {
           boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.2)",
           backgroundColor: "rgba(255, 255, 255, 0.7)",
           maxWidth: 450,
+          backdropFilter: "blur(10px)",
+          boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.2)",
+          backgroundColor: "rgba(255, 255, 255, 0.7)",
+          maxWidth: 450,
           mx: "auto",
+          padding: 5,
+          border: "1px solid #71A769",
           padding: 5,
           border: "1px solid #71A769",
         }}
@@ -114,6 +121,7 @@ const SignupView = () => {
             fontFamily: "'Roboto', sans-serif",
             letterSpacing: "1px",
             mb: 3,
+            color: "#705EAA",
             color: "#705EAA",
           }}
         >
@@ -127,6 +135,9 @@ const SignupView = () => {
               backgroundColor: "#705EAA",
               color: "white",
               "&:hover": { backgroundColor: "#71A769" },
+              backgroundColor: "#705EAA",
+              color: "white",
+              "&:hover": { backgroundColor: "#71A769" },
             }}
             onClick={() => setToggle(false)}
           >
@@ -135,6 +146,9 @@ const SignupView = () => {
           <Button
             sx={{
               flex: 1,
+              backgroundColor: "#705EAA",
+              color: "white",
+              "&:hover": { backgroundColor: "#71A769" },
               backgroundColor: "#705EAA",
               color: "white",
               "&:hover": { backgroundColor: "#71A769" },
