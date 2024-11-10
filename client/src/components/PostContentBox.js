@@ -15,7 +15,8 @@ const PostContentBox = (props) => {
         <Box
           sx={{
             padding: theme.spacing(2),
-            width: "92%",
+            width: "100%",
+
             "&:hover": { backgroundColor: "grey.50", cursor: "pointer" },
           }}
           onClick={() => navigate("/posts/" + post._id)}

@@ -1,15 +1,9 @@
-import {
-  Button,
-  Card,
-  IconButton,
-  Stack,
-  Typography,
-  useTheme,
-} from "@mui/material";
+import { Card, IconButton, Typography, useTheme } from "@mui/material";
 import { Box } from "@mui/system";
 import React, { useState } from "react";
 import { AiFillCheckCircle, AiFillEdit, AiFillMessage } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
+import { IconContext } from "react-icons/lib";
 import { deletePost, likePost, unlikePost, updatePost } from "../api/posts";
 import { isLoggedIn } from "../helpers/authHelper";
 import ContentDetails from "./ContentDetails";
@@ -25,7 +19,6 @@ import Markdown from "./Markdown";
 import "./postCard.css";
 import { MdCancel } from "react-icons/md";
 import { BiTrash } from "react-icons/bi";
-import { BsReplyFill } from "react-icons/bs";
 import UserLikePreview from "./UserLikePreview";
 
 const PostCard = (props) => {
@@ -93,30 +86,13 @@ const PostCard = (props) => {
 
   return (
     <Card
-      sx={{
-        // padding: 0,
-        bgcolor: "red",
-      }}
       className="post-card"
+      sx={{
+        padding: 0,
+      }}
     >
       <Box className={preview}>
         <HorizontalStack spacing={0} alignItems="initial">
-          {/* <Stack
-            justifyContent="space-between "
-            alignItems="center"
-            spacing={1}
-            sx={{
-              backgroundColor: "grey.100",
-              width: "50px",
-              padding: theme.spacing(1),
-            }}
-          >
-            <LikeBox
-              likeCount={likeCount}
-              liked={post.liked}
-              onLike={handleLike}
-            />
-          </Stack> */}
           <PostContentBox clickable={preview} post={post} editing={editing}>
             <HorizontalStack justifyContent="space-between">
               <ContentDetails
@@ -179,33 +155,53 @@ const PostCard = (props) => {
                   overflow="hidden"
                   className="content"
                 >
+                  <img
+                    src={"https://www.aeroday.tn/assets/pdp-BZKnssaS.png"}
+                    alt={post.title}
+                    style={{
+                      width: "100%",
+                      height: "400px",
+                      objectFit: "cover",
+                      borderRadius: "10px",
+                      marginBottom: "10px",
+                    }}
+                  />
                   <Markdown content={post.content} />
                 </Box>
               ))}
-            <HorizontalStack sx={{ mt: 2 }} justifyContent="space-between">
-              <HorizontalStack>
-                <LikeBox
-                  likeCount={likeCount}
-                  liked={post.liked}
-                  onLike={handleLike}
-                />
-                <AiFillMessage />
-                <Typography
-                  variant="subtitle2"
-                  color="text.secondary"
-                  sx={{ fontWeight: "bold" }}
-                >
-                  {post.commentCount}
-                </Typography>
-              </HorizontalStack>
-              <Box>
-                <UserLikePreview
-                  postId={post._id}
-                  userLikePreview={post.userLikePreview}
-                />
-              </Box>
-            </HorizontalStack>
           </PostContentBox>
+        </HorizontalStack>
+        <HorizontalStack
+          justifyContent="space-between"
+          sx={{
+            padding: 2,
+            // add a gray background color
+            backgroundColor: "grey.100",
+          }}
+        >
+          <HorizontalStack>
+            <LikeBox
+              likeCount={likeCount}
+              liked={post.liked}
+              onLike={handleLike}
+            />
+            <HorizontalStack alignItems="center">
+              <IconButton sx={{ padding: 0 }} onClick={(e) => handleLike(e)}>
+                <IconContext.Provider value={{ padding: 0 }}>
+                  <AiFillMessage
+                    onClick={() => navigate("/posts/" + post._id)}
+                  />
+                </IconContext.Provider>
+              </IconButton>
+              <Typography>{post.commentCount}</Typography>
+            </HorizontalStack>
+          </HorizontalStack>
+          <Box>
+            <UserLikePreview
+              postId={post._id}
+              userLikePreview={post.userLikePreview}
+            />
+          </Box>
         </HorizontalStack>
       </Box>
     </Card>

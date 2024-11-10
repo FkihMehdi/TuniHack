@@ -53,6 +53,8 @@ const PostView = () => {
           )
         }
         right={<Sidebar />}
+        rightWidth={4}
+        leftWidth={8}
       />
     </>
   );

@@ -3,7 +3,7 @@ import MenuIcon from "@mui/icons-material/Menu"; // General icon for items
 import { Link } from "react-router-dom";
 import { ListItemMenuButton } from "./ListItemMenuButton";
 
-const LeftSideBarLink = ({ path, text, selected }) => {
+const LeftSideBarLink = ({ path, text, selected, icon }) => {
   return (
     <Link
       to={path}
@@ -45,8 +45,7 @@ const LeftSideBarLink = ({ path, text, selected }) => {
               transition: "background-color 0.3s ease",
             }}
           >
-            <MenuIcon sx={{ color: "#ffffff" }} />{" "}
-            {/* Neutral icon for all items */}
+            {icon} {/* Neutral icon for all items */}
           </Box>
 
           <ListItemText
