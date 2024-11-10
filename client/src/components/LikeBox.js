@@ -25,12 +25,11 @@ const LikeBox = (props) => {
 
   return (
     <HorizontalStack alignItems="center">
-      <IconButton
-        // sx={{ padding: 0.5 }}
-        onClick={handleLike}
-      >
+      <IconButton sx={{ padding: 0 }} onClick={(e) => handleLike(e)}>
         {liked ? (
-          <IconContext.Provider value={{ color: theme.palette.primary.main }}>
+          <IconContext.Provider
+            value={{ color: theme.palette.primary.main, padding: 0 }}
+          >
             <AiFillLike />
           </IconContext.Provider>
         ) : (
