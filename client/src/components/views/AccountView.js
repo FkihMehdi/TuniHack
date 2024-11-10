@@ -1,4 +1,13 @@
-import { Avatar, Button, Card, Stack, Tab, Tabs, TextField, Typography } from "@mui/material";
+import {
+  Avatar,
+  Button,
+  Card,
+  Stack,
+  Tab,
+  Tabs,
+  TextField,
+  Typography,
+} from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams, useLocation } from "react-router-dom";
 import { getUser, updateUser } from "../../api/users";
@@ -106,7 +115,11 @@ const AccountView = () => {
                         defaultValue={userData?.biography}
                         fullWidth
                       />
-                      <Button variant="contained" type="submit" sx={{ marginTop: 2 }}>
+                      <Button
+                        variant="contained"
+                        type="submit"
+                        sx={{ marginTop: 2 }}
+                      >
                         Save Changes
                       </Button>
                     </Stack>
@@ -132,71 +145,97 @@ const AccountView = () => {
                     <Typography variant="body2">
                       Here you can manage your account preferences.
                     </Typography>
-                    
-                    {                 <Stack spacing={2}>
-                    <Typography variant="body2">Theme</Typography>
-                    <TextField
-                        select
-                        label="Theme"
-                        value={userData?.preferences?.theme || "light"}
-                        onChange={(e) => setUserData({ ...userData, preferences: { ...userData.preferences, theme: e.target.value } })}
-                        SelectProps={{
+
+                    {
+                      <Stack spacing={2}>
+                        <Typography variant="body2">Theme</Typography>
+                        <TextField
+                          select
+                          label="Theme"
+                          value={userData?.preferences?.theme || "light"}
+                          onChange={(e) =>
+                            setUserData({
+                              ...userData,
+                              preferences: {
+                                ...userData.preferences,
+                                theme: e.target.value,
+                              },
+                            })
+                          }
+                          SelectProps={{
                             native: true,
-                        }}
-                        fullWidth
-                    >
-                        <option value="light">Light</option>
-                        <option value="dark">Dark</option>
-                    </TextField>
+                          }}
+                          fullWidth
+                        >
+                          <option value="light">Light</option>
+                          <option value="dark">Dark</option>
+                        </TextField>
 
-                    <Typography variant="body2">Language</Typography>
-                    <TextField
-                        select
-                        label="Language"
-                        value={userData?.preferences?.language || "en"}
-                        onChange={(e) => setUserData({ ...userData, preferences: { ...userData.preferences, language: e.target.value } })}
-                        SelectProps={{
+                        <Typography variant="body2">Language</Typography>
+                        <TextField
+                          select
+                          label="Language"
+                          value={userData?.preferences?.language || "en"}
+                          onChange={(e) =>
+                            setUserData({
+                              ...userData,
+                              preferences: {
+                                ...userData.preferences,
+                                language: e.target.value,
+                              },
+                            })
+                          }
+                          SelectProps={{
                             native: true,
-                        }}
-                        fullWidth
-                    >
-                        <option value="en">English</option>
-                        <option value="es">Spanish</option>
-                        <option value="fr">French</option>
-                        {/* Add more language options as needed */}
-                    </TextField>
+                          }}
+                          fullWidth
+                        >
+                          <option value="en">English</option>
+                          <option value="es">Spanish</option>
+                          <option value="fr">French</option>
+                          {/* Add more language options as needed */}
+                        </TextField>
 
-                    <Button variant="contained" sx={{ marginTop: 2 }} onClick={handleSubmit}>
-                        Save Preferences
-                    </Button>
-                </Stack>}
-
+                        <Button
+                          variant="contained"
+                          sx={{ marginTop: 2 }}
+                          onClick={handleSubmit}
+                        >
+                          Save Preferences
+                        </Button>
+                      </Stack>
+                    }
                   </Card>
                 )}
-                 {tab === "membership" && (
+                {tab === "membership" && (
                   <Card sx={{ padding: 2, marginTop: 2 }}>
                     <Typography variant="h6">Memberships</Typography>
                     <Typography variant="body2">
                       Here you can manage your Memberships.
                     </Typography>
-                    { <Stack spacing={2}>
-                    {userData?.memberships?.map((membership, index) => (
-                        <Card key={index} sx={{ padding: 2 }}>
-                            <Typography variant="h6">{membership.name}</Typography>
-                            <Typography variant="body2">{membership.description}</Typography>
+                    {
+                      <Stack spacing={2}>
+                        {userData?.memberships?.map((membership, index) => (
+                          <Card key={index} sx={{ padding: 2 }}>
+                            <Typography variant="h6">
+                              {membership.name}
+                            </Typography>
+                            <Typography variant="body2">
+                              {membership.description}
+                            </Typography>
                             <Button
-                                variant="contained"
-                                sx={{ marginTop: 2 }}
-                                onClick={() => navigate(`/manage-membership/${membership.id}`)}
+                              variant="contained"
+                              sx={{ marginTop: 2 }}
+                              onClick={() =>
+                                navigate(`/manage-membership/${membership.id}`)
+                              }
                             >
-                                Manage Membership
+                              Manage Membership
                             </Button>
-                        </Card>
-                    ))}
-                </Stack> }
-               
-                
-                
+                          </Card>
+                        ))}
+                      </Stack>
+                    }
                   </Card>
                 )}
               </>
@@ -213,6 +252,8 @@ const AccountView = () => {
             {/* Add notification settings content here */}
           </Card>
         }
+        rightWidth={4}
+        leftWidth={8}
       />
     </>
   );

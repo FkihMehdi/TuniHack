@@ -1,8 +1,8 @@
-import { Grid, Stack } from "@mui/material";
+import { Grid } from "@mui/material";
 import React from "react";
 
 const GridLayout = (props) => {
-  const { left, right, middle } = props;
+  const { left, right, middle, leftWidth = 4, rightWidth = 8 } = props;
 
   if (middle)
     return (
@@ -21,10 +21,10 @@ const GridLayout = (props) => {
 
   return (
     <Grid container spacing={2}>
-      <Grid item xs={12} md={8}>
+      <Grid item xs={12} md={leftWidth}>
         {left}
       </Grid>
-      <Grid item xs={12} md={4}>
+      <Grid item xs={12} md={rightWidth}>
         {right}
       </Grid>
     </Grid>
