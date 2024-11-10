@@ -1,12 +1,15 @@
 import {
   Button,
+  ButtonGroup,
   Container,
+  Divider,
   Stack,
   TextField,
   Typography,
-  Link,
-  Alert,
+  // Alert,
 } from "@mui/material";
+
+import { Link } from "react-router-dom";
 import { Box } from "@mui/system";
 import React, { useState } from "react";
 import { signup } from "../../api/users";
@@ -72,19 +75,54 @@ const SignupView = () => {
   };
 
   return (
-    <Container maxWidth={"xs"} sx={{ mt: { xs: 2, md: 6 } }}>
-      <Stack alignItems="center">
+    <Container maxWidth={"sm"} sx={{ mt: { xs: 2, md: 6 } }}>
+      <Stack
+        alignItems="center"
+        border={1}
+        borderRadius={2}
+        borderColor="divider"
+        boxShadow={2}
+        p={4}
+        spacing={3}
+      >
         <Typography variant="h2" color="text.secondary" sx={{ mb: 6 }}>
-          <Link to="/" color="inherit" underline="none">
+          {/* <Link to="/" color="inherit" underline="none">
             PostIt
-          </Link>
+          </Link> */}
         </Typography>
-        <Typography variant="h5" gutterBottom>
+        <Typography
+          gutterBottom
+          sx={{
+            fontSize: 40,
+            fontWeight: "bold",
+            color: "text.primary",
+          }}
+        >
           Sign Up
         </Typography>
-        <Typography color="text.secondary">
-          Already have an account? <Link to="/login">Login</Link>
-        </Typography>
+        <ButtonGroup
+          aria-label="button group flex"
+          fullWidth
+          sx={{
+            borderColor: "white",
+          }}
+        >
+          <Button
+            sx={{
+              flex: 1,
+            }}
+          >
+            User
+          </Button>
+          <Button
+            sx={{
+              flex: 1,
+            }}
+          >
+            Association
+          </Button>
+        </ButtonGroup>
+
         <Box component="form" onSubmit={handleSubmit}>
           <TextField
             label="Username"
@@ -123,11 +161,85 @@ const SignupView = () => {
             error={errors.password !== undefined}
             helperText={errors.password}
           />
+          <TextField
+            label="Confirm Password"
+            fullWidth
+            required
+            margin="normal"
+            autoComplete="password"
+            id="confirmPassword"
+            name="confirmPassword"
+            type="password"
+            // onChange={handleChange}
+            error={errors.confirmPassword !== undefined}
+            helperText={errors.confirmPassword}
+          />
           <ErrorAlert error={serverError} />
-          <Button type="submit" fullWidth variant="contained" sx={{ my: 2 }}>
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            sx={{
+              my: 2,
+              bgcolor: "#705EAA",
+              "&:hover": {
+                bgcolor: "#705EAA",
+              },
+              // textTransform: "none",
+            }}
+          >
             Sign Up
           </Button>
+          <Divider
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              color: "text.secondary",
+            }}
+          >
+            or continue with
+          </Divider>
+          <Button
+            variant="outlined"
+            fullWidth
+            startIcon={
+              <img
+                src="https://img.icons8.com/color/48/000000/google-logo.png"
+                alt="google"
+                width={20}
+                height={20}
+              />
+            }
+            sx={{
+              my: 2,
+              color: "black",
+              borderColor: "black",
+              textTransform: "none",
+            }}
+          >
+            Sign up with Google
+          </Button>
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <Typography color="text.secondary">
+              Already have an account?
+              <Link
+                to="/login"
+                color="inherit"
+                style={{ textDecoration: "none" }}
+              >
+                {" "}
+                Log in
+              </Link>
+            </Typography>
+          </Box>
         </Box>
+
         <Box sx={{ mt: 3 }}>
           <Copyright />
         </Box>

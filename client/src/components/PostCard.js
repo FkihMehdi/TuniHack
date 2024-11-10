@@ -92,10 +92,16 @@ const PostCard = (props) => {
   };
 
   return (
-    <Card sx={{ padding: 0 }} className="post-card">
+    <Card
+      sx={{
+        // padding: 0,
+        bgcolor: "red",
+      }}
+      className="post-card"
+    >
       <Box className={preview}>
         <HorizontalStack spacing={0} alignItems="initial">
-          <Stack
+          {/* <Stack
             justifyContent="space-between "
             alignItems="center"
             spacing={1}
@@ -110,11 +116,14 @@ const PostCard = (props) => {
               liked={post.liked}
               onLike={handleLike}
             />
-          </Stack>
+          </Stack> */}
           <PostContentBox clickable={preview} post={post} editing={editing}>
             <HorizontalStack justifyContent="space-between">
               <ContentDetails
                 username={post.poster.username}
+                sx={{
+                  mt: 6,
+                }}
                 createdAt={post.createdAt}
                 edited={post.edited}
                 preview={preview === "secondary"}
@@ -150,7 +159,6 @@ const PostCard = (props) => {
                   )}
               </Box>
             </HorizontalStack>
-
             <Typography
               variant="h5"
               gutterBottom
@@ -159,7 +167,6 @@ const PostCard = (props) => {
             >
               {post.title}
             </Typography>
-
             {preview !== "secondary" &&
               (editing ? (
                 <ContentUpdateEditor
@@ -175,9 +182,13 @@ const PostCard = (props) => {
                   <Markdown content={post.content} />
                 </Box>
               ))}
-
             <HorizontalStack sx={{ mt: 2 }} justifyContent="space-between">
               <HorizontalStack>
+                <LikeBox
+                  likeCount={likeCount}
+                  liked={post.liked}
+                  onLike={handleLike}
+                />
                 <AiFillMessage />
                 <Typography
                   variant="subtitle2"

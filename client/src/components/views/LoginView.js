@@ -44,18 +44,32 @@ const LoginView = () => {
 
   return (
     <Container maxWidth={"xs"} sx={{ mt: 6 }}>
-      <Stack alignItems="center">
-        <Typography variant="h2" color="text.secondary" sx={{ mb: 6 }}>
+      <Stack
+        alignItems="center"
+        border={1}
+        borderRadius={2}
+        borderColor="divider"
+        boxShadow={2}
+        p={4}
+        spacing={3}
+      >
+        {/* <Typography variant="h2" color="text.secondary" sx={{ mb: 6 }}>
           <Link to="/" color="inherit" underline="none">
             PostIt
           </Link>
-        </Typography>
-        <Typography variant="h5" gutterBottom>
+        </Typography> */}
+        <Typography
+          variant="h2"
+          gutterBottom
+          sx={{
+            fontSize: 40,
+            fontWeight: "bold",
+            color: "text.primary",
+          }}
+        >
           Login
         </Typography>
-        <Typography color="text.secondary">
-          Don't have an account yet? <Link to="/signup">Sign Up</Link>
-        </Typography>
+
         <Box component="form" onSubmit={handleSubmit}>
           <TextField
             label="Email Address"
@@ -80,10 +94,33 @@ const LoginView = () => {
           />
 
           <ErrorAlert error={serverError} />
-          <Button type="submit" fullWidth variant="contained" sx={{ my: 2 }}>
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            sx={{
+              my: 2,
+              bgcolor: "#705EAA",
+              "&:hover": {
+                bgcolor: "#705EAA",
+              },
+            }}
+          >
             Login
           </Button>
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <Typography color="text.secondary">
+              Don't have an account yet? <Link to="/signup">Sign Up</Link>
+            </Typography>
+          </Box>
         </Box>
+
         <Box sx={{ mt: 3 }}>
           <Copyright />
         </Box>

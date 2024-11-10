@@ -4,6 +4,7 @@ import { AiFillLike, AiOutlineLike } from "react-icons/ai";
 import { IconContext } from "react-icons/lib";
 import { useNavigate } from "react-router-dom";
 import { isLoggedIn } from "../helpers/authHelper";
+import HorizontalStack from "./util/HorizontalStack";
 
 const LikeBox = (props) => {
   const { likeCount, onLike } = props;
@@ -23,8 +24,11 @@ const LikeBox = (props) => {
   };
 
   return (
-    <Stack alignItems="center">
-      <IconButton sx={{ padding: 0.5 }} onClick={handleLike}>
+    <HorizontalStack alignItems="center">
+      <IconButton
+        // sx={{ padding: 0.5 }}
+        onClick={handleLike}
+      >
         {liked ? (
           <IconContext.Provider value={{ color: theme.palette.primary.main }}>
             <AiFillLike />
@@ -34,7 +38,7 @@ const LikeBox = (props) => {
         )}
       </IconButton>
       <Typography>{likeCount}</Typography>
-    </Stack>
+    </HorizontalStack>
   );
 };
 
