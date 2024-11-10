@@ -27,6 +27,7 @@ import { Mentors } from "./components/views/Mentors";
 import { PromoteEvent } from "./components/views/PromoteEvent";
 import { Schedule } from "./components/views/Schedule";
 import CreateEvent from "./components/CreateEvent";
+import { LandingPage } from "./components/landing_page/LandingPage";
 
 function App() {
   useEffect(() => {
@@ -46,6 +47,7 @@ function App() {
         <CssBaseline />
         <Routes>
           <Route path="/" element={<ExploreView />} />
+          <Route path="/home" element={<LandingPage />} />
           <Route path="/posts/:id" element={<PostView />} />
           <Route
             path="/posts/create"
