@@ -25,7 +25,7 @@ import Courses from "./components/views/Courses/Courses";
 import PracticePage from "./components/views/Practises/Practices";
 import Conferences from "./components/views/Conferences/Conferences";
 import ConferenceDetails from "./components/views/ConferenceDetails/ConferenceDetails";
-import Offers from "./components/views/Offers/Offers";
+import { LearningPage } from "./components/views/Learning";
 
 function App() {
   useEffect(() => {
@@ -66,19 +66,10 @@ function App() {
           <Route path="/search" element={<SearchView />} />
           <Route path="/learning-dashboard" element={<LearningDashboard />} />
           <Route path="/courses" element={<Courses />} />
-          <Route path="/offers" element={<Offers />} />
           <Route path="/practice" element={<PracticePage />} />
           <Route path="/users/:id" element={<ProfileView />} />
           <Route path="/login" element={<LoginView />} />
           <Route path="/signup" element={<SignupView />} />
-          <Route path="/event" element={<Event />} />
-          <Route path="/generate-website" element={<GenerateWebsite />} />
-          <Route path="/connections" element={<Connections />} />
-          <Route path="/calendar" element={<Schedule />} />
-          <Route path="/mentors" element={<Mentors />} />
-          <Route path="/promote-event" element={<PromoteEvent />} />
-          <Route path="/account" element={<AccountView />} />
-          <Route path="/event/create" element={<CreateEvent />} />
           <Route path="/learning" element={<LearningPage />} />
           <Route path="/conferences" element={<Conferences />} />
           <Route path="/conferences/:id" element={<ConferenceDetails />} />
