@@ -7,13 +7,65 @@ import {
   CardContent,
   Chip,
   Button,
-  Avatar,
   Stack,
 } from "@mui/material";
-import { LocationOn, FilterList } from "@mui/icons-material";
-import { additionalTech, courses, technologies } from "../data";
+import { ArrowForward, FilterList } from "@mui/icons-material";
 
 const MainContent = () => {
+  const technologies = [
+    "All",
+    "Python",
+    "SQL",
+    "R",
+    "Power BI",
+    "Tableau",
+    "Excel",
+    "AWS",
+    "Azure",
+    "Docker",
+    "Julia",
+    "Theory",
+  ];
+
+  const practices = [
+    {
+      title: "Data Cleaning in R",
+      type: "PRACTICE",
+      technology: "R",
+      icon: "📊",
+    },
+    {
+      title: "Introduction to Python",
+      type: "PRACTICE",
+      technology: "Python",
+      icon: "🐍",
+    },
+    {
+      title: "Intermediate R",
+      type: "PRACTICE",
+      technology: "R",
+      icon: "📊",
+    },
+    {
+      title: "Introduction to Tableau",
+      type: "PRACTICE",
+      technology: "Tableau",
+      icon: "📈",
+    },
+    {
+      title: "Introduction to the Tidyverse",
+      type: "PRACTICE",
+      technology: "R",
+      icon: "📊",
+    },
+    {
+      title: "Intermediate Julia",
+      type: "PRACTICE",
+      technology: "Julia",
+      icon: "💻",
+    },
+  ];
+
   return (
     <Container maxWidth="lg">
       {/* Header Section */}
@@ -30,22 +82,32 @@ const MainContent = () => {
         <Box sx={{ maxWidth: "60%" }}>
           <Box sx={{ display: "flex", alignItems: "center", gap: 1, mb: 2 }}>
             <Typography variant="h4" component="h1">
-              MainContent
+              Practice
             </Typography>
             <Chip
-              icon={<LocationOn />}
-              label="Hands-on learning"
+              icon={<ArrowForward />}
+              label="Reinforce what you're learning"
               sx={{
                 backgroundColor: "rgba(255, 255, 255, 0.1)",
                 color: "white",
               }}
             />
           </Box>
-          <Typography variant="h6" sx={{ fontWeight: "normal", opacity: 0.9 }}>
-            It's time to roll up your sleeves—we learn best by doing. All of our
-            MainContent are interactive, combining short videos with hands-on
-            exercises.
+          <Typography
+            variant="h6"
+            sx={{ fontWeight: "normal", opacity: 0.9, mb: 2 }}
+          >
+            Keep your skills sharp with quick daily challenges on desktop or
+            Mobile app. You earn XP for every practice round.
           </Typography>
+          <Chip
+            label="250 XP"
+            sx={{
+              backgroundColor: "#FFD700",
+              color: "#000000",
+              fontWeight: "bold",
+            }}
+          />
         </Box>
 
         {/* Learning Cycle Diagram - Placeholder */}
@@ -82,25 +144,9 @@ const MainContent = () => {
             />
           ))}
         </Box>
-        <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1 }}>
-          {additionalTech.map((tech) => (
-            <Chip
-              key={tech}
-              label={tech}
-              clickable
-              sx={{
-                backgroundColor: "#f7f7fc",
-                "&:hover": {
-                  backgroundColor: "#eeeef9",
-                },
-              }}
-            />
-          ))}
-          <Chip label="+13" variant="outlined" />
-        </Box>
       </Stack>
 
-      {/* Filters and Count */}
+      {/* Practice Count and Filters */}
       <Box
         sx={{
           display: "flex",
@@ -110,20 +156,18 @@ const MainContent = () => {
         }}
       >
         <Typography variant="h6" component="h2">
-          501 MainContent
+          89 Practice sessions
         </Typography>
-        <Box sx={{ display: "flex", gap: 2 }}>
-          <Button
-            variant="outlined"
-            sx={{ color: "#000000", borderColor: "#000000" }}
-            startIcon={<FilterList />}
-          >
-            More filters
-          </Button>
-        </Box>
+        <Button
+          variant="outlined"
+          startIcon={<FilterList />}
+          sx={{ color: "#000000", borderColor: "#000000" }}
+        >
+          Filter Practice
+        </Button>
       </Box>
 
-      {/* Course Cards */}
+      {/* Practice Cards */}
       <Box
         sx={{
           display: "grid",
@@ -131,49 +175,28 @@ const MainContent = () => {
           gap: 3,
         }}
       >
-        {courses.map((course) => (
+        {practices.map((practice) => (
           <Card
-            key={course.title}
-            sx={{ display: "flex", flexDirection: "column" }}
+            key={practice.title}
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              "&:hover": {
+                boxShadow: 3,
+              },
+            }}
           >
             <CardContent sx={{ flexGrow: 1 }}>
-              <Typography variant="overline" color="text.secondary">
-                {course.type}
-              </Typography>
-              <Typography variant="h6" gutterBottom>
-                {course.title}
-              </Typography>
-              <Chip
-                label={course.level}
-                size="small"
-                sx={{
-                  backgroundColor: "#f7f7fc",
-                  mb: 2,
-                }}
-              />
               <Typography
-                variant="body2"
+                variant="overline"
                 color="text.secondary"
-                sx={{ mb: 2, minHeight: 80 }}
+                sx={{ mb: 1, display: "block" }}
               >
-                {course.description}
+                {practice.type}
               </Typography>
-              <Box
-                sx={{ display: "flex", alignItems: "center", gap: 1, mb: 2 }}
-              >
-                <Avatar
-                  src={course.instructor.avatar}
-                  sx={{ width: 32, height: 32 }}
-                />
-                <Box>
-                  <Typography variant="subtitle2">
-                    {course.instructor.name}
-                  </Typography>
-                  <Typography variant="caption" color="text.secondary">
-                    {course.instructor.role}
-                  </Typography>
-                </Box>
-              </Box>
+              <Typography variant="h6" sx={{ mb: 2 }}>
+                {practice.title}
+              </Typography>
             </CardContent>
             <Box
               sx={{
@@ -186,11 +209,23 @@ const MainContent = () => {
             >
               <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
                 <Typography sx={{ fontSize: "1.5rem" }}>
-                  {course.icon}
+                  {practice.icon}
                 </Typography>
-                <Typography variant="body2">{course.duration}</Typography>
+                <Typography variant="body2">{practice.technology}</Typography>
               </Box>
-              <Button variant="outlined">Start</Button>
+              <Button
+                variant="outlined"
+                sx={{
+                  color: "#000000",
+                  borderColor: "#000000",
+                  "&:hover": {
+                    borderColor: "#000000",
+                    backgroundColor: "rgba(0, 0, 0, 0.04)",
+                  },
+                }}
+              >
+                Start
+              </Button>
             </Box>
           </Card>
         ))}

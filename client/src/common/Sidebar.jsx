@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import {
   Drawer,
   List,
@@ -20,6 +21,8 @@ import {
 const drawerWidth = 240;
 
 const Sidebar = () => {
+  const navigate = useNavigate();
+
   return (
     <Drawer
       variant="permanent"
@@ -35,7 +38,7 @@ const Sidebar = () => {
       }}
     >
       <List>
-        <ListItem>
+        <ListItem button onClick={() => navigate("/learning-dashboard")}>
           <ListItemIcon sx={{ color: "#ffffff" }}>
             <Timeline />
           </ListItemIcon>
@@ -75,13 +78,14 @@ const Sidebar = () => {
         </ListItem>
         {[
           { text: "Tracks", icon: <School /> },
-          { text: "Courses", icon: <Assignment /> },
-          { text: "Practice", icon: <Assessment /> },
+          { text: "Courses", icon: <Assignment />, path: "/courses" },
+          { text: "Practice", icon: <Assessment />, path: "/practice" },
           { text: "Tutorials", icon: <BookmarkBorder /> },
         ].map((item) => (
           <ListItem
             button
             key={item.text}
+            onClick={() => item.path && navigate(item.path)}
             sx={{
               "&:hover": {
                 backgroundColor: "rgba(255, 255, 255, 0.08)",
