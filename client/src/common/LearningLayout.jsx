@@ -59,7 +59,7 @@ const LearningLayout = ({ children }) => {
           component="main"
           sx={{
             flexGrow: 1,
-            p: 3,
+            // p: 3,
             marginTop: "64px",
             backgroundColor: "#f7f7fc",
           }}

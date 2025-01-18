@@ -28,10 +28,10 @@ import { PromoteEvent } from "./components/views/PromoteEvent";
 import { Schedule } from "./components/views/Schedule";
 import CreateEvent from "./components/CreateEvent";
 import { LandingPage } from "./components/landing_page/LandingPage";
-import { LearningPage } from "./components/views/Learning";
 import LearningDashboard from "./components/views/LearningDashboard/LearningDashboard";
 import Courses from "./components/views/Courses/Courses";
 import PracticePage from "./components/views/Practises/Practices";
+import { Progress } from "./components/views/Progress";
 
 function App() {
   useEffect(() => {
@@ -51,7 +51,7 @@ function App() {
         <CssBaseline />
         <Routes>
           <Route path="/" element={<ExploreView />} />
-          <Route path="/home" element={<LandingPage />} />
+          <Route path="/Home" element={<LandingPage />} />
           <Route path="/posts/:id" element={<PostView />} />
           <Route
             path="/posts/create"
@@ -84,7 +84,7 @@ function App() {
           <Route path="/promote-event" element={<PromoteEvent />} />
           <Route path="/account" element={<AccountView />} />
           <Route path="/event/create" element={<CreateEvent />} />
-          <Route path="/learning" element={<LearningPage />} />
+          <Route path="/progress" element={<Progress />} />
         </Routes>
       </BrowserRouter>
     </ThemeProvider>
