@@ -43,7 +43,7 @@ const theme = createTheme({
   },
 });
 
-const LearningLayout = ({ children }) => {
+const LearningLayout = ({ children, sideBarVisible = true }) => {
   return (
     <ThemeProvider theme={theme}>
       <Box
@@ -54,7 +54,7 @@ const LearningLayout = ({ children }) => {
         }}
       >
         <TopNavigation />
-        <Sidebar />
+        {sideBarVisible && <Sidebar />}
         <Box
           component="main"
           sx={{
