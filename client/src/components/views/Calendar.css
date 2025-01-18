@@ -1,0 +1,7 @@
+.calendar {
+  width: fit-content;
+  margin: 0 auto;
+  display: grid;
+  gap: 1px;
+  border: 1px solid #000;
+}

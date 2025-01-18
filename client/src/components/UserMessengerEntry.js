@@ -1,11 +1,4 @@
-import {
-  Divider,
-  ListItem,
-  ListItemAvatar,
-  ListItemButton,
-  ListItemText,
-  MenuItem,
-} from "@mui/material";
+import { ListItemAvatar, ListItemText, MenuItem } from "@mui/material";
 import { Box } from "@mui/system";
 import React from "react";
 import UserAvatar from "./UserAvatar";

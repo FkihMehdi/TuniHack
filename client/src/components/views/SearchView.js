@@ -8,7 +8,7 @@ import Sidebar from "../Sidebar";
 
 const SearchView = () => {
   return (
-    <Container>
+    <>
       <Navbar />
       <GridLayout
         left={
@@ -17,8 +17,10 @@ const SearchView = () => {
           </Stack>
         }
         right={<Sidebar />}
+        leftWidth={8}
+        rightWidth={4}
       />
-    </Container>
+    </>
   );
 };
 

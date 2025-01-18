@@ -1,31 +1,48 @@
 import {
   Button,
+  ButtonGroup,
   Container,
+  Divider,
   Stack,
   TextField,
   Typography,
-  Link,
-  Alert,
+  Box,
+  styled,
 } from "@mui/material";
-import { Box } from "@mui/system";
-import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { useState } from "react";
 import { signup } from "../../api/users";
 import { loginUser } from "../../helpers/authHelper";
 import { useNavigate } from "react-router-dom";
 import Copyright from "../Copyright";
 import ErrorAlert from "../ErrorAlert";
 import { isLength, isEmail, contains } from "validator";
+import CloudUploadIcon from "@mui/icons-material/CloudUpload";
+
+const VisuallyHiddenInput = styled("input")({
+  clip: "rect(0 0 0 0)",
+  clipPath: "inset(50%)",
+  height: 1,
+  overflow: "hidden",
+  position: "absolute",
+  bottom: 0,
+  left: 0,
+  whiteSpace: "nowrap",
+  width: 1,
+});
 
 const SignupView = () => {
   const navigate = useNavigate();
   const [serverError, setServerError] = useState("");
   const [errors, setErrors] = useState({});
-
   const [formData, setFormData] = useState({
     username: "",
     email: "",
     password: "",
+    phone: "",
+    age: "",
   });
+  const [toggle, setToggle] = useState(false);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -72,62 +89,235 @@ const SignupView = () => {
   };
 
   return (
-    <Container maxWidth={"xs"} sx={{ mt: { xs: 2, md: 6 } }}>
-      <Stack alignItems="center">
-        <Typography variant="h2" color="text.secondary" sx={{ mb: 6 }}>
-          <Link to="/" color="inherit" underline="none">
-            PostIt
-          </Link>
-        </Typography>
-        <Typography variant="h5" gutterBottom>
+    <Container maxWidth="sm" sx={{ mt: { xs: 2, md: 6 } }}>
+      <Stack
+        alignItems="center"
+        borderRadius={3}
+        p={4}
+        spacing={4}
+        sx={{
+          backdropFilter: "blur(10px)",
+          boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.2)",
+          backgroundColor: "rgba(255, 255, 255, 0.7)",
+          maxWidth: 450,
+
+          mx: "auto",
+          padding: 5,
+          border: "1px solid #71A769",
+        }}
+      >
+        <Typography
+          variant="h2"
+          sx={{
+            fontWeight: "bold",
+            fontFamily: "'Roboto', sans-serif",
+            letterSpacing: "1px",
+            mb: 3,
+            color: "#705EAA",
+          }}
+        >
           Sign Up
         </Typography>
-        <Typography color="text.secondary">
-          Already have an account? <Link to="/login">Login</Link>
-        </Typography>
-        <Box component="form" onSubmit={handleSubmit}>
+
+        <ButtonGroup fullWidth sx={{ mb: 3 }}>
+          <Button
+            sx={{
+              flex: 1,
+              backgroundColor: "#705EAA",
+              color: "white",
+              "&:hover": { backgroundColor: "#71A769" },
+            }}
+            onClick={() => setToggle(false)}
+          >
+            User
+          </Button>
+          <Button
+            sx={{
+              flex: 1,
+              backgroundColor: "#705EAA",
+              color: "white",
+              "&:hover": { backgroundColor: "#71A769" },
+            }}
+            onClick={() => setToggle(true)}
+          >
+            Association
+          </Button>
+        </ButtonGroup>
+
+        <Box component="form" onSubmit={handleSubmit} sx={{ width: "100%" }}>
           <TextField
-            label="Username"
+            label={toggle ? "Association Name" : "Username"}
             fullWidth
             margin="normal"
-            autoFocus
             required
-            id="username"
-            name="username"
+            name={toggle ? "associationName" : "username"}
             onChange={handleChange}
-            error={errors.username !== undefined}
-            helperText={errors.username}
+            error={
+              errors.username !== undefined ||
+              errors.associationName !== undefined
+            }
+            helperText={errors.username || errors.associationName}
+            sx={{
+              backgroundColor: "white",
+              borderRadius: 1,
+            }}
           />
+
           <TextField
             label="Email Address"
             fullWidth
             margin="normal"
             autoComplete="email"
             required
-            id="email"
             name="email"
             onChange={handleChange}
             error={errors.email !== undefined}
             helperText={errors.email}
+            sx={{
+              backgroundColor: "white",
+              borderRadius: 1,
+            }}
           />
+
           <TextField
             label="Password"
             fullWidth
             required
             margin="normal"
             autoComplete="password"
-            id="password"
             name="password"
             type="password"
             onChange={handleChange}
             error={errors.password !== undefined}
             helperText={errors.password}
+            sx={{
+              backgroundColor: "white",
+              borderRadius: 1,
+            }}
           />
+
+          <TextField
+            label="Confirm Password"
+            fullWidth
+            required
+            margin="normal"
+            name="confirmPassword"
+            type="password"
+            error={errors.confirmPassword !== undefined}
+            helperText={errors.confirmPassword}
+            sx={{
+              backgroundColor: "white",
+              borderRadius: 1,
+            }}
+          />
+
+          {toggle && (
+            <>
+              {/* <TextField
+                fullWidth
+                margin="normal"
+                type="file"
+                sx={{
+                  backgroundColor: "white",
+                  borderRadius: 1,
+                }}
+              /> */}
+              <Button
+                component="label"
+                role={undefined}
+                variant="contained"
+                tabIndex={-1}
+                fullWidth
+                sx={{
+                  my: 2,
+                  // backgroundColor: "#71A769",
+                  color: "white",
+                  backgroundColor: "#705EAA",
+                  "&:hover": { backgroundColor: "#705EAA" },
+                  textTransform: "none",
+                }}
+                startIcon={<CloudUploadIcon />}
+              >
+                Upload file
+                <VisuallyHiddenInput
+                  type="file"
+                  accept="image/*"
+                  onChange={handleChange}
+                  multiple
+                />
+              </Button>
+              <Typography
+                fullWidth
+                sx={{
+                  color: "#705EAA",
+                }}
+              >
+                Please upload a document proving your association's
+                authenticity(e.g,registration certificate,official letterhead)
+              </Typography>
+            </>
+          )}
+
           <ErrorAlert error={serverError} />
-          <Button type="submit" fullWidth variant="contained" sx={{ my: 2 }}>
+
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            sx={{
+              my: 2,
+              backgroundColor: "#71A769",
+              color: "white",
+              "&:hover": { backgroundColor: "#705EAA" },
+              textTransform: "none",
+              borderRadius: "20px",
+            }}
+          >
             Sign Up
           </Button>
+
+          <Divider sx={{ my: 2, color: "#705EAA" }}>or continue with</Divider>
+
+          <Button
+            variant="outlined"
+            fullWidth
+            startIcon={
+              <img
+                src="https://img.icons8.com/color/48/000000/google-logo.png"
+                alt="google"
+                width={20}
+                height={20}
+              />
+            }
+            sx={{
+              my: 2,
+              color: "#705EAA",
+              borderColor: "#705EAA",
+              textTransform: "none",
+              borderRadius: "20px",
+            }}
+          >
+            Sign up with Google
+          </Button>
+
+          <Box sx={{ display: "flex", justifyContent: "center", mt: 2 }}>
+            <Typography color="text.secondary">
+              Already have an account?
+              <Link
+                to="/login"
+                style={{
+                  textDecoration: "none",
+                  fontWeight: "bold",
+                  color: "#705EAA",
+                }}
+              >
+                {" "}
+                Log in
+              </Link>
+            </Typography>
+          </Box>
         </Box>
+
         <Box sx={{ mt: 3 }}>
           <Copyright />
         </Box>

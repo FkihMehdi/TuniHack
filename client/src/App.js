@@ -6,16 +6,10 @@ import "react-icons/bs";
 import "react-router-dom";
 import { CssBaseline } from "@mui/material";
 import { ThemeProvider } from "@mui/material/styles";
-
-import {
-  BrowserRouter,
-  Route,
-  Routes,
-  useParams,
-  useSearchParams,
-} from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import theme from "./theme";
-
+import { useEffect } from "react";
+import AccountView from "./components/views/AccountView";
 import PostView from "./components/views/PostView";
 import CreatePostView from "./components/views/CreatePostView";
 import ProfileView from "./components/views/ProfileView";
@@ -25,12 +19,26 @@ import ExploreView from "./components/views/ExploreView";
 import PrivateRoute from "./components/PrivateRoute";
 import SearchView from "./components/views/SearchView";
 import MessengerView from "./components/views/MessengerView";
-import { initiateSocketConnection, socket } from "./helpers/socketHelper";
-import { useEffect } from "react";
-import { BASE_URL } from "./config";
-import { io } from "socket.io-client";
+import { initiateSocketConnection } from "./helpers/socketHelper";
+import { Event } from "./components/views/Event";
+import { GenerateWebsite } from "./components/views/GenerateWebsite";
+import { Connections } from "./components/views/Connections";
+import { Mentors } from "./components/views/Mentors";
+import { PromoteEvent } from "./components/views/PromoteEvent";
+import { Schedule } from "./components/views/Schedule";
+import CreateEvent from "./components/CreateEvent";
+import { LandingPage } from "./components/landing_page/LandingPage";
 
 function App() {
+  useEffect(() => {
+    document.body.style.margin = "0";
+    document.body.style.fontFamily = "'Roboto', sans-serif";
+
+    return () => {
+      document.body.style.background = "";
+    };
+  }, []);
+
   initiateSocketConnection();
 
   return (
@@ -39,6 +47,7 @@ function App() {
         <CssBaseline />
         <Routes>
           <Route path="/" element={<ExploreView />} />
+          <Route path="/home" element={<LandingPage />} />
           <Route path="/posts/:id" element={<PostView />} />
           <Route
             path="/posts/create"
@@ -60,6 +69,14 @@ function App() {
           <Route path="/users/:id" element={<ProfileView />} />
           <Route path="/login" element={<LoginView />} />
           <Route path="/signup" element={<SignupView />} />
+          <Route path="/event" element={<Event />} />
+          <Route path="/generate-website" element={<GenerateWebsite />} />
+          <Route path="/connections" element={<Connections />} />
+          <Route path="/calendar" element={<Schedule />} />
+          <Route path="/mentors" element={<Mentors />} />
+          <Route path="/promote-event" element={<PromoteEvent />} />
+          <Route path="/account" element={<AccountView />} />
+          <Route path="/event/create" element={<CreateEvent />} />
         </Routes>
       </BrowserRouter>
     </ThemeProvider>

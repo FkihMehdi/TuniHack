@@ -1,4 +1,4 @@
-import { Card, Container, Stack, Tab, Tabs } from "@mui/material";
+import { Card, Stack, Tab, Tabs } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams, useLocation } from "react-router-dom";
 import { getUser, updateUser } from "../../api/users";
@@ -6,8 +6,7 @@ import { isLoggedIn } from "../../helpers/authHelper";
 import CommentBrowser from "../CommentBrowser";
 
 import ErrorAlert from "../ErrorAlert";
-import FindUsers from "../FindUsers";
-import Footer from "../Footer";
+import FindUsers from "../Findassociations";
 import GoBack from "../GoBack";
 import GridLayout from "../GridLayout";
 import Loading from "../Loading";
@@ -94,9 +93,8 @@ const ProfileView = () => {
   }
 
   return (
-    <Container>
+    <>
       <Navbar />
-
       <GridLayout
         left={
           <>
@@ -132,13 +130,12 @@ const ProfileView = () => {
               handleMessage={handleMessage}
               validate={validate}
             />
-
-            <FindUsers />
-            <Footer />
           </Stack>
         }
+        rightWidth={4}
+        leftWidth={8}
       />
-    </Container>
+    </>
   );
 };
 

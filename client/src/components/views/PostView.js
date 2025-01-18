@@ -36,7 +36,7 @@ const PostView = () => {
   }, [params.id]);
 
   return (
-    <Container>
+    <>
       <Navbar />
       <GoBack />
       <GridLayout
@@ -46,7 +46,6 @@ const PostView = () => {
           ) : post ? (
             <Stack spacing={2}>
               <PostCard post={post} key={post._id} />
-
               <Comments />
             </Stack>
           ) : (
@@ -54,8 +53,10 @@ const PostView = () => {
           )
         }
         right={<Sidebar />}
+        rightWidth={4}
+        leftWidth={8}
       />
-    </Container>
+    </>
   );
 };
 

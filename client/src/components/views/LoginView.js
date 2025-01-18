@@ -1,9 +1,7 @@
 import {
   Alert,
   Button,
-  Checkbox,
   Container,
-  FormControlLabel,
   Stack,
   TextField,
   Typography,
@@ -43,20 +41,35 @@ const LoginView = () => {
   };
 
   return (
-    <Container maxWidth={"xs"} sx={{ mt: 6 }}>
-      <Stack alignItems="center">
-        <Typography variant="h2" color="text.secondary" sx={{ mb: 6 }}>
-          <Link to="/" color="inherit" underline="none">
-            PostIt
-          </Link>
-        </Typography>
-        <Typography variant="h5" gutterBottom>
+    <Container maxWidth="xs" sx={{ mt: 6 }}>
+      <Stack
+        alignItems="center"
+        borderRadius={2}
+        boxShadow={5}
+        p={4}
+        spacing={3}
+        sx={{
+          backdropFilter: "blur(8px)",
+          backgroundColor: "rgba(255, 255, 255, 0.7)",
+          border: "1px solid #71A769",
+          maxWidth: 400,
+          mx: "auto",
+        }}
+      >
+        <Typography
+          variant="h2"
+          gutterBottom
+          sx={{
+            fontSize: 40,
+            fontWeight: "bold",
+            color: "#705EAA",
+            fontFamily: "'Roboto', sans-serif",
+          }}
+        >
           Login
         </Typography>
-        <Typography color="text.secondary">
-          Don't have an account yet? <Link to="/signup">Sign Up</Link>
-        </Typography>
-        <Box component="form" onSubmit={handleSubmit}>
+
+        <Box component="form" onSubmit={handleSubmit} sx={{ width: "100%" }}>
           <TextField
             label="Email Address"
             fullWidth
@@ -64,26 +77,72 @@ const LoginView = () => {
             autoComplete="email"
             autoFocus
             required
-            id="email"
             name="email"
             onChange={handleChange}
+            sx={{
+              backgroundColor: "white",
+              borderRadius: 1,
+              "& .MuiInputBase-root": {
+                padding: "10px",
+                backgroundColor: "#F5F5F5",
+              },
+            }}
           />
           <TextField
             label="Password"
             fullWidth
             required
             margin="normal"
-            id="password  "
             name="password"
-            onChange={handleChange}
             type="password"
+            onChange={handleChange}
+            sx={{
+              backgroundColor: "white",
+              borderRadius: 1,
+              "& .MuiInputBase-root": {
+                padding: "10px",
+                backgroundColor: "#F5F5F5",
+              },
+            }}
           />
 
           <ErrorAlert error={serverError} />
-          <Button type="submit" fullWidth variant="contained" sx={{ my: 2 }}>
+
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            sx={{
+              my: 2,
+              backgroundColor: "#705EAA",
+              color: "white",
+              "&:hover": {
+                backgroundColor: "#71A769",
+              },
+              textTransform: "none",
+              borderRadius: "20px",
+            }}
+          >
             Login
           </Button>
+
+          <Box sx={{ display: "flex", justifyContent: "center", mt: 2 }}>
+            <Typography color="text.secondary">
+              Don't have an account yet?{" "}
+              <Link
+                to="/signup"
+                style={{
+                  textDecoration: "none",
+                  fontWeight: "bold",
+                  color: "#705EAA",
+                }}
+              >
+                Sign Up
+              </Link>
+            </Typography>
+          </Box>
         </Box>
+
         <Box sx={{ mt: 3 }}>
           <Copyright />
         </Box>
