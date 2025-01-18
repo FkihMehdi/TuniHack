@@ -26,6 +26,7 @@ import PracticePage from "./components/views/Practises/Practices";
 import Conferences from "./components/views/Conferences/Conferences";
 import ConferenceDetails from "./components/views/ConferenceDetails/ConferenceDetails";
 import { LearningPage } from "./components/views/Learning";
+import Dashboard from "./components/views/dashboard/Dashboard";
 
 function App() {
   useEffect(() => {
@@ -77,6 +78,7 @@ function App() {
             path="/conferences/:id/stream"
             element={<ConferenceDetails />}
           />
+          <Route path="/dashboard" element={<Dashboard />} />
         </Routes>
       </BrowserRouter>
     </ThemeProvider>
