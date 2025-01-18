@@ -28,6 +28,7 @@ import { PromoteEvent } from "./components/views/PromoteEvent";
 import { Schedule } from "./components/views/Schedule";
 import CreateEvent from "./components/CreateEvent";
 import { LandingPage } from "./components/landing_page/LandingPage";
+import { LearningPage } from "./components/views/Learning";
 import LearningDashboard from "./components/views/LearningDashboard/LearningDashboard";
 import Courses from "./components/views/Courses/Courses";
 
@@ -81,6 +82,7 @@ function App() {
           <Route path="/promote-event" element={<PromoteEvent />} />
           <Route path="/account" element={<AccountView />} />
           <Route path="/event/create" element={<CreateEvent />} />
+          <Route path="/learning" element={<LearningPage />} />
         </Routes>
       </BrowserRouter>
     </ThemeProvider>
