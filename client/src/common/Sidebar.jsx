@@ -12,7 +12,6 @@ import {
   BookmarkBorder,
   School,
   Assignment,
-  Assessment,
   WorkOutline,
   Code,
   EmojiEvents,
@@ -79,7 +78,7 @@ const Sidebar = () => {
         {[
           { text: "Tracks", icon: <School /> },
           { text: "Courses", icon: <Assignment />, path: "/courses" },
-          { text: "Practice", icon: <Assessment />, path: "/practice" },
+          // { text: "Practice", icon: <Assessment />, path: "/practice" },
           { text: "Tutorials", icon: <BookmarkBorder /> },
         ].map((item) => (
           <ListItem

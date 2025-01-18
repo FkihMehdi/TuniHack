@@ -13,12 +13,16 @@ import {
   Language as LanguageIcon,
   Notifications as NotificationsIcon,
 } from "@mui/icons-material";
+import { useNavigate } from "react-router-dom";
 
 const TopNavigation = () => {
   const [selectedChip, setSelectedChip] = useState(null);
+  const navigate = useNavigate();
 
   const handleChipClick = (chip) => {
     setSelectedChip(chip);
+    // Navigate()
+    navigate("/" + chip);
   };
 
   return (
@@ -43,22 +47,25 @@ const TopNavigation = () => {
             borderRadius: 5,
           }}
         >
-          {["Learn", "Certification", "Sandbox", "Jobs"].map((label) => (
-            <Chip
-              key={label}
-              label={label}
-              clickable
-              onClick={() => handleChipClick(label)}
-              sx={{
-                backgroundColor: selectedChip === label ? "#000000" : "#f7f7fc",
-                color: selectedChip === label ? "#ffffff" : "#000000",
-                "&:hover": {
+          {["Home", "Learn", "Practice", "Certification", "Jobs"].map(
+            (label) => (
+              <Chip
+                key={label}
+                label={label}
+                clickable
+                onClick={() => handleChipClick(label)}
+                sx={{
                   backgroundColor:
-                    selectedChip === label ? "#000000" : "#eeeef9",
-                },
-              }}
-            />
-          ))}
+                    selectedChip === label ? "#000000" : "#f7f7fc",
+                  color: selectedChip === label ? "#ffffff" : "#000000",
+                  "&:hover": {
+                    backgroundColor:
+                      selectedChip === label ? "#000000" : "#eeeef9",
+                  },
+                }}
+              />
+            )
+          )}
         </Box>
         <Box sx={{ flexGrow: 1 }} />
         <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
