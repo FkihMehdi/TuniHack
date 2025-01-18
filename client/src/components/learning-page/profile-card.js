@@ -43,7 +43,7 @@ const ProfileCard = () => {
                 sx={{ display: "flex", alignItems: "center", gap: 0.5, mb: 1 }}
               >
                 <Typography variant="h6" component="div">
-                  Hey, MEHDI!
+                  Hey , user Name !
                 </Typography>
                 <ChevronRightIcon />
               </Box>

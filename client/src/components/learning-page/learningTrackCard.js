@@ -60,7 +60,7 @@ const LearningTrackCard = () => {
           <Box sx={{ mb: 3 }}>
             <LinearProgress
               variant="determinate"
-              value={0}
+              value={20}
               sx={{
                 height: 8,
                 borderRadius: 4,
