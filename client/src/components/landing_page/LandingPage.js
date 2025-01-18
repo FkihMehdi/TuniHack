@@ -1,18 +1,18 @@
-import { themeOptions } from "./theme";
-import { ThemeProvider } from "@mui/material";
-import NavBar from "./nav-bar.component.jsx";
 import Hero from "./hero/hero.component";
 import Jeremy from "./jeremy/jeremy.component";
 import Footer from "./fotter/footer.component";
+import LearningObjectives from "./about_us/LearningObjectives.component.jsx";
+import TopNavigationHomepage from "./top_navigation/TopNavigation.jsx";
 
 const LandingPage = () => {
   return (
-    <ThemeProvider theme={themeOptions}>
-      <NavBar />
+    <>
+      <TopNavigationHomepage />
       <Hero />
       <Jeremy />
+      <LearningObjectives />
       <Footer />
-    </ThemeProvider>
+    </>
   );
 };
 
