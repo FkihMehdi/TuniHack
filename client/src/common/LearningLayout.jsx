@@ -43,7 +43,7 @@ const theme = createTheme({
   },
 });
 
-const LearningLayout = ({ children, sideBarVisible = false }) => {
+const LearningLayout = ({ children, sideBarVisible = true }) => {
   return (
     <ThemeProvider theme={theme}>
       <Box
