@@ -26,6 +26,7 @@ import PracticePage from "./components/views/Practises/Practices";
 import Conferences from "./components/views/Conferences/Conferences";
 import ConferenceDetails from "./components/views/ConferenceDetails/ConferenceDetails";
 import { LearningPage } from "./components/views/Learning";
+import Map from "./components/views/Map/map";
 import Dashboard from "./components/views/dashboard/Dashboard";
 
 function App() {
@@ -78,6 +79,7 @@ function App() {
             path="/conferences/:id/stream"
             element={<ConferenceDetails />}
           />
+          <Route path="/map" element={<Map />} />
           <Route path="/dashboard" element={<Dashboard />} />
         </Routes>
       </BrowserRouter>
