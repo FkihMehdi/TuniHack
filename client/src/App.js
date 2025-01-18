@@ -29,6 +29,8 @@ import { Schedule } from "./components/views/Schedule";
 import CreateEvent from "./components/CreateEvent";
 import { LandingPage } from "./components/landing_page/LandingPage";
 import { LearningPage } from "./components/views/Learning";
+import LearningDashboard from "./components/views/LearningDashboard/LearningDashboard";
+import Courses from "./components/views/Courses/Courses";
 
 function App() {
   useEffect(() => {
@@ -67,6 +69,8 @@ function App() {
             }
           />
           <Route path="/search" element={<SearchView />} />
+          <Route path="/learning-dashboard" element={<LearningDashboard />} />
+          <Route path="/courses" element={<Courses />} />
           <Route path="/users/:id" element={<ProfileView />} />
           <Route path="/login" element={<LoginView />} />
           <Route path="/signup" element={<SignupView />} />
