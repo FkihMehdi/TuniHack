@@ -44,7 +44,7 @@ function App() {
         <CssBaseline />
         <Routes>
           <Route path="/" element={<ExploreView />} />
-          <Route path="/home" element={<LandingPage />} />
+          <Route path="/Home" element={<LandingPage />} />
           <Route path="/posts/:id" element={<PostView />} />
           <Route
             path="/posts/create"
