@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   AppBar,
   Toolbar,
@@ -15,6 +15,12 @@ import {
 } from "@mui/icons-material";
 
 const TopNavigation = () => {
+  const [selectedChip, setSelectedChip] = useState(null);
+
+  const handleChipClick = (chip) => {
+    setSelectedChip(chip);
+  };
+
   return (
     <AppBar
       position="fixed"
@@ -28,47 +34,31 @@ const TopNavigation = () => {
         >
           LearningHub
         </Typography>
-        <Box sx={{ display: "flex", gap: 1 }}>
-          <Chip
-            label="Learn"
-            clickable
-            sx={{
-              backgroundColor: "#f7f7fc",
-              "&:hover": {
-                backgroundColor: "#eeeef9",
-              },
-            }}
-          />
-          <Chip
-            label="Certification"
-            clickable
-            sx={{
-              backgroundColor: "#f7f7fc",
-              "&:hover": {
-                backgroundColor: "#eeeef9",
-              },
-            }}
-          />
-          <Chip
-            label="Sandbox"
-            clickable
-            sx={{
-              backgroundColor: "#f7f7fc",
-              "&:hover": {
-                backgroundColor: "#eeeef9",
-              },
-            }}
-          />
-          <Chip
-            label="Jobs"
-            clickable
-            sx={{
-              backgroundColor: "#f7f7fc",
-              "&:hover": {
-                backgroundColor: "#eeeef9",
-              },
-            }}
-          />
+        <Box
+          sx={{
+            display: "flex",
+            gap: 1,
+            backgroundColor: "#e0e0e0",
+            padding: 1,
+            borderRadius: 5,
+          }}
+        >
+          {["Learn", "Certification", "Sandbox", "Jobs"].map((label) => (
+            <Chip
+              key={label}
+              label={label}
+              clickable
+              onClick={() => handleChipClick(label)}
+              sx={{
+                backgroundColor: selectedChip === label ? "#000000" : "#f7f7fc",
+                color: selectedChip === label ? "#ffffff" : "#000000",
+                "&:hover": {
+                  backgroundColor:
+                    selectedChip === label ? "#000000" : "#eeeef9",
+                },
+              }}
+            />
+          ))}
         </Box>
         <Box sx={{ flexGrow: 1 }} />
         <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>

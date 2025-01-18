@@ -2,7 +2,7 @@ import React from "react";
 import { LearningLayout } from "../../../common";
 import { MainContent } from "./components";
 
-const Courses = () => {
+const PracticePage = () => {
   return (
     <LearningLayout>
       <MainContent />
@@ -10,4 +10,4 @@ const Courses = () => {
   );
 };
 
-export default Courses;
+export default PracticePage;
