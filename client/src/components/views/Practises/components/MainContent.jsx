@@ -9,10 +9,8 @@ import {
   Button,
   Stack,
   Grid,
-  ImageListItem,
-  CardMedia,
 } from "@mui/material";
-import { ArrowForward, FilterList, Image } from "@mui/icons-material";
+import { ArrowForward, FilterList } from "@mui/icons-material";
 
 const MainContent = () => {
   const technologies = [

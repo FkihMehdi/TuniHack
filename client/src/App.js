@@ -24,6 +24,7 @@ import LearningDashboard from "./components/views/LearningDashboard/LearningDash
 import Courses from "./components/views/Courses/Courses";
 import PracticePage from "./components/views/Practises/Practices";
 import Offers from "./components/views/Offers/Offers";
+import Map from "./components/views/Map/map";
 import Dashboard from "./components/views/dashboard/Dashboard";
 
 function App() {
@@ -70,6 +71,7 @@ function App() {
           <Route path="/users/:id" element={<ProfileView />} />
           <Route path="/login" element={<LoginView />} />
           <Route path="/signup" element={<SignupView />} />
+          <Route path="/map" element={<Map />} />
           <Route path="/dashboard" element={<Dashboard />} />
         </Routes>
       </BrowserRouter>
