@@ -32,6 +32,8 @@ import { LearningPage } from "./components/views/Learning";
 import LearningDashboard from "./components/views/LearningDashboard/LearningDashboard";
 import Courses from "./components/views/Courses/Courses";
 import PracticePage from "./components/views/Practises/Practices";
+import Conferences from "./components/views/Conferences/Conferences";
+import ConferenceDetails from "./components/views/ConferenceDetails/ConferenceDetails";
 
 function App() {
   useEffect(() => {
@@ -85,6 +87,12 @@ function App() {
           <Route path="/account" element={<AccountView />} />
           <Route path="/event/create" element={<CreateEvent />} />
           <Route path="/learning" element={<LearningPage />} />
+          <Route path="/conferences" element={<Conferences />} />
+          <Route path="/conferences/:id" element={<ConferenceDetails />} />
+          <Route
+            path="/conferences/:id/stream"
+            element={<ConferenceDetails />}
+          />
         </Routes>
       </BrowserRouter>
     </ThemeProvider>
