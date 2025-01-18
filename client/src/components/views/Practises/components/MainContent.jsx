@@ -8,8 +8,11 @@ import {
   Chip,
   Button,
   Stack,
+  Grid,
+  ImageListItem,
+  CardMedia,
 } from "@mui/material";
-import { ArrowForward, FilterList } from "@mui/icons-material";
+import { ArrowForward, FilterList, Image } from "@mui/icons-material";
 
 const MainContent = () => {
   const technologies = [
@@ -168,6 +171,34 @@ const MainContent = () => {
       </Box>
 
       {/* Practice Cards */}
+      <Grid container spacing={2}>
+        <Grid item xs={12}>
+          <Card
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              "&:hover": {
+                boxShadow: 3,
+              },
+            }}
+          >
+            <CardContent sx={{ flexGrow: 1 }}>
+              <Typography
+                variant="overline"
+                color="text.secondary"
+                sx={{ mb: 1, display: "block" }}
+              >
+                PRACTICE
+              </Typography>
+              <Typography variant="h6" sx={{ mb: 2 }}>
+                Hello world
+              </Typography>
+            </CardContent>
+          </Card>
+        </Grid>
+        <Grid item xs={4}></Grid>
+        <Grid item xs={4}></Grid>
+      </Grid>
       <Box
         sx={{
           display: "grid",

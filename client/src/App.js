@@ -9,7 +9,6 @@ import { ThemeProvider } from "@mui/material/styles";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import theme from "./theme";
 import { useEffect } from "react";
-import AccountView from "./components/views/AccountView";
 import PostView from "./components/views/PostView";
 import CreatePostView from "./components/views/CreatePostView";
 import ProfileView from "./components/views/ProfileView";
@@ -20,20 +19,13 @@ import PrivateRoute from "./components/PrivateRoute";
 import SearchView from "./components/views/SearchView";
 import MessengerView from "./components/views/MessengerView";
 import { initiateSocketConnection } from "./helpers/socketHelper";
-import { Event } from "./components/views/Event";
-import { GenerateWebsite } from "./components/views/GenerateWebsite";
-import { Connections } from "./components/views/Connections";
-import { Mentors } from "./components/views/Mentors";
-import { PromoteEvent } from "./components/views/PromoteEvent";
-import { Schedule } from "./components/views/Schedule";
-import CreateEvent from "./components/CreateEvent";
 import { LandingPage } from "./components/landing_page/LandingPage";
-import { LearningPage } from "./components/views/Learning";
 import LearningDashboard from "./components/views/LearningDashboard/LearningDashboard";
 import Courses from "./components/views/Courses/Courses";
 import PracticePage from "./components/views/Practises/Practices";
 import Conferences from "./components/views/Conferences/Conferences";
 import ConferenceDetails from "./components/views/ConferenceDetails/ConferenceDetails";
+import Offers from "./components/views/Offers/Offers";
 
 function App() {
   useEffect(() => {
@@ -53,7 +45,7 @@ function App() {
         <CssBaseline />
         <Routes>
           <Route path="/" element={<ExploreView />} />
-          <Route path="/home" element={<LandingPage />} />
+          <Route path="/Home" element={<LandingPage />} />
           <Route path="/posts/:id" element={<PostView />} />
           <Route
             path="/posts/create"
@@ -74,6 +66,7 @@ function App() {
           <Route path="/search" element={<SearchView />} />
           <Route path="/learning-dashboard" element={<LearningDashboard />} />
           <Route path="/courses" element={<Courses />} />
+          <Route path="/offers" element={<Offers />} />
           <Route path="/practice" element={<PracticePage />} />
           <Route path="/users/:id" element={<ProfileView />} />
           <Route path="/login" element={<LoginView />} />
