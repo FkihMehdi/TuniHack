@@ -12,7 +12,7 @@ import {
 const MainContent = () => {
   return (
     <Container maxWidth="lg">
-      <Box sx={{ mb: 4 }}>
+      <Box sx={{ mb: 4, mt: 5 }}>
         <Typography variant="h4" gutterBottom>
           Hey, User!
         </Typography>

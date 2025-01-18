@@ -14,6 +14,7 @@ import {
   Notifications as NotificationsIcon,
 } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
+import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 
 const TopNavigation = () => {
   const [selectedChip, setSelectedChip] = useState(null);
@@ -67,9 +68,33 @@ const TopNavigation = () => {
             )
           )}
         </Box>
+        <Box
+          sx={{
+            display: "flex",
+            gap: 1,
+            backgroundColor: "#e0e0e0",
+            padding: 1,
+            borderRadius: 5,
+
+            ml: 2,
+          }}
+        >
+          <Chip
+            sx={{
+              backgroundColor: "#f7f7fc",
+              color: "#000000",
+              "&:hover": {
+                backgroundColor: "#eeeef9",
+              },
+            }}
+            label="offers"
+            clickable
+            onClick={() => handleChipClick("offers")}
+          />
+        </Box>
         <Box sx={{ flexGrow: 1 }} />
         <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
-          <IconButton sx={{ color: "#000000" }}>
+          <IconButton sx={{ color: "LearningHub#000000" }}>
             <SearchIcon />
           </IconButton>
           <IconButton sx={{ color: "#000000" }}>
