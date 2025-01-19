@@ -6,19 +6,10 @@ import {
   StepLabel,
   Typography,
   Button,
-  Card,
-  CardContent,
-  Radio,
-  RadioGroup,
-  FormControlLabel,
-  FormControl,
-  FormLabel,
-  CircularProgress,
-  Stack,
-  Chip,
 } from "@mui/material";
 import LearningLayout from "../../../common/LearningLayout";
-import { careerPaths, questions } from "./data";
+import { questions } from "./data";
+import { QuestionCard, Recommendations } from "./components";
 
 const CareerPathRecommender = () => {
   const [activeStep, setActiveStep] = useState(0);
@@ -90,115 +81,6 @@ const CareerPathRecommender = () => {
     setRecommendations(null);
   };
 
-  const renderQuestion = (question) => (
-    <Card sx={{ mt: 4, mb: 2 }}>
-      <CardContent>
-        <FormControl component="fieldset">
-          <FormLabel component="legend" sx={{ mb: 2 }}>
-            <Typography variant="h6">{question.question}</Typography>
-          </FormLabel>
-          <RadioGroup
-            value={answers[question.id] || ""}
-            onChange={(e) => handleAnswer(question.id, e.target.value)}
-          >
-            <Stack spacing={1}>
-              {question.options.map((option) => (
-                <FormControlLabel
-                  key={option.value}
-                  value={option.value}
-                  control={<Radio />}
-                  label={option.label}
-                  sx={{
-                    p: 1,
-                    border: 1,
-                    borderColor: "divider",
-                    borderRadius: 1,
-                    "&:hover": {
-                      bgcolor: "action.hover",
-                    },
-                  }}
-                />
-              ))}
-            </Stack>
-          </RadioGroup>
-        </FormControl>
-      </CardContent>
-    </Card>
-  );
-
-  const renderRecommendations = () => (
-    <Box sx={{ mt: 4 }}>
-      {isCalculating ? (
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            minHeight: 200,
-          }}
-        >
-          <CircularProgress />
-        </Box>
-      ) : (
-        <Stack spacing={3}>
-          <Typography variant="h5" gutterBottom>
-            Recommended Career Paths
-          </Typography>
-          {recommendations.map((pathId) => {
-            const path = careerPaths[pathId];
-            return (
-              <Card key={pathId}>
-                <CardContent>
-                  <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
-                    {path.icon}
-                    <Typography variant="h6" sx={{ ml: 2 }}>
-                      {path.title}
-                    </Typography>
-                  </Box>
-                  <Typography color="text.secondary" sx={{ mb: 2 }}>
-                    {path.description}
-                  </Typography>
-                  <Box sx={{ mb: 2 }}>
-                    <Typography variant="subtitle2" gutterBottom>
-                      Key Skills:
-                    </Typography>
-                    <Box sx={{ display: "flex", gap: 1, flexWrap: "wrap" }}>
-                      {path.skills.map((skill) => (
-                        <Chip key={skill} label={skill} size="small" />
-                      ))}
-                    </Box>
-                  </Box>
-                  <Box
-                    sx={{
-                      display: "flex",
-                      justifyContent: "space-between",
-                      alignItems: "center",
-                    }}
-                  >
-                    <Typography variant="body2" color="text.secondary">
-                      Time to Complete: {path.timeToComplete}
-                    </Typography>
-                    <Chip
-                      label={path.difficulty}
-                      color={
-                        path.difficulty === "Advanced"
-                          ? "error"
-                          : path.difficulty === "Intermediate"
-                          ? "warning"
-                          : "success"
-                      }
-                      size="small"
-                    />
-                  </Box>
-                </CardContent>
-              </Card>
-            );
-          })}
-        </Stack>
-      )}
-    </Box>
-  );
-
   return (
     <LearningLayout>
       <Box sx={{ maxWidth: 800, mx: "auto", p: 4 }}>
@@ -221,9 +103,18 @@ const CareerPathRecommender = () => {
           </Step>
         </Stepper>
 
-        {activeStep === questions.length
-          ? renderRecommendations()
-          : renderQuestion(questions[activeStep])}
+        {activeStep === questions.length ? (
+          <Recommendations
+            isCalculating={isCalculating}
+            recommendations={recommendations}
+          />
+        ) : (
+          <QuestionCard
+            question={questions[activeStep]}
+            answers={answers}
+            handleAnswer={handleAnswer}
+          />
+        )}
 
         <Box sx={{ display: "flex", justifyContent: "space-between", mt: 4 }}>
           <Button disabled={activeStep === 0} onClick={handleBack}>
