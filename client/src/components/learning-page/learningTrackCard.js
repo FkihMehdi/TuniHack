@@ -34,7 +34,7 @@ const LearningTrackCard = () => {
                   component="span"
                   sx={{ textDecoration: "underline" }}
                 >
-                  Deep Learning in Python
+                  Entrepreneurial Finance
                 </Typography>{" "}
                 track.
               </Typography>

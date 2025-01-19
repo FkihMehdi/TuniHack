@@ -13,57 +13,57 @@ import {
 import { ArrowForward, FilterList } from "@mui/icons-material";
 
 const MainContent = () => {
-  const technologies = [
+  const categories = [
     "All",
-    "Python",
-    "SQL",
-    "R",
-    "Power BI",
-    "Tableau",
-    "Excel",
-    "AWS",
-    "Azure",
-    "Docker",
-    "Julia",
-    "Theory",
+    "Marketing",
+    "Sales",
+    "Business Strategy",
+    "Finance",
+    "Leadership",
+    "Entrepreneurship",
+    "Operations",
+    "Customer Relations",
+    "Product Management",
+    "Growth Hacking",
+    "Startup Theory",
   ];
 
   const practices = [
     {
-      title: "Data Cleaning in R",
+      title: "Developing a Business Plan",
       type: "PRACTICE",
-      technology: "R",
-      icon: "📊",
+      category: "Business Strategy",
+      icon: "📋",
     },
     {
-      title: "Introduction to Python",
+      title: "Sales Techniques for Entrepreneurs",
       type: "PRACTICE",
-      technology: "Python",
-      icon: "🐍",
+      category: "Sales",
+      icon: "💼",
     },
     {
-      title: "Intermediate R",
+      title: "Effective Marketing Strategies",
       type: "PRACTICE",
-      technology: "R",
-      icon: "📊",
+      category: "Marketing",
+      icon: "📢",
     },
     {
-      title: "Introduction to Tableau",
+      title: "Financial Management for Startups",
       type: "PRACTICE",
-      technology: "Tableau",
-      icon: "📈",
+      category: "Finance",
+      icon: "💰",
     },
     {
-      title: "Introduction to the Tidyverse",
+      title: "Building a Customer-Centric Culture",
       type: "PRACTICE",
-      technology: "R",
-      icon: "📊",
+      category: "Customer Relations",
+      icon: "🤝",
     },
     {
-      title: "Intermediate Julia",
+      title: "Startup Leadership Fundamentals",
       type: "PRACTICE",
-      technology: "Julia",
-      icon: "💻",
+      category: "Leadership",
+      icon: "🏆",
     },
   ];
 
@@ -87,7 +87,7 @@ const MainContent = () => {
             </Typography>
             <Chip
               icon={<ArrowForward />}
-              label="Reinforce what you're learning"
+              label="Reinforce your business knowledge"
               sx={{
                 backgroundColor: "rgba(255, 255, 255, 0.1)",
                 color: "white",
@@ -98,8 +98,8 @@ const MainContent = () => {
             variant="h6"
             sx={{ fontWeight: "normal", opacity: 0.9, mb: 2 }}
           >
-            Keep your skills sharp with quick daily challenges on desktop or
-            Mobile app. You earn XP for every practice round.
+            Keep refining your skills with quick daily challenges on desktop or
+            mobile. Earn XP for every practice round.
           </Typography>
           <Chip
             label="250 XP"
@@ -111,7 +111,7 @@ const MainContent = () => {
           />
         </Box>
 
-        {/* Learning Cycle Diagram - Placeholder */}
+        {/* Business Category Filter Chips */}
         <Box
           sx={{
             position: "absolute",
@@ -123,23 +123,23 @@ const MainContent = () => {
             opacity: 0.6,
           }}
         >
-          {/* Add your learning cycle diagram here */}
+          {/* Add your business-related diagram here */}
         </Box>
       </Card>
 
-      {/* Technology Filter Chips */}
+      {/* Business Category Filter Chips */}
       <Stack spacing={2} sx={{ mb: 4 }}>
         <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1 }}>
-          {technologies.map((tech) => (
+          {categories.map((category) => (
             <Chip
-              key={tech}
-              label={tech}
+              key={category}
+              label={category}
               clickable
               sx={{
-                backgroundColor: tech === "All" ? "#000820" : "#f7f7fc",
-                color: tech === "All" ? "white" : "inherit",
+                backgroundColor: category === "All" ? "#000820" : "#f7f7fc",
+                color: category === "All" ? "white" : "inherit",
                 "&:hover": {
-                  backgroundColor: tech === "All" ? "#001040" : "#eeeef9",
+                  backgroundColor: category === "All" ? "#001040" : "#eeeef9",
                 },
               }}
             />
@@ -186,12 +186,37 @@ const MainContent = () => {
                 color="text.secondary"
                 sx={{ mb: 1, display: "block" }}
               >
-                PRACTICE
+                BUSINESS SIMULATOR
               </Typography>
               <Typography variant="h6" sx={{ mb: 2 }}>
-                Hello world
+                Virtual Business Simulator
+              </Typography>
+              <Typography variant="body2" sx={{ mb: 2 }}>
+                Launch your own business and grow it in a simulated environment!
+                Test your skills, strategy, and learn the ins and outs of
+                business management.
               </Typography>
             </CardContent>
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "flex-end",
+                p: 2,
+              }}
+            >
+              <Button
+                variant="contained"
+                sx={{
+                  backgroundColor: "#007bff",
+                  color: "white",
+                  "&:hover": {
+                    backgroundColor: "#0056b3",
+                  },
+                }}
+              >
+                Create Your Business
+              </Button>
+            </Box>
           </Card>
         </Grid>
         <Grid item xs={4}></Grid>
@@ -240,7 +265,7 @@ const MainContent = () => {
                 <Typography sx={{ fontSize: "1.5rem" }}>
                   {practice.icon}
                 </Typography>
-                <Typography variant="body2">{practice.technology}</Typography>
+                <Typography variant="body2">{practice.category}</Typography>
               </Box>
               <Button
                 variant="outlined"

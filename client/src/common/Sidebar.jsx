@@ -117,7 +117,6 @@ const Sidebar = () => {
         </ListItem>
         {[
           { text: "Projects", icon: <WorkOutline /> },
-          { text: "Code Alongs", icon: <Code /> },
           { text: "Competitions", icon: <EmojiEvents /> },
         ].map((item) => (
           <ListItem

@@ -40,7 +40,7 @@ const MainContent = () => {
             LEARN
           </Typography>
           <Typography variant="h6" gutterBottom>
-            Introduction to Python
+            Entrepreneurial Finance
           </Typography>
           <LinearProgress
             variant="determinate"
@@ -85,7 +85,7 @@ const MainContent = () => {
             <Typography variant="overline" display="block" gutterBottom>
               PRACTICE
             </Typography>
-            <Typography variant="h6">Introduction to Python</Typography>
+            <Typography variant="h6">Entrepreneurial Finance</Typography>
           </CardContent>
         </Card>
         <Card sx={{ flex: 1, p: 1 }}>

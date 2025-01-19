@@ -11,15 +11,106 @@ import {
   Stack,
 } from "@mui/material";
 import { LocationOn, FilterList } from "@mui/icons-material";
-import { additionalTech, courses, technologies } from "../data";
 
 const MainContent = () => {
+  const categories = [
+    "All",
+    "Marketing",
+    "Finance",
+    "Entrepreneurship",
+    "Leadership",
+    "Strategy",
+    "Business Analytics",
+  ];
+
+  const additionalSkills = [
+    "Public Speaking",
+    "Negotiation",
+    "Customer Relationship Management",
+    "Design Thinking",
+    "Project Management",
+    "Lean Startup Methodology",
+  ];
+
+  const businessCourses = [
+    {
+      type: "Marketing",
+      title: "Social Media Marketing Strategies",
+      level: "Beginner",
+      description:
+        "Learn how to grow your business using social media platforms like Facebook, Instagram, and LinkedIn.",
+      duration: "5 weeks",
+      icon: "📱",
+      instructor: {
+        name: "Sara Johnson",
+        avatar: "https://example.com/avatar1.jpg",
+        role: "Digital Marketing Consultant",
+      },
+    },
+    {
+      type: "Finance",
+      title: "Entrepreneurial Finance",
+      level: "Intermediate",
+      description:
+        "Understand key financial principles to raise capital and manage business cash flow effectively.",
+      duration: "4 weeks",
+      icon: "💰",
+      instructor: {
+        name: "Mark Turner",
+        avatar: "https://example.com/avatar2.jpg",
+        role: "Financial Advisor",
+      },
+    },
+    {
+      type: "Leadership",
+      title: "Emotional Intelligence for Leaders",
+      level: "Advanced",
+      description:
+        "Master the art of emotional intelligence to lead teams and manage interpersonal relationships successfully.",
+      duration: "6 weeks",
+      icon: "🤝",
+      instructor: {
+        name: "Emma Davis",
+        avatar: "https://example.com/avatar3.jpg",
+        role: "Leadership Coach",
+      },
+    },
+    {
+      type: "Entrepreneurship",
+      title: "Startup Growth Tactics",
+      level: "Advanced",
+      description:
+        "Learn proven tactics to scale your startup and navigate challenges during rapid growth.",
+      duration: "8 weeks",
+      icon: "🚀",
+      instructor: {
+        name: "Jason Reed",
+        avatar: "https://example.com/avatar4.jpg",
+        role: "Startup Founder & Mentor",
+      },
+    },
+    {
+      type: "Strategy",
+      title: "Strategic Business Planning",
+      level: "Beginner",
+      description:
+        "Develop your strategic thinking skills and create actionable business plans to achieve long-term goals.",
+      duration: "3 weeks",
+      icon: "📊",
+      instructor: {
+        name: "Sophia Brown",
+        avatar: "https://example.com/avatar5.jpg",
+        role: "Business Strategist",
+      },
+    },
+  ];
+
   return (
     <Container maxWidth="lg">
       {/* Header Section */}
       <Card
         sx={{
-          backgroundColor: "#000820",
+          backgroundColor: "#001F3F",
           color: "white",
           mb: 4,
           p: 4,
@@ -30,11 +121,11 @@ const MainContent = () => {
         <Box sx={{ maxWidth: "60%" }}>
           <Box sx={{ display: "flex", alignItems: "center", gap: 1, mb: 2 }}>
             <Typography variant="h4" component="h1">
-              MainContent
+              Business Mastery Hub
             </Typography>
             <Chip
               icon={<LocationOn />}
-              label="Hands-on learning"
+              label="Business Education"
               sx={{
                 backgroundColor: "rgba(255, 255, 255, 0.1)",
                 color: "white",
@@ -42,51 +133,35 @@ const MainContent = () => {
             />
           </Box>
           <Typography variant="h6" sx={{ fontWeight: "normal", opacity: 0.9 }}>
-            It's time to roll up your sleeves—we learn best by doing. All of our
-            MainContent are interactive, combining short videos with hands-on
-            exercises.
+            Upgrade your skills with world-class courses in entrepreneurship,
+            marketing, finance, and leadership.
           </Typography>
-        </Box>
-
-        {/* Learning Cycle Diagram - Placeholder */}
-        <Box
-          sx={{
-            position: "absolute",
-            right: 40,
-            top: "50%",
-            transform: "translateY(-50%)",
-            width: 200,
-            height: 200,
-            opacity: 0.6,
-          }}
-        >
-          {/* Add your learning cycle diagram here */}
         </Box>
       </Card>
 
-      {/* Technology Filter Chips */}
+      {/* Category Filter Chips */}
       <Stack spacing={2} sx={{ mb: 4 }}>
         <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1 }}>
-          {technologies.map((tech) => (
+          {categories.map((category) => (
             <Chip
-              key={tech}
-              label={tech}
+              key={category}
+              label={category}
               clickable
               sx={{
-                backgroundColor: tech === "All" ? "#000820" : "#f7f7fc",
-                color: tech === "All" ? "white" : "inherit",
+                backgroundColor: category === "All" ? "#001F3F" : "#f7f7fc",
+                color: category === "All" ? "white" : "inherit",
                 "&:hover": {
-                  backgroundColor: tech === "All" ? "#001040" : "#eeeef9",
+                  backgroundColor: category === "All" ? "#003060" : "#eeeef9",
                 },
               }}
             />
           ))}
         </Box>
         <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1 }}>
-          {additionalTech.map((tech) => (
+          {additionalSkills.map((skill) => (
             <Chip
-              key={tech}
-              label={tech}
+              key={skill}
+              label={skill}
               clickable
               sx={{
                 backgroundColor: "#f7f7fc",
@@ -96,7 +171,7 @@ const MainContent = () => {
               }}
             />
           ))}
-          <Chip label="+13" variant="outlined" />
+          <Chip label="+6" variant="outlined" />
         </Box>
       </Stack>
 
@@ -110,12 +185,12 @@ const MainContent = () => {
         }}
       >
         <Typography variant="h6" component="h2">
-          501 MainContent
+          250 Business Courses
         </Typography>
         <Box sx={{ display: "flex", gap: 2 }}>
           <Button
             variant="outlined"
-            sx={{ color: "#000000", borderColor: "#000000" }}
+            sx={{ color: "#001F3F", borderColor: "#001F3F" }}
             startIcon={<FilterList />}
           >
             More filters
@@ -131,7 +206,7 @@ const MainContent = () => {
           gap: 3,
         }}
       >
-        {courses.map((course) => (
+        {businessCourses.map((course) => (
           <Card
             key={course.title}
             sx={{ display: "flex", flexDirection: "column" }}
