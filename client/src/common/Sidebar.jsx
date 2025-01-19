@@ -13,7 +13,6 @@ import {
   School,
   Assignment,
   WorkOutline,
-  Code,
   EmojiEvents,
 } from "@mui/icons-material";
 
