@@ -15,7 +15,7 @@ const TrackHeader = ({ trackStats, bonusItems }) => (
       CAREER TRACK
     </Typography>
     <Typography variant="h4" sx={{ my: 2 }}>
-      Associate Data Scientist in Python
+      Entrepreneurial Communication Specialist
     </Typography>
     <Button variant="contained" color="success" sx={{ mb: 4 }}>
       Start Track

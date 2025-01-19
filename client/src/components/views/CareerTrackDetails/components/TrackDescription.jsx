@@ -7,8 +7,9 @@ const TrackDescription = () => (
       Track Description
     </Typography>
     <Typography variant="body2" sx={{ mb: 4 }}>
-      Learn data science in Python, from data manipulation to machine learning.
-      This track provides the skills needed to succeed as a data scientist!
+      Learn the essentials of entrepreneurial communication, from pitching ideas
+      to effective networking. This track provides the skills needed to succeed
+      as a communication specialist in the entrepreneurial world!
     </Typography>
   </>
 );

@@ -8,7 +8,7 @@ import {
   Button,
 } from "@mui/material";
 import LearningLayout from "../../../common/LearningLayout";
-import { questions } from "./data";
+import { questions, careerPaths } from "./data";
 import { QuestionCard, Recommendations } from "./components";
 
 const CareerPathRecommender = () => {
@@ -31,32 +31,32 @@ const CareerPathRecommender = () => {
       const recommendations = [];
 
       if (
-        answers.programming_experience === "none" ||
-        answers.programming_experience === "beginner"
+        answers.business_experience === "none" ||
+        answers.business_experience === "beginner"
       ) {
-        recommendations.push("dataAnalyst");
+        recommendations.push("marketingSpecialist");
       }
 
       if (
-        answers.interest_area === "ml" ||
-        answers.work_preference === "research"
+        answers.interest_area === "strategy" ||
+        answers.work_preference === "leadership"
       ) {
-        if (answers.programming_experience === "advanced") {
-          recommendations.push("mlEngineer");
+        if (answers.business_experience === "advanced") {
+          recommendations.push("businessConsultant");
         } else {
-          recommendations.push("dataScientist");
+          recommendations.push("entrepreneur");
         }
       }
 
       if (
-        answers.interest_area === "engineering" ||
-        answers.work_preference === "infrastructure"
+        answers.interest_area === "communication" ||
+        answers.work_preference === "networking"
       ) {
-        recommendations.push("dataEngineer");
+        recommendations.push("publicRelations");
       }
 
       if (recommendations.length === 0) {
-        recommendations.push("dataAnalyst");
+        recommendations.push("marketingSpecialist");
       }
 
       setRecommendations(recommendations);

@@ -35,30 +35,30 @@ const CareerTrackDetails = () => {
   const [courseTwoExpanded, setCourseTwoExpanded] = useState(false);
 
   const trackStats = [
-    { icon: <Book />, text: "Python, Theory" },
-    { icon: <AccessTime />, text: "90 hours" },
-    { icon: <School />, text: "23 courses" },
-    { icon: <Assessment />, text: "3 skill assessments" },
-    { icon: <WorkspacesOutlined />, text: "11 projects" },
-    { icon: <Groups />, text: "225,970 participants" },
+    { icon: <Book />, text: "Communication, Strategy" },
+    { icon: <AccessTime />, text: "60 hours" },
+    { icon: <School />, text: "15 courses" },
+    { icon: <Assessment />, text: "2 skill assessments" },
+    { icon: <WorkspacesOutlined />, text: "5 projects" },
+    { icon: <Groups />, text: "10,000 participants" },
   ];
 
   const bonusItems = Array(14).fill(null);
 
   const instructors = [
     {
-      name: "Hugo Bowne-Anderson",
-      title: "Data Scientist",
+      name: "Jane Doe",
+      title: "Entrepreneurship Coach",
       avatar: "/path/to/avatar1",
     },
     {
-      name: "Benjamin Wilson",
-      title: "Director of Research at lateral.io",
+      name: "John Smith",
+      title: "Communication Expert",
       avatar: "/path/to/avatar2",
     },
     {
-      name: "Elie Kawerk",
-      title: "Senior Data Scientist",
+      name: "Emily Johnson",
+      title: "Public Speaking Trainer",
       avatar: "/path/to/avatar3",
     },
   ];

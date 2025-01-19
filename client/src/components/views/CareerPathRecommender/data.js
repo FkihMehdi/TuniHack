@@ -1,19 +1,19 @@
-import { Code, Analytics, Storage, Psychology } from "@mui/icons-material";
+import { Business, Chat, Group, School } from "@mui/icons-material";
 
 const questions = [
   {
-    id: "programming_experience",
-    question: "What is your programming experience level?",
+    id: "business_experience",
+    question: "What is your business experience level?",
     options: [
       { value: "none", label: "No experience" },
       { value: "beginner", label: "Beginner (some basics)" },
       {
         value: "intermediate",
-        label: "Intermediate (comfortable with 1-2 languages)",
+        label: "Intermediate (comfortable with business concepts)",
       },
       {
         value: "advanced",
-        label: "Advanced (proficient in multiple languages)",
+        label: "Advanced (proficient in business management)",
       },
     ],
   },
@@ -21,20 +21,20 @@ const questions = [
     id: "interest_area",
     question: "Which areas interest you the most?",
     options: [
-      { value: "analysis", label: "Data Analysis & Visualization" },
-      { value: "ml", label: "Machine Learning & AI" },
-      { value: "engineering", label: "Data Engineering & Infrastructure" },
-      { value: "statistics", label: "Statistics & Mathematical Modeling" },
+      { value: "marketing", label: "Marketing & Sales" },
+      { value: "strategy", label: "Business Strategy & Planning" },
+      { value: "communication", label: "Communication & Public Relations" },
+      { value: "finance", label: "Finance & Accounting" },
     ],
   },
   {
     id: "work_preference",
     question: "What type of work appeals to you most?",
     options: [
-      { value: "business", label: "Business Analysis & Reporting" },
-      { value: "research", label: "Research & Development" },
-      { value: "infrastructure", label: "Building Data Infrastructure" },
-      { value: "products", label: "Developing Data Products" },
+      { value: "leadership", label: "Leadership & Management" },
+      { value: "creative", label: "Creative & Content Creation" },
+      { value: "networking", label: "Networking & Relationship Building" },
+      { value: "analysis", label: "Market Analysis & Research" },
     ],
   },
   {
@@ -50,35 +50,45 @@ const questions = [
 ];
 
 const careerPaths = {
-  dataAnalyst: {
-    title: "Data Analyst",
-    description: "Focus on analyzing data to provide business insights",
-    icon: <Analytics />,
-    skills: ["SQL", "Python", "Data Visualization", "Statistics"],
+  entrepreneur: {
+    title: "Entrepreneur",
+    description: "Start and manage your own business",
+    icon: <Business />,
+    skills: ["Business Planning", "Marketing", "Finance", "Leadership"],
+    timeToComplete: "6-12 months",
+    difficulty: "Advanced",
+  },
+  marketingSpecialist: {
+    title: "Marketing Specialist",
+    description: "Focus on promoting products and services",
+    icon: <Chat />,
+    skills: ["SEO", "Content Creation", "Social Media", "Analytics"],
     timeToComplete: "3-6 months",
     difficulty: "Beginner-Friendly",
   },
-  dataScientist: {
-    title: "Data Scientist",
-    description: "Combine statistics, ML, and business knowledge",
-    icon: <Psychology />,
-    skills: ["Python", "Machine Learning", "Statistics", "Deep Learning"],
-    timeToComplete: "6-12 months",
-    difficulty: "Intermediate",
-  },
-  dataEngineer: {
-    title: "Data Engineer",
-    description: "Build and maintain data infrastructure",
-    icon: <Storage />,
-    skills: ["Python", "SQL", "Big Data", "Data Warehousing"],
+  publicRelations: {
+    title: "Public Relations Specialist",
+    description: "Manage public image and communications",
+    icon: <Group />,
+    skills: [
+      "Communication",
+      "Media Relations",
+      "Writing",
+      "Crisis Management",
+    ],
     timeToComplete: "6-9 months",
     difficulty: "Intermediate",
   },
-  mlEngineer: {
-    title: "ML Engineer",
-    description: "Develop and deploy machine learning systems",
-    icon: <Code />,
-    skills: ["Python", "ML Ops", "Software Engineering", "Deep Learning"],
+  businessConsultant: {
+    title: "Business Consultant",
+    description: "Provide expert advice to improve business performance",
+    icon: <School />,
+    skills: [
+      "Business Analysis",
+      "Strategy",
+      "Problem Solving",
+      "Communication",
+    ],
     timeToComplete: "9-12 months",
     difficulty: "Advanced",
   },

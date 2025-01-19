@@ -24,7 +24,7 @@ const Sidebar = ({ instructors }) => (
         <Box sx={{ display: "flex", alignItems: "center", gap: 1, mb: 1 }}>
           <Typography variant="body2">by</Typography>
           <Typography variant="body2" color="primary">
-            datacamp
+            entrepreneuria
           </Typography>
         </Box>
         <Chip
