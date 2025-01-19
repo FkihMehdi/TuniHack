@@ -11,8 +11,11 @@ import {
   Grid,
 } from "@mui/material";
 import { ArrowForward, FilterList } from "@mui/icons-material";
+import { useNavigate } from "react-router-dom";
 
 const MainContent = () => {
+  const navigate = useNavigate();
+
   const categories = [
     "All",
     "Marketing",
@@ -213,6 +216,7 @@ const MainContent = () => {
                     backgroundColor: "#0056b3",
                   },
                 }}
+                onClick={() => navigate("/dashboard")}
               >
                 Create Your Business
               </Button>
