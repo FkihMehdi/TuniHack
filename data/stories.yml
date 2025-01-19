@@ -1,0 +1,119 @@
+version: "3.1"
+
+stories:
+  - story: pitch basics path
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: ask_pitch
+      - action: utter_pitch
+      - action: action_listen
+      - intent: ask_pitch_structure
+      - action: utter_pitch_structure
+      - action: action_listen
+      - intent: thank
+      - action: utter_thank
+      - action: action_listen
+      - intent: goodbye
+      - action: utter_goodbye
+
+  - story: pitch advanced path
+    steps:
+      - intent: ask_pitch_tips
+      - action: utter_pitch_tips
+      - action: action_listen
+      - intent: ask_pitch_duration
+      - action: utter_pitch_duration
+      - action: action_listen
+      - intent: thank
+      - action: utter_thank
+      - action: action_listen
+      - intent: goodbye
+      - action: utter_goodbye
+
+  - story: entrepreneurship basics path
+    steps:
+      - intent: ask_entrepreneurship
+      - action: utter_entrepreneurship
+      - action: action_listen
+      - intent: ask_business_plan
+      - action: utter_business_plan
+      - action: action_listen
+      - intent: thank
+      - action: utter_thank
+      - action: action_listen
+      - intent: goodbye
+      - action: utter_goodbye
+
+  - story: market research path
+    steps:
+      - intent: ask_market_research
+      - action: utter_market_research
+      - action: action_listen
+      - intent: ask_funding
+      - action: utter_funding
+      - action: action_listen
+      - intent: thank
+      - action: utter_thank
+      - action: action_listen
+      - intent: goodbye
+      - action: utter_goodbye
+
+  - story: team building path
+    steps:
+      - intent: ask_team_building
+      - action: utter_team_building
+      - action: action_listen
+      - intent: ask_legal_requirements
+      - action: utter_legal_requirements
+      - action: action_listen
+      - intent: thank
+      - action: utter_thank
+      - action: action_listen
+      - intent: goodbye
+      - action: utter_goodbye
+
+  - story: communication basics path
+    steps:
+      - intent: ask_communication
+      - action: utter_communication
+      - action: action_listen
+      - intent: ask_public_speaking
+      - action: utter_public_speaking
+      - action: action_listen
+      - intent: thank
+      - action: utter_thank
+      - action: action_listen
+      - intent: goodbye
+      - action: utter_goodbye
+
+  - story: presentation skills path
+    steps:
+      - intent: ask_presentation_design
+      - action: utter_presentation_design
+      - action: action_listen
+      - intent: ask_body_language
+      - action: utter_body_language
+      - action: action_listen
+      - intent: thank
+      - action: utter_thank
+      - action: action_listen
+      - intent: goodbye
+      - action: utter_goodbye
+
+  - story: networking path
+    steps:
+      - intent: ask_networking
+      - action: utter_networking
+      - action: action_listen
+      - intent: thank
+      - action: utter_thank
+      - action: action_listen
+      - intent: goodbye
+      - action: utter_goodbye
+
+  - story: short thank you
+    steps:
+      - intent: thank
+      - action: utter_thank
+      - action: action_listen

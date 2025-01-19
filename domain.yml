@@ -1,0 +1,104 @@
+# domain.yml
+version: "3.1"
+
+intents:
+  - greet
+  - goodbye
+  - ask_pitch
+  - ask_pitch_structure
+  - ask_pitch_tips
+  - ask_pitch_duration
+  - ask_entrepreneurship
+  - ask_business_plan
+  - ask_market_research
+  - ask_funding
+  - ask_team_building
+  - ask_legal_requirements
+  - ask_communication
+  - ask_public_speaking
+  - ask_presentation_design
+  - ask_body_language
+  - ask_networking
+  - thank
+  - bot_challenge
+
+responses:
+  utter_greet:
+    - text: "Hi! I'm your entrepreneurship and communication assistant. How can I help you today?"
+    - text: "Hello! Ready to help you with pitching, business, and communication skills. What would you like to learn?"
+    - text: "Welcome! I can help you with entrepreneurship, pitching, and communication. What's on your mind?"
+
+  utter_goodbye:
+    - text: "Goodbye! Good luck with your entrepreneurial journey!"
+    - text: "See you later! Remember, practice makes perfect!"
+    - text: "Bye! Feel free to come back anytime for more advice!"
+
+  utter_pitch:
+    - text: "Here's how to create an effective pitch: 1. Start with a hook 2. Clearly state the problem 3. Present your solution 4. Explain the market opportunity 5. Share your business model 6. Highlight your team's expertise 7. End with a clear call to action"
+    - text: "A compelling pitch includes: 1. A powerful opening 2. Problem description 3. Your unique solution 4. Market size and opportunity 5. Revenue model 6. Competition analysis 7. Ask and timeline"
+
+  utter_pitch_structure:
+    - text: "Your pitch should follow this structure: 1. Introduction (30 sec) 2. Problem (1 min) 3. Solution (2 min) 4. Market & Competition (1 min) 5. Business Model (1 min) 6. Team (1 min) 7. Ask & Closing (30 sec)"
+    - text: "Structure your pitch deck with these slides: 1. Title 2. Problem 3. Solution 4. Market Size 5. Business Model 6. Competition 7. Team 8. Financials 9. Ask"
+
+  utter_pitch_tips:
+    - text: "Key pitching tips: 1. Make eye contact 2. Use storytelling 3. Show passion 4. Practice timing 5. Prepare for questions 6. Use visuals wisely 7. End strongly"
+    - text: "Advanced pitching techniques: 1. Start with a hook 2. Use data effectively 3. Share customer testimonials 4. Demonstrate traction 5. Address risks 6. Show scalability 7. Clear value proposition"
+
+  utter_pitch_duration:
+    - text: "Pitch duration guidelines: 1. Elevator pitch: 30-60 seconds 2. Short pitch: 3-5 minutes 3. Investor pitch: 10-15 minutes 4. Detailed presentation: 20-30 minutes"
+    - text: "Time management for pitches: 1. Hook: 30 seconds 2. Problem/Solution: 2 minutes 3. Market: 1 minute 4. Business Model: 1 minute 5. Team: 1 minute 6. Ask: 30 seconds"
+
+  utter_entrepreneurship:
+    - text: "Essential entrepreneurship elements: 1. Market Research 2. Business Planning 3. Financial Management 4. Team Building 5. Marketing Strategy 6. Legal Compliance 7. Risk Management"
+    - text: "Starting a business checklist: 1. Validate idea 2. Research market 3. Create business plan 4. Secure funding 5. Build team 6. Legal setup 7. Launch strategy"
+
+  utter_business_plan:
+    - text: "Business plan sections: 1. Executive Summary 2. Company Description 3. Market Analysis 4. Organization Structure 5. Service/Product Line 6. Marketing Strategy 7. Funding Request 8. Financial Projections"
+    - text: "Key business plan tips: 1. Be realistic 2. Show research 3. Include financials 4. Define target market 5. Explain competitive advantage 6. Detail marketing plan 7. Include milestones"
+
+  utter_market_research:
+    - text: "Market research steps: 1. Define target market 2. Analyze competitors 3. Conduct surveys 4. Study market trends 5. Identify customer needs 6. Estimate market size 7. Test assumptions"
+    - text: "Research methods: 1. Customer interviews 2. Online surveys 3. Industry reports 4. Competitor analysis 5. Social media monitoring 6. Focus groups 7. Market testing"
+
+  utter_funding:
+    - text: "Funding options: 1. Bootstrapping 2. Angel investors 3. Venture capital 4. Bank loans 5. Crowdfunding 6. Government grants 7. Business accelerators"
+    - text: "Fundraising tips: 1. Perfect your pitch 2. Know your numbers 3. Build relationships 4. Start early 5. Have clear milestones 6. Understand terms 7. Plan for follow-up"
+
+  utter_team_building:
+    - text: "Team building essentials: 1. Define roles clearly 2. Hire for culture fit 3. Set expectations 4. Establish communication 5. Create feedback loops 6. Offer development 7. Build trust"
+    - text: "Key team positions: 1. CEO 2. CTO 3. CFO 4. CMO 5. Product Manager 6. Sales Director 7. Customer Success"
+
+  utter_legal_requirements:
+    - text: "Legal checklist: 1. Business structure 2. Registration 3. Licenses 4. Patents/IP 5. Contracts 6. Insurance 7. Employment law"
+    - text: "Legal considerations: 1. Company type 2. Tax obligations 3. Employee contracts 4. Privacy policies 5. Terms of service 6. Regulatory compliance 7. Industry permits"
+
+  utter_communication:
+    - text: "Communication fundamentals: 1. Clear messaging 2. Active listening 3. Body language 4. Audience adaptation 5. Storytelling 6. Feedback handling 7. Presentation skills"
+    - text: "Professional communication: 1. Email etiquette 2. Meeting management 3. Public speaking 4. Written reports 5. Visual presentations 6. Networking 7. Conflict resolution"
+
+  utter_public_speaking:
+    - text: "Public speaking tips: 1. Know your audience 2. Structure content 3. Practice delivery 4. Use visuals 5. Manage nerves 6. Engage audience 7. Handle Q&A"
+    - text: "Speaking techniques: 1. Voice modulation 2. Pace control 3. Gesture use 4. Stage presence 5. Eye contact 6. Audience interaction 7. Time management"
+
+  utter_presentation_design:
+    - text: "Presentation design principles: 1. Clear hierarchy 2. Simple slides 3. Visual consistency 4. Limited text 5. High-quality images 6. Readable fonts 7. Brand alignment"
+    - text: "Slide design tips: 1. One idea per slide 2. Use visuals 3. Limited bullet points 4. Contrast colors 5. White space 6. Consistent styling 7. Clear headlines"
+
+  utter_body_language:
+    - text: "Body language tips: 1. Stand tall 2. Use gestures 3. Maintain eye contact 4. Smile naturally 5. Open posture 6. Move purposefully 7. Match expressions"
+    - text: "Non-verbal communication: 1. Facial expressions 2. Hand movements 3. Posture 4. Personal space 5. Voice tone 6. Appearance 7. Movement patterns"
+
+  utter_networking:
+    - text: "Networking strategies: 1. Prepare elevator pitch 2. Ask questions 3. Listen actively 4. Follow up 5. Offer value 6. Stay connected 7. Attend events"
+    - text: "Network building tips: 1. Join communities 2. Use LinkedIn 3. Attend conferences 4. Share knowledge 5. Help others 6. Stay in touch 7. Create content"
+
+  utter_thank:
+    - text: "You're welcome! Don't hesitate to ask if you need more guidance!"
+    - text: "Glad I could help! Remember, success comes with practice and persistence!"
+    - text: "My pleasure! Keep working on your entrepreneurial journey!"
+
+  utter_iamabot:
+    - text: "I'm an AI assistant specialized in entrepreneurship and communication. How can I help you today?"
+    - text: "I'm a bot designed to help you with business, pitching, and communication skills. What would you like to learn?"
+# Add stories and NLU training data in separate artifacts to keep this readable

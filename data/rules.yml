@@ -1,0 +1,20 @@
+ersion: "3.1"
+
+rules:
+  - rule: Say goodbye anytime the user says goodbye
+    steps:
+      - intent: goodbye
+      - action: utter_goodbye
+      - action: action_listen
+
+  - rule: Say 'I am a bot' anytime the user challenges
+    steps:
+      - intent: bot_challenge
+      - action: utter_iamabot
+      - action: action_listen
+
+  - rule: Greet user
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - action: action_listen
