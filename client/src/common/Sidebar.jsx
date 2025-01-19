@@ -120,7 +120,6 @@ const Sidebar = () => {
         {[
           { text: "Projects", icon: <WorkOutline /> },
           { text: "Competitions", icon: <EmojiEvents /> },
-          { text: "Legal aspect", icon: <EmojiEvents /> },
         ].map((item) => (
           <ListItem
             button
