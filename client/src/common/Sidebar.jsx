@@ -13,7 +13,6 @@ import {
   School,
   Assignment,
   WorkOutline,
-  Code,
   EmojiEvents,
 } from "@mui/icons-material";
 
@@ -50,12 +49,15 @@ const Sidebar = () => {
             }}
           />
         </ListItem>
-        <ListItem>
+        <ListItem
+          button
+          onClick={() => navigate("/career-path-recommendation")}
+        >
           <ListItemIcon sx={{ color: "#ffffff" }}>
             <BookmarkBorder />
           </ListItemIcon>
           <ListItemText
-            primary="My Library"
+            primary="Recommendations"
             sx={{
               "& .MuiTypography-root": {
                 color: "#ffffff",
@@ -76,7 +78,7 @@ const Sidebar = () => {
           />
         </ListItem>
         {[
-          { text: "Tracks", icon: <School /> },
+          { text: "Tracks", icon: <School />, path: "/career-tracks" },
           { text: "Courses", icon: <Assignment />, path: "/courses" },
           { text: "Conference", icon: <WorkOutline />, path: "/conferences" },
           // { text: "Practice", icon: <Assessment />, path: "/practice" },

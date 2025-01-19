@@ -18,9 +18,7 @@ import {
   CalendarToday,
   AccessTime,
   LocationOn,
-  Person,
   Group,
-  Description,
 } from "@mui/icons-material";
 import { conference } from "./data";
 import LearningLayout from "../../../common/LearningLayout";

@@ -26,8 +26,12 @@ import PracticePage from "./components/views/Practises/Practices";
 import Conferences from "./components/views/Conferences/Conferences";
 import ConferenceDetails from "./components/views/ConferenceDetails/ConferenceDetails";
 import { LearningPage } from "./components/views/Learning";
-import Map from "./components/views/Map/map";
 import Dashboard from "./components/views/dashboard/Dashboard";
+import Offers from "./components/views/Offers/Offers";
+import CareerTracks from "./components/views/CareerTracks/CareerTracks";
+import CareerTrackDetails from "./components/views/CareerTrackDetails/CareerTrackDetails";
+import CareerPathRecommender from "./components/views/CareerPathRecommender/CareerPathRecommender";
+import CourseContent from "./components/views/CourseContent/CourseContent";
 
 function App() {
   useEffect(() => {
@@ -68,6 +72,7 @@ function App() {
           <Route path="/search" element={<SearchView />} />
           <Route path="/learning-dashboard" element={<LearningDashboard />} />
           <Route path="/courses" element={<Courses />} />
+          <Route path="/courses/:id" element={<CourseContent />} />
           <Route path="/practice" element={<PracticePage />} />
           <Route path="/users/:id" element={<ProfileView />} />
           <Route path="/login" element={<LoginView />} />
@@ -75,12 +80,19 @@ function App() {
           <Route path="/learning" element={<LearningPage />} />
           <Route path="/conferences" element={<Conferences />} />
           <Route path="/conferences/:id" element={<ConferenceDetails />} />
+          <Route path="/offers" element={<Offers />} />
           <Route
             path="/conferences/:id/stream"
             element={<ConferenceDetails />}
           />
-          <Route path="/map" element={<Map />} />
+          {/* <Route path="/map" element={<Map />} /> */}
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route
+            path="career-path-recommendation"
+            element={<CareerPathRecommender />}
+          />
+          <Route path="career-tracks" element={<CareerTracks />} />
+          <Route path="career-tracks/:id" element={<CareerTrackDetails />} />
         </Routes>
       </BrowserRouter>
     </ThemeProvider>

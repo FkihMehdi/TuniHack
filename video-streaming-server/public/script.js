@@ -134,3 +134,7 @@ const setPlayVideo = () => {
   `;
   document.querySelector(".main__video_button").innerHTML = html;
 };
+
+const leaveMeeting = () => {
+  window.location.href = "/thank-you";
+};

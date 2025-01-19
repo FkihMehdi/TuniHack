@@ -16,6 +16,10 @@ app.use("/peerjs", peerServer);
 app.set("view engine", "ejs");
 app.use(express.static("public"));
 
+app.get("/thank-you", (req, res) => {
+  res.render("thank-you");
+});
+
 app.get("/", (req, res) => {
   res.redirect(`/${uuidV4()}`);
 });

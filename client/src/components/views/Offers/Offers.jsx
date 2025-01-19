@@ -1,5 +1,10 @@
 import { LearningLayout } from "../../../common";
+import Map from "../Map/map";
 function Offers() {
-  return <LearningLayout>offers</LearningLayout>;
+  return (
+    <LearningLayout>
+      <Map />
+    </LearningLayout>
+  );
 }
 export default Offers;
