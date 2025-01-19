@@ -40,7 +40,7 @@ const ImageSection = styled(Box)({
   top: 0,
   bottom: 0,
   width: "50%",
-  backgroundColor: "#00bfa5", // La couleur turquoise de l'arrière-plan
+  backgroundColor: "",
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
@@ -82,7 +82,7 @@ const LearningSection = () => {
         <ImageSection>
           <Box
             component="img"
-            src="/api/placeholder/600/800"
+            src="https://tse4.mm.bing.net/th?id=OIP.trqo8Y0VXh_AWuQt2upNTQHaEK&rs=1&pid=ImgDetMain"
             alt="Person giving a presentation"
             sx={{
               maxWidth: "100%",

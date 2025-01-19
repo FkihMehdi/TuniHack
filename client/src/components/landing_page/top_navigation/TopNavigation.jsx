@@ -1,8 +1,8 @@
 import React, { useState } from "react";
+import Logo from "../../../assests/logo.png";
 import {
   AppBar,
   Toolbar,
-  Typography,
   Box,
   Chip,
   IconButton,
@@ -16,6 +16,12 @@ import {
   Notifications as NotificationsIcon,
 } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
+
+const navItems = [
+  { label: "Learn", path: "learning" },
+  { label: "Practice", path: "practice" },
+  { label: "My Calendar", path: "my-calendar" },
+];
 
 const theme = createTheme({
   palette: {
@@ -62,7 +68,12 @@ const TopNavigationHomepage = () => {
   const [selectedChip, setSelectedChip] = useState(null);
 
   const handleChipClick = (chip) => {
-    setSelectedChip(chip);
+    setSelectedChip((prevSelectedChip) => {
+      if (prevSelectedChip !== chip.label) {
+        navigate("/" + chip.path);
+      }
+      return chip.label;
+    });
   };
 
   return (
@@ -72,14 +83,15 @@ const TopNavigationHomepage = () => {
         sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}
       >
         <Toolbar>
-          <Typography
-            variant="h6"
-            component="div"
-            sx={{ flexGrow: 0, mr: 2, color: "#000000" }}
-            onClick={() => navigate("/home")}
+          <Box
+            sx={{ display: "flex", alignItems: "center", cursor: "pointer" }}
           >
-            Affilify
-          </Typography>
+            <img
+              src={Logo}
+              alt="logo"
+              style={{ width: "40px", height: "40px", marginRight: "8px" }}
+            />
+          </Box>
           <Box
             sx={{
               display: "flex",
@@ -89,22 +101,19 @@ const TopNavigationHomepage = () => {
               borderRadius: 5,
             }}
           >
-            {["Learn", "Offers", "Certification", "Sandbox"].map((label) => (
+            {navItems.map((item) => (
               <Chip
-                key={label}
-                label={label}
+                key={item.label}
+                label={item.label}
                 clickable
-                onClick={() => {
-                  handleChipClick(label);
-                  navigate("/" + label);
-                }}
+                onClick={() => handleChipClick(item)}
                 sx={{
                   backgroundColor:
-                    selectedChip === label ? "#000000" : "#f7f7fc",
-                  color: selectedChip === label ? "#ffffff" : "#000000",
+                    selectedChip === item.label ? "#000000" : "#e0e0e0",
+                  color: selectedChip === item.label ? "#ffffff" : "#000000",
                   "&:hover": {
                     backgroundColor:
-                      selectedChip === label ? "#000000" : "#eeeef9",
+                      selectedChip === item.label ? "#000000" : "#eeeef9",
                   },
                 }}
               />
