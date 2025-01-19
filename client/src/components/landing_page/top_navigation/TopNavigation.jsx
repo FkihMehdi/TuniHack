@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Logo from "../assets/logo.png";
+import Logo from "../../../assests/logo.png";
 import {
   AppBar,
   Toolbar,
@@ -17,6 +17,8 @@ import {
   Notifications as NotificationsIcon,
 } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
+
+console.log("logo", Logo);
 
 const theme = createTheme({
   palette: {
