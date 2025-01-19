@@ -10,7 +10,7 @@ import {
   Chip,
   Stack,
 } from "@mui/material";
-import { CalendarToday, Person } from "@mui/icons-material";
+import { CalendarToday } from "@mui/icons-material";
 import { conferences } from "./data";
 import { NavLink } from "react-router-dom";
 import LearningLayout from "../../../common/LearningLayout";

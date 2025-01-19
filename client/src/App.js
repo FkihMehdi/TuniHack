@@ -26,8 +26,8 @@ import PracticePage from "./components/views/Practises/Practices";
 import Conferences from "./components/views/Conferences/Conferences";
 import ConferenceDetails from "./components/views/ConferenceDetails/ConferenceDetails";
 import { LearningPage } from "./components/views/Learning";
-import Map from "./components/views/Map/map";
 import Dashboard from "./components/views/dashboard/Dashboard";
+import Offers from "./components/views/Offers/Offers";
 
 function App() {
   useEffect(() => {
@@ -75,11 +75,12 @@ function App() {
           <Route path="/learning" element={<LearningPage />} />
           <Route path="/conferences" element={<Conferences />} />
           <Route path="/conferences/:id" element={<ConferenceDetails />} />
+          <Route path="/offers" element={<Offers />} />
           <Route
             path="/conferences/:id/stream"
             element={<ConferenceDetails />}
           />
-          <Route path="/map" element={<Map />} />
+          {/* <Route path="/map" element={<Map />} /> */}
           <Route path="/dashboard" element={<Dashboard />} />
         </Routes>
       </BrowserRouter>

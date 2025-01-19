@@ -13,16 +13,12 @@ import {
   People,
   AttachMoney,
   Business,
-  ArrowUpward,
-  ArrowDownward,
   Lightbulb,
   Warning,
 } from "@mui/icons-material";
 import {
   LineChart,
   Line,
-  BarChart,
-  Bar,
   XAxis,
   YAxis,
   CartesianGrid,
