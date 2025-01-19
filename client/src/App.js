@@ -23,7 +23,10 @@ import { LandingPage } from "./components/landing_page/LandingPage";
 import LearningDashboard from "./components/views/LearningDashboard/LearningDashboard";
 import Courses from "./components/views/Courses/Courses";
 import PracticePage from "./components/views/Practises/Practices";
-import Offers from "./components/views/Offers/Offers";
+import Conferences from "./components/views/Conferences/Conferences";
+import ConferenceDetails from "./components/views/ConferenceDetails/ConferenceDetails";
+import { LearningPage } from "./components/views/Learning";
+import Map from "./components/views/Map/map";
 import Dashboard from "./components/views/dashboard/Dashboard";
 
 function App() {
@@ -65,11 +68,18 @@ function App() {
           <Route path="/search" element={<SearchView />} />
           <Route path="/learning-dashboard" element={<LearningDashboard />} />
           <Route path="/courses" element={<Courses />} />
-          <Route path="/offers" element={<Offers />} />
           <Route path="/practice" element={<PracticePage />} />
           <Route path="/users/:id" element={<ProfileView />} />
           <Route path="/login" element={<LoginView />} />
           <Route path="/signup" element={<SignupView />} />
+          <Route path="/learning" element={<LearningPage />} />
+          <Route path="/conferences" element={<Conferences />} />
+          <Route path="/conferences/:id" element={<ConferenceDetails />} />
+          <Route
+            path="/conferences/:id/stream"
+            element={<ConferenceDetails />}
+          />
+          <Route path="/map" element={<Map />} />
           <Route path="/dashboard" element={<Dashboard />} />
         </Routes>
       </BrowserRouter>

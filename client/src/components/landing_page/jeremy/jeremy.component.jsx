@@ -90,37 +90,56 @@ const topics = [
   { name: "Publicité numérique", participants: "4,5 M" },
 ];
 
-const courses = [
-  {
-    id: 1,
-    title: "Construire et présenter un pitch gagnant",
-    author: "Sophie Dupont | Experte en communication",
-    rating: 4.8,
-    reviews: 152,
-    price: 69.99,
-    image: "/api/placeholder/280/160",
-    badge: "Meilleure vente",
-  },
-  {
-    id: 2,
-    title: "Stratégies avancées de marketing numérique",
-    author: "Julien Morel | Consultant en marketing",
-    rating: 4.6,
-    reviews: 287,
-    price: 59.99,
-    image: "/api/placeholder/280/160",
-    badge: "Les mieux notés",
-  },
-  {
-    id: 3,
-    title: "Maîtrisez l'art du leadership inspirant",
-    author: "Laura Fontaine | Coach en leadership",
-    rating: 4.7,
-    reviews: 201,
-    price: 64.99,
-    image: "/api/placeholder/280/160",
-  },
-];
+// const courses = [
+//   {
+//     id: 1,
+//     title: "Construire et présenter un pitch gagnant",
+//     author: "Sophie Dupont | Experte en communication",
+//     rating: 4.8,
+//     reviews: 152,
+//     price: 69.99,
+//     image: "/api/placeholder/280/160",
+//     badge: "Meilleure vente",
+//   },
+//   {
+//     id: 2,
+//     title: "Stratégies avancées de marketing numérique",
+//     author: "Julien Morel | Consultant en marketing",
+//     rating: 4.6,
+//     reviews: 287,
+//     price: 59.99,
+//     image: "/api/placeholder/280/160",
+//     badge: "Les mieux notés",
+//   },
+//   {
+//     id: 3,
+//     title: "Maîtrisez l'art du leadership inspirant",
+//     author: "Laura Fontaine | Coach en leadership",
+//     rating: 4.7,
+//     reviews: 201,
+//     price: 64.99,
+//     image: "/api/placeholder/280/160",
+//   },
+// ];
+
+const generateCourses = (numCourses) => {
+  const courses = [];
+  for (let i = 1; i <= numCourses; i++) {
+    courses.push({
+      id: i,
+      title: `Course Title ${i}`,
+      author: `Author ${i}`,
+      rating: (Math.random() * 2 + 3).toFixed(1), // Random rating between 3.0 and 5.0
+      reviews: Math.floor(Math.random() * 200) + 1, // Random reviews between 1 and 200
+      price: (Math.random() * 100).toFixed(2), // Random price between 0.00 and 100.00
+      image: `https://picsum.photos/200?random=${i}`,
+      badge: ["Meilleure vente", "Populaire", "Nouveau"][
+        Math.floor(Math.random() * 3)
+      ], // Random badge
+    });
+  }
+  return courses;
+};
 
 // CourseCard Component
 const CourseCard = ({ course }) => (
@@ -199,6 +218,9 @@ const CoursesSection = () => {
       direction === "right" ? scrollPosition + 300 : scrollPosition - 300;
     setScrollPosition(Math.max(0, newPosition));
   };
+
+  const courses = generateCourses(6);
+  console.log(courses);
 
   return (
     <Box
