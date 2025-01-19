@@ -76,7 +76,7 @@ const Sidebar = () => {
           />
         </ListItem>
         {[
-          { text: "Tracks", icon: <School /> },
+          { text: "Tracks", icon: <School />, path: "/career-tracks" },
           { text: "Courses", icon: <Assignment />, path: "/courses" },
           { text: "Conference", icon: <WorkOutline />, path: "/conferences" },
           // { text: "Practice", icon: <Assessment />, path: "/practice" },
