@@ -12,7 +12,7 @@ import {
 import { Search } from "@mui/icons-material";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import { useNavigate } from "react-router-dom";
-import Logo from "./assets/logo_swaffy.png";
+import Logo from "./assets/logo.png";
 
 const NavBar = () => {
   const navigate = useNavigate();

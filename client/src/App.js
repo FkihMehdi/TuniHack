@@ -94,7 +94,7 @@ function App() {
           />
           <Route path="career-tracks" element={<CareerTracks />} />
           <Route path="career-tracks/:id" element={<CareerTrackDetails />} />
-          <Route path="my-certifications" element={<Certifications />} />
+          <Route path="Certification" element={<Certifications />} />
           <Route path="my-calendar" element={<CourseCalendar />} />
         </Routes>
       </BrowserRouter>

@@ -23,7 +23,7 @@ const TopNavigation = () => {
     { label: "Home", path: "home" },
     { label: "Learn", path: "learning" },
     { label: "Practice", path: "practice" },
-    { label: "Certification", path: "my-certifications" },
+    { label: "Certification", path: "Certification" },
     { label: "My Calendar", path: "my-calendar" },
   ];
 
