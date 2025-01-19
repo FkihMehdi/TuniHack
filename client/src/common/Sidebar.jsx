@@ -50,12 +50,15 @@ const Sidebar = () => {
             }}
           />
         </ListItem>
-        <ListItem>
+        <ListItem
+          button
+          onClick={() => navigate("/career-path-recommendation")}
+        >
           <ListItemIcon sx={{ color: "#ffffff" }}>
             <BookmarkBorder />
           </ListItemIcon>
           <ListItemText
-            primary="My Library"
+            primary="Recommendations"
             sx={{
               "& .MuiTypography-root": {
                 color: "#ffffff",

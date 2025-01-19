@@ -30,6 +30,7 @@ import Dashboard from "./components/views/dashboard/Dashboard";
 import Offers from "./components/views/Offers/Offers";
 import CareerTracks from "./components/views/CareerTracks/CareerTracks";
 import CareerTrackDetails from "./components/views/CareerTrackDetails/CareerTrackDetails";
+import CareerPathRecommender from "./components/views/CareerPathRecommender/CareerPathRecommender";
 
 function App() {
   useEffect(() => {
@@ -84,6 +85,10 @@ function App() {
           />
           {/* <Route path="/map" element={<Map />} /> */}
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route
+            path="career-path-recommendation"
+            element={<CareerPathRecommender />}
+          />
           <Route path="career-tracks" element={<CareerTracks />} />
           <Route path="career-tracks/:id" element={<CareerTrackDetails />} />
         </Routes>
