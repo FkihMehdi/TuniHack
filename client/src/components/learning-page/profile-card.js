@@ -89,7 +89,7 @@ const ProfileCard = () => {
                 Completed
               </Typography>
               <Typography variant="body2">0 Courses</Typography>
-              <Typography variant="body2">0 Tracks</Typography>
+              <Typography variant="body2">0 Workshops</Typography>
               <Typography variant="body2">0 Projects</Typography>
             </Stack>
           </Box>
@@ -111,10 +111,10 @@ const ProfileCard = () => {
                 TRACK
               </Typography>
               <Typography variant="subtitle1" sx={{ fontWeight: "bold" }}>
-                AWS Cloud Practitioner
+                Entrepreneurship and Communication
               </Typography>
               <Typography variant="body2" color="text.secondary">
-                10 hours
+                15 hours
               </Typography>
             </Box>
             <Chip

@@ -34,12 +34,12 @@ const LearningTrackCard = () => {
                   component="span"
                   sx={{ textDecoration: "underline" }}
                 >
-                  Entrepreneurial Finance
+                  Entrepreneurial Communication
                 </Typography>{" "}
                 track.
               </Typography>
               <Typography variant="h5" sx={{ mt: 1, fontWeight: "bold" }}>
-                Introduction to Deep Learning with PyTorch
+                Mastering Business Communication
               </Typography>
             </Box>
             <Button
@@ -85,18 +85,18 @@ const LearningTrackCard = () => {
             {[
               {
                 icon: <PsychologyIcon />,
-                title: "ASSESS",
-                content: "Analytic Fundamentals",
+                title: "LEARN",
+                content: "Effective Communication Strategies",
               },
               {
                 icon: <FitnessCenterIcon />,
                 title: "PRACTICE",
-                content: "Explore Our Practice Library",
+                content: "Public Speaking Exercises",
               },
               {
                 icon: <StorageIcon />,
                 title: "APPLY",
-                content: "Building an E-Commerce Clothing Classifier Model",
+                content: "Pitching Your Business Idea",
               },
             ].map((section, index) => (
               <Grid item xs={12} md={4} key={index}>
