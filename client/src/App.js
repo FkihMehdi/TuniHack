@@ -31,6 +31,7 @@ import Offers from "./components/views/Offers/Offers";
 import CareerTracks from "./components/views/CareerTracks/CareerTracks";
 import CareerTrackDetails from "./components/views/CareerTrackDetails/CareerTrackDetails";
 import CareerPathRecommender from "./components/views/CareerPathRecommender/CareerPathRecommender";
+import CourseContent from "./components/views/CourseContent/CourseContent";
 
 function App() {
   useEffect(() => {
@@ -71,6 +72,7 @@ function App() {
           <Route path="/search" element={<SearchView />} />
           <Route path="/learning-dashboard" element={<LearningDashboard />} />
           <Route path="/courses" element={<Courses />} />
+          <Route path="/courses/:id" element={<CourseContent />} />
           <Route path="/practice" element={<PracticePage />} />
           <Route path="/users/:id" element={<ProfileView />} />
           <Route path="/login" element={<LoginView />} />
