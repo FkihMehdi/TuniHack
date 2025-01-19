@@ -36,7 +36,7 @@ const Sidebar = () => {
       }}
     >
       <List>
-        <ListItem button onClick={() => navigate("/learning-dashboard")}>
+        <ListItem button onClick={() => navigate("/learning")}>
           <ListItemIcon sx={{ color: "#ffffff" }}>
             <Timeline />
           </ListItemIcon>
