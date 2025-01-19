@@ -3,7 +3,6 @@ import Logo from "../../../assests/logo.png";
 import {
   AppBar,
   Toolbar,
-  Typography,
   Box,
   Chip,
   IconButton,
@@ -18,7 +17,11 @@ import {
 } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
 
-console.log("logo", Logo);
+const navItems = [
+  { label: "Learn", path: "learning" },
+  { label: "Practice", path: "practice" },
+  { label: "My Calendar", path: "my-calendar" },
+];
 
 const theme = createTheme({
   palette: {
@@ -65,7 +68,12 @@ const TopNavigationHomepage = () => {
   const [selectedChip, setSelectedChip] = useState(null);
 
   const handleChipClick = (chip) => {
-    setSelectedChip(chip);
+    setSelectedChip((prevSelectedChip) => {
+      if (prevSelectedChip !== chip.label) {
+        navigate("/" + chip.path);
+      }
+      return chip.label;
+    });
   };
 
   return (
@@ -77,7 +85,6 @@ const TopNavigationHomepage = () => {
         <Toolbar>
           <Box
             sx={{ display: "flex", alignItems: "center", cursor: "pointer" }}
-            onClick={() => navigate("/")}
           >
             <img
               src={Logo}
@@ -94,22 +101,19 @@ const TopNavigationHomepage = () => {
               borderRadius: 5,
             }}
           >
-            {["Learn", "Offers", "Certification", "Sandbox"].map((label) => (
+            {navItems.map((item) => (
               <Chip
-                key={label}
-                label={label}
+                key={item.label}
+                label={item.label}
                 clickable
-                onClick={() => {
-                  handleChipClick(label);
-                  navigate("/" + label);
-                }}
+                onClick={() => handleChipClick(item)}
                 sx={{
                   backgroundColor:
-                    selectedChip === label ? "#000000" : "#f7f7fc",
-                  color: selectedChip === label ? "#ffffff" : "#000000",
+                    selectedChip === item.label ? "#000000" : "#e0e0e0",
+                  color: selectedChip === item.label ? "#ffffff" : "#000000",
                   "&:hover": {
                     backgroundColor:
-                      selectedChip === label ? "#000000" : "#eeeef9",
+                      selectedChip === item.label ? "#000000" : "#eeeef9",
                   },
                 }}
               />

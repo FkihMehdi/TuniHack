@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Logo from "../assests/logo.png";
 import {
   AppBar,
   Toolbar,
@@ -44,14 +45,13 @@ const TopNavigation = () => {
       sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}
     >
       <Toolbar>
-        <Typography
-          variant="h6"
-          component="div"
-          sx={{ flexGrow: 0, mr: 2, color: "#000000" }}
-          onClick={() => navigate("/home")}
-        >
-          Affilify
-        </Typography>
+        <Box sx={{ display: "flex", alignItems: "center", cursor: "pointer" }}>
+          <img
+            src={Logo}
+            alt="logo"
+            style={{ width: "40px", height: "40px", marginRight: "8px" }}
+          />
+        </Box>
         <Box
           sx={{
             display: "flex",
