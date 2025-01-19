@@ -61,39 +61,39 @@ const LearningObjectives = () => {
           gutterBottom
           sx={{ fontWeight: 600, color: "#7933ff" }}
         >
-          Un apprentissage axé sur vos objectifs
+          Learning Focused on Your Goals
         </Typography>
 
         {/* Feature cards */}
         {[
           {
-            title: "Formation pratique",
+            title: "Practical Training",
             description:
-              "Perfectionnez vos compétences de manière efficace grâce à des exercices de codage, des exercices pratiques, des quiz et des espaces de travail alimentés par l'IA.",
+              "Enhance your skills effectively with hands-on exercises, practical tasks, quizzes, and AI-powered workspaces.",
             alt: "Practice icon",
           },
           {
-            title: "Préparation aux certifications",
+            title: "Certification Preparation",
             description:
-              "Préparez-vous à obtenir des certifications reconnues par le secteur en relevant des défis concrets et décrochez des badges au passage.",
+              "Prepare for industry-recognized certifications by tackling real-world challenges and earning badges along the way.",
             alt: "Certification icon",
             buttonLabel: "Explore courses",
           },
           {
-            title: "Informations et analyses",
+            title: "Insights and Analytics",
             description:
-              "Atteignez rapidement vos objectifs grâce à des informations avancées et à une équipe dédiée à la réussite des clients.",
+              "Achieve your goals quickly with advanced insights and a dedicated customer success team.",
             alt: "Analytics icon",
             chip: true,
-            buttonLabel: "En savoir plus",
+            buttonLabel: "Learn more",
           },
           {
-            title: "Contenu personnalisable",
+            title: "Customizable Content",
             description:
-              "Créez des parcours d'apprentissage personnalisés en fonction des objectifs de l'équipe et de l'organisation.",
+              "Create personalized learning paths based on team and organizational goals.",
             alt: "Custom content icon",
             chip: true,
-            buttonLabel: "En savoir plus",
+            buttonLabel: "Learn more",
           },
         ].map((item, index) => (
           <FeatureCard key={index}>
@@ -108,7 +108,7 @@ const LearningObjectives = () => {
                   {item.title}
                   {item.chip && (
                     <EnterpriseChip
-                      label="Abonnement Enterprise"
+                      label="Enterprise Subscription"
                       size="small"
                     />
                   )}

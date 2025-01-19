@@ -14,16 +14,28 @@ import {
   Notifications as NotificationsIcon,
 } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
-import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 
 const TopNavigation = () => {
-  const [selectedChip, setSelectedChip] = useState(null);
+  const [selectedChip, setSelectedChip] = useState("");
   const navigate = useNavigate();
 
+  const navItems = [
+    { label: "Home", path: "home" },
+    { label: "Learn", path: "learning" },
+    { label: "Practice", path: "practice" },
+    { label: "Certification", path: "my-certifications" },
+    { label: "My Calendar", path: "my-calendar" },
+  ];
+
+  const offersNavItem = { label: "Offers", path: "offers" };
+
   const handleChipClick = (chip) => {
-    setSelectedChip(chip);
-    // Navigate()
-    navigate("/" + chip);
+    setSelectedChip((prevSelectedChip) => {
+      if (prevSelectedChip !== chip.label) {
+        navigate("/" + chip.path);
+      }
+      return chip.label;
+    });
   };
 
   return (
@@ -36,8 +48,9 @@ const TopNavigation = () => {
           variant="h6"
           component="div"
           sx={{ flexGrow: 0, mr: 2, color: "#000000" }}
+          onClick={() => navigate("/home")}
         >
-          LearningHub
+          Affilify
         </Typography>
         <Box
           sx={{
@@ -48,48 +61,47 @@ const TopNavigation = () => {
             borderRadius: 5,
           }}
         >
-          {["Home", "Learn", "Practice", "Certification", "Jobs"].map(
-            (label) => (
-              <Chip
-                key={label}
-                label={label}
-                clickable
-                onClick={() => handleChipClick(label)}
-                sx={{
+          {navItems.map((item) => (
+            <Chip
+              key={item.label}
+              label={item.label}
+              clickable
+              onClick={() => handleChipClick(item)}
+              sx={{
+                backgroundColor:
+                  selectedChip === item.label ? "#000000" : "#e0e0e0",
+                color: selectedChip === item.label ? "#ffffff" : "#000000",
+                "&:hover": {
                   backgroundColor:
-                    selectedChip === label ? "#000000" : "#f7f7fc",
-                  color: selectedChip === label ? "#ffffff" : "#000000",
-                  "&:hover": {
-                    backgroundColor:
-                      selectedChip === label ? "#000000" : "#eeeef9",
-                  },
-                }}
-              />
-            )
-          )}
+                    selectedChip === item.label ? "#000000" : "#eeeef9",
+                },
+              }}
+            />
+          ))}
         </Box>
         <Box
           sx={{
             display: "flex",
             gap: 1,
-            backgroundColor: "#e0e0e0",
-            padding: 1,
-            borderRadius: 5,
-
             ml: 2,
           }}
         >
           <Chip
             sx={{
-              backgroundColor: "#f7f7fc",
-              color: "#000000",
+              backgroundColor:
+                selectedChip === offersNavItem.label ? "#000000" : "#e0e0e0",
+              color:
+                selectedChip === offersNavItem.label ? "#ffffff" : "#000000",
               "&:hover": {
-                backgroundColor: "#eeeef9",
+                backgroundColor:
+                  selectedChip === offersNavItem.label ? "#000000" : "#eeeef9",
               },
+              py: 3,
+              width: 100,
             }}
-            label="offers"
+            label={offersNavItem.label}
             clickable
-            onClick={() => handleChipClick("offers")}
+            onClick={() => handleChipClick(offersNavItem)}
           />
         </Box>
         <Box sx={{ flexGrow: 1 }} />

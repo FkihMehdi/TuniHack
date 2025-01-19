@@ -67,15 +67,15 @@ const LearningSection = () => {
               fontSize: { xs: "2rem", md: "2.5rem" },
             }}
           >
-            Un apprentissage qui vous ressemble
+            Develop Your Entrepreneurial Mindset
           </Typography>
           <Typography
             variant="subtitle1"
             color="text.secondary"
             sx={{ fontSize: { xs: "1rem", md: "1.1rem" } }}
           >
-            Des compétences pour aujourd'hui (et demain). Nous vous accompagnons
-            dans vos premiers pas.
+            Gain communication and entrepreneurship skills to succeed in today's
+            business world.
           </Typography>
         </ContentWrapper>
 
@@ -83,7 +83,7 @@ const LearningSection = () => {
           <Box
             component="img"
             src="/api/placeholder/600/800"
-            alt="Woman sitting in a chair"
+            alt="Person giving a presentation"
             sx={{
               maxWidth: "100%",
               height: "auto",

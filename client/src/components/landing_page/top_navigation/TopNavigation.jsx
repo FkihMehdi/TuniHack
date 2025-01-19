@@ -76,8 +76,9 @@ const TopNavigationHomepage = () => {
             variant="h6"
             component="div"
             sx={{ flexGrow: 0, mr: 2, color: "#000000" }}
+            onClick={() => navigate("/home")}
           >
-            LearningHub
+            Affilify
           </Typography>
           <Box
             sx={{
