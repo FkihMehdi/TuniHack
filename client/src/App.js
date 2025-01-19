@@ -6,7 +6,7 @@ import "react-icons/bs";
 import "react-router-dom";
 import { CssBaseline } from "@mui/material";
 import { ThemeProvider } from "@mui/material/styles";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import theme from "./theme";
 import { useEffect } from "react";
 import PostView from "./components/views/PostView";
@@ -14,7 +14,6 @@ import CreatePostView from "./components/views/CreatePostView";
 import ProfileView from "./components/views/ProfileView";
 import LoginView from "./components/views/LoginView";
 import SignupView from "./components/views/SignupView";
-import ExploreView from "./components/views/ExploreView";
 import PrivateRoute from "./components/PrivateRoute";
 import SearchView from "./components/views/SearchView";
 import MessengerView from "./components/views/MessengerView";
@@ -32,6 +31,8 @@ import CareerTracks from "./components/views/CareerTracks/CareerTracks";
 import CareerTrackDetails from "./components/views/CareerTrackDetails/CareerTrackDetails";
 import CareerPathRecommender from "./components/views/CareerPathRecommender/CareerPathRecommender";
 import CourseContent from "./components/views/CourseContent/CourseContent";
+import Certifications from "./components/views/Certifications/Certifications";
+import CourseCalendar from "./components/views/CourseCalendar/CourseCalendar";
 
 function App() {
   useEffect(() => {
@@ -50,7 +51,7 @@ function App() {
       <BrowserRouter>
         <CssBaseline />
         <Routes>
-          <Route path="/" element={<ExploreView />} />
+          <Route path="/" element={<Navigate to="/Home" />} />
           <Route path="/Home" element={<LandingPage />} />
           <Route path="/posts/:id" element={<PostView />} />
           <Route
@@ -93,6 +94,8 @@ function App() {
           />
           <Route path="career-tracks" element={<CareerTracks />} />
           <Route path="career-tracks/:id" element={<CareerTrackDetails />} />
+          <Route path="my-certifications" element={<Certifications />} />
+          <Route path="my-calendar" element={<CourseCalendar />} />
         </Routes>
       </BrowserRouter>
     </ThemeProvider>

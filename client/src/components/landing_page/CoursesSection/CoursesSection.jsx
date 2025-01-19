@@ -74,72 +74,94 @@ const StyledIconButton = styled(IconButton)({
 
 // Component Data
 const categories = [
-  "Entrepreneuriat",
-  "Gestion d'entreprise",
-  "Stratégie de communication",
-  "Marketing numérique",
-  "Développement personnel",
+  "Entrepreneurship",
+  "Business Management",
+  "Communication Strategy",
+  "Digital Marketing",
+  "Personal Development",
   "Leadership",
 ];
 
 const topics = [
-  { name: "Pitching", participants: "1,5 M" },
+  { name: "Pitching", participants: "1.5 M" },
   { name: "Branding", participants: "2 M" },
-  { name: "Communication interpersonnelle", participants: "5 M" },
-  { name: "Gestion de projet", participants: "3,8 M" },
-  { name: "Publicité numérique", participants: "4,5 M" },
+  { name: "Interpersonal Communication", participants: "5 M" },
+  { name: "Project Management", participants: "3.8 M" },
+  { name: "Digital Advertising", participants: "4.5 M" },
 ];
 
-// const courses = [
-//   {
-//     id: 1,
-//     title: "Construire et présenter un pitch gagnant",
-//     author: "Sophie Dupont | Experte en communication",
-//     rating: 4.8,
-//     reviews: 152,
-//     price: 69.99,
-//     image: "/api/placeholder/280/160",
-//     badge: "Meilleure vente",
-//   },
-//   {
-//     id: 2,
-//     title: "Stratégies avancées de marketing numérique",
-//     author: "Julien Morel | Consultant en marketing",
-//     rating: 4.6,
-//     reviews: 287,
-//     price: 59.99,
-//     image: "/api/placeholder/280/160",
-//     badge: "Les mieux notés",
-//   },
-//   {
-//     id: 3,
-//     title: "Maîtrisez l'art du leadership inspirant",
-//     author: "Laura Fontaine | Coach en leadership",
-//     rating: 4.7,
-//     reviews: 201,
-//     price: 64.99,
-//     image: "/api/placeholder/280/160",
-//   },
-// ];
-
-const generateCourses = (numCourses) => {
-  const courses = [];
-  for (let i = 1; i <= numCourses; i++) {
-    courses.push({
-      id: i,
-      title: `Course Title ${i}`,
-      author: `Author ${i}`,
-      rating: (Math.random() * 2 + 3).toFixed(1), // Random rating between 3.0 and 5.0
-      reviews: Math.floor(Math.random() * 200) + 1, // Random reviews between 1 and 200
-      price: (Math.random() * 100).toFixed(2), // Random price between 0.00 and 100.00
-      image: `https://picsum.photos/200?random=${i}`,
-      badge: ["Meilleure vente", "Populaire", "Nouveau"][
-        Math.floor(Math.random() * 3)
-      ], // Random badge
-    });
-  }
-  return courses;
-};
+const courses = [
+  {
+    id: 1,
+    title: "Mastering the Art of Pitching",
+    author: "John Doe | Communication Expert",
+    rating: 4.8,
+    reviews: 152,
+    price: 69.99,
+    image: "https://picsum.photos/200?random=1",
+    badge: "Best Seller",
+  },
+  {
+    id: 2,
+    title: "Advanced Digital Marketing Strategies",
+    author: "Jane Smith | Marketing Consultant",
+    rating: 4.6,
+    reviews: 287,
+    price: 59.99,
+    image: "https://picsum.photos/200?random=2",
+    badge: "Top Rated",
+  },
+  {
+    id: 3,
+    title: "Effective Leadership Skills",
+    author: "Laura Johnson | Leadership Coach",
+    rating: 4.7,
+    reviews: 201,
+    price: 64.99,
+    image: "https://picsum.photos/200?random=3",
+    badge: "Popular",
+  },
+  {
+    id: 4,
+    title: "Building a Strong Brand Identity",
+    author: "Michael Brown | Branding Specialist",
+    rating: 4.5,
+    reviews: 180,
+    price: 54.99,
+    image: "https://picsum.photos/200?random=4",
+    badge: "New",
+  },
+  {
+    id: 5,
+    title: "Interpersonal Communication Mastery",
+    author: "Emily Davis | Communication Coach",
+    rating: 4.9,
+    reviews: 220,
+    price: 74.99,
+    image: "https://picsum.photos/200?random=5",
+    badge: "Best Seller",
+  },
+  {
+    id: 6,
+    title: "Project Management Essentials",
+    author: "David Wilson | Project Manager",
+    rating: 4.4,
+    reviews: 145,
+    price: 49.99,
+    image: "https://picsum.photos/200?random=6",
+    badge: "Popular",
+  },
+  {
+    id: 7,
+    title: "Digital Advertising Techniques",
+    author: "Sarah Lee | Advertising Expert",
+    rating: 4.3,
+    reviews: 130,
+    price: 39.99,
+    image: "https://picsum.photos/200?random=7",
+    badge: "New",
+  },
+];
 
 // CourseCard Component
 const CourseCard = ({ course }) => (
@@ -188,7 +210,7 @@ const CourseCard = ({ course }) => (
         fontWeight="bold"
         sx={{ color: theme.colors.text.primary }}
       >
-        {course.price} $US
+        {course.price} TND
       </Typography>
       {course.badge && (
         <Chip
@@ -214,13 +236,18 @@ const CoursesSection = () => {
   const [scrollPosition, setScrollPosition] = useState(0);
 
   const handleScroll = (direction) => {
-    const newPosition =
-      direction === "right" ? scrollPosition + 300 : scrollPosition - 300;
-    setScrollPosition(Math.max(0, newPosition));
-  };
+    const containerWidth = 300; // Width of one card
+    const totalWidth = courses.length * containerWidth;
+    let newPosition = scrollPosition;
 
-  const courses = generateCourses(6);
-  console.log(courses);
+    if (direction === "right") {
+      newPosition = (scrollPosition + containerWidth) % totalWidth;
+    } else {
+      newPosition = (scrollPosition - containerWidth + totalWidth) % totalWidth;
+    }
+
+    setScrollPosition(newPosition);
+  };
 
   return (
     <Box
@@ -238,14 +265,14 @@ const CoursesSection = () => {
         fontWeight="bold"
         sx={{ color: theme.colors.text.primary }}
       >
-        Développez vos compétences en entrepreneuriat et communication
+        Develop Your Skills in Entrepreneurship and Communication
       </Typography>
       <Typography
         variant="body1"
         gutterBottom
         sx={{ color: theme.colors.text.secondary }}
       >
-        Explorez des cours pour booster vos compétences professionnelles.
+        Explore courses to boost your professional skills.
       </Typography>
 
       {/* Categories */}
