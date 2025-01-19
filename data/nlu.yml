@@ -1,0 +1,171 @@
+version: "3.1"
+
+nlu:
+  - intent: greet
+    examples: |
+      - hey
+      - hello
+      - hi
+      - hello there
+      - good morning
+      - good evening
+      - hey there
+      - hi there
+      - greetings
+      - what's up
+      - how are you
+      - good afternoon
+      - nice to meet you
+      - pleasure to meet you
+
+  - intent: ask_pitch
+    examples: |
+      - how do I make a good pitch
+      - pitch advice
+      - help me with pitching
+      - what makes a great pitch
+      - pitch deck tips
+      - presenting to investors
+      - how to pitch my idea
+      - what should be in my pitch
+      - tips for pitching to investors
+      - how to create a pitch deck
+      - what makes a winning pitch
+      - pitch presentation advice
+      - help me prepare my pitch
+      - investor pitch guidelines
+
+  - intent: ask_pitch_structure
+    examples: |
+      - how should I structure my pitch
+      - what goes in a pitch deck
+      - pitch presentation structure
+      - order of pitch slides
+      - how to organize a pitch
+      - what sections should my pitch have
+      - pitch deck organization
+      - how to arrange pitch content
+      - what's the best pitch format
+      - pitch deck template
+      - how to layout a pitch
+
+  - intent: ask_pitch_tips
+    examples: |
+      - how can I improve my pitch
+      - advanced pitching techniques
+      - make my pitch better
+      - professional pitching tips
+      - pitch delivery advice
+      - how to pitch effectively
+      - expert pitch strategies
+      - pitch improvement tips
+      - what makes a pitch successful
+      - how to stand out when pitching
+      - pitch performance tips
+
+  - intent: ask_pitch_duration
+    examples: |
+      - how long should my pitch be
+      - pitch timing advice
+      - ideal pitch length
+      - how many minutes for pitch
+      - timing for investor pitch
+      - elevator pitch duration
+      - pitch presentation length
+      - how long to pitch investors
+      - pitch time management
+      - perfect pitch duration
+
+  - intent: ask_entrepreneurship
+    examples: |
+      - how to start a business
+      - becoming an entrepreneur
+      - entrepreneurship basics
+      - starting a company
+      - business creation steps
+      - how to be an entrepreneur
+      - starting my own business
+      - entrepreneur guidelines
+      - business startup advice
+      - new business basics
+      - company formation tips
+      - first-time entrepreneur help
+      - how to launch a startup
+      - entrepreneurship guide
+
+  - intent: ask_business_plan
+    examples: |
+      - how to write a business plan
+      - business plan template
+      - what goes in a business plan
+      - creating a business plan
+      - business plan sections
+      - business plan advice
+      - help with business planning
+      - business plan structure
+      - business plan components
+      - planning my business
+      - strategic business planning
+
+  - intent: ask_market_research
+    examples: |
+      - how to do market research
+      - market analysis help
+      - researching my market
+      - market study tips
+      - understanding my market
+      - market research methods
+      - analyzing competition
+      - market analysis techniques
+      - research target market
+      - competitor research tips
+      - market size analysis
+
+  - intent: ask_funding
+    examples: |
+      - how to get funding
+      - raising money for business
+      - startup funding options
+      - investment sources
+      - how to find investors
+      - business financing
+      - funding opportunities
+      - startup capital
+      - investment strategies
+      - securing funding
+      - fundraising tips
+      - venture capital advice
+      - angel investor guidelines
+      - crowdfunding help
+
+  - intent: ask_team_building
+    examples: |
+      - how to build a team
+      - hiring for startup
+      - team development
+      - finding co-founders
+      - building startup team
+      - team management tips
+      - hiring first employees
+      - startup team structure
+      - team roles startup
+      - managing startup team
+      - leadership for startups
+
+  - intent: ask_legal_requirements
+    examples: |
+      - legal requirements for business
+      - business registration
+      - startup legal needs
+      - company formation laws
+      - legal structure advice
+      - business licenses needed
+      - legal compliance help
+      - business regulations
+      - startup legal guidelines
+      - company legal requirements
+      - business law basics
+
+  - intent: ask_communication
+    examples: |
+      - how
